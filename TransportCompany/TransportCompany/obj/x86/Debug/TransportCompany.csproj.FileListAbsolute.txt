@@ -1,0 +1,13 @@
+C:\Users\DsD\oursit\TransportCompany\TransportCompany\bin\Debug\TransportCompany.exe
+C:\Users\DsD\oursit\TransportCompany\TransportCompany\bin\Debug\TransportCompany.pdb
+C:\Users\DsD\oursit\TransportCompany\TransportCompany\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\DsD\oursit\TransportCompany\TransportCompany\obj\x86\Debug\MainWindow.baml
+C:\Users\DsD\oursit\TransportCompany\TransportCompany\obj\x86\Debug\MainWindow.g.cs
+C:\Users\DsD\oursit\TransportCompany\TransportCompany\obj\x86\Debug\App.g.cs
+C:\Users\DsD\oursit\TransportCompany\TransportCompany\obj\x86\Debug\TransportCompany_MarkupCompile.cache
+C:\Users\DsD\oursit\TransportCompany\TransportCompany\obj\x86\Debug\TransportCompany.g.resources
+C:\Users\DsD\oursit\TransportCompany\TransportCompany\obj\x86\Debug\TransportCompany.Properties.Resources.resources
+C:\Users\DsD\oursit\TransportCompany\TransportCompany\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\DsD\oursit\TransportCompany\TransportCompany\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\DsD\oursit\TransportCompany\TransportCompany\obj\x86\Debug\TransportCompany.exe
+C:\Users\DsD\oursit\TransportCompany\TransportCompany\obj\x86\Debug\TransportCompany.pdb
