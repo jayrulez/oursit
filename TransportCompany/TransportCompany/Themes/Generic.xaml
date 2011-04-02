@@ -8,23 +8,11 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:MasterWindow}">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="{x:Type local:MasterWindow}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:MasterWindow}">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                    </Border>
+                    <StackPanel>
+                        <ContentPresenter Content="{TemplateBinding Header}"/>
+                        <ContentPresenter Content="{TemplateBinding SideMenuContent}"/>
+                        <ContentPresenter Content="{TemplateBinding MainContent}"/>
+                    </StackPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
