@@ -50,7 +50,7 @@ namespace TransportCompany
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MasterWindow), new FrameworkPropertyMetadata(typeof(MasterWindow)));
         }
         
-        public static readonly DependencyProperty HeaderProperty = DependencyProperty.Register("Header", typeof(Object), typeof(MasterWindow), UIPropertyMetadata());
+        public static readonly DependencyProperty HeaderProperty = DependencyProperty.Register("Header", typeof(object), typeof(MasterWindow),new UIPropertyMetadata());
 
         public Object Header
         {
@@ -60,9 +60,36 @@ namespace TransportCompany
             }
             get
             {
-                return GetValue(HeaderProperty);
+                return (object)GetValue(HeaderProperty);
             }
         }
 
+        public static readonly DependencyProperty SideMenuContentProperty = DependencyProperty.Register("SideMenuContent", typeof(object), typeof(MasterWindow), new UIPropertyMetadata());
+
+        public Object SideMenuContent
+        {
+            set
+            {
+                SetValue(SideMenuContentProperty, value);
+            }
+            get
+            {
+                return (object)GetValue(SideMenuContentProperty);
+            }
+        }
+
+        public static readonly DependencyProperty MainContentProperty = DependencyProperty.Register("MainContent", typeof(object), typeof(MasterWindow), new UIPropertyMetadata());
+
+        public Object MainContent
+        {
+            set
+            {
+                SetValue(MainContentProperty, value);
+            }
+            get
+            {
+                return (object)GetValue(MainContentProperty);
+            }
+        }
     }
 }

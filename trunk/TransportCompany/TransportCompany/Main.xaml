@@ -1,0 +1,17 @@
+﻿<Window x:Class="TransportCompany.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:m="clr-namespace:TransportCompany"
+        Title="Main" Height="300" Width="300">
+    <m:MasterWindow>
+        <m:MasterWindow.Header>
+            Header
+        </m:MasterWindow.Header>
+        <m:MasterWindow.SideMenuContent>
+            Side Menu
+        </m:MasterWindow.SideMenuContent>
+        <m:MasterWindow.MainContent>
+            Main Content
+        </m:MasterWindow.MainContent>
+    </m:MasterWindow>
+</Window>
