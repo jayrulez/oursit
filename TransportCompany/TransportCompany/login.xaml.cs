@@ -22,5 +22,12 @@ namespace TransportCompany
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Main MainWindow = new Main();
+            MainWindow.Show();
+            Close();
+        }
     }
 }

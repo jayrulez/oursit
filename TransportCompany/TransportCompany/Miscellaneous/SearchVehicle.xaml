@@ -1,0 +1,53 @@
+﻿<Page x:Class="TransportCompany.Miscellaneous.SearchVehicle"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:MinDesignHeight="300" d:MinDesignWidth="300"
+	Title="SearchVehicle">
+
+    <Grid Name="SearchDriverForm">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="VIN:" HorizontalAlignment="Right"/>
+        <TextBox Name="txtVIN" Width="150" Grid.Row="0" Grid.Column="1" Margin="3"/>
+
+        <Label Grid.Row="0" Grid.Column="2" Content="Make:" HorizontalAlignment="Right"/>
+        <TextBox Name="txtMake" Width="150" Grid.Row="0" Grid.Column="3" Margin="3"/>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Model:" HorizontalAlignment="Right"/>
+        <TextBox Name="txtModel" Width="150" Grid.Row="1" Grid.Column="1" Margin="3"/>
+
+        <Label Grid.Row="1" Grid.Column="2" Content="Colour:" HorizontalAlignment="Right"/>
+        <TextBox Name="txtColour" Width="150" Grid.Row="1" Grid.Column="3" Margin="3"/>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="Condition:" HorizontalAlignment="Right"/>
+        <TextBox Name="txtCondition" Width="150" Height="23" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1" Margin="3"/>
+
+        <Label Grid.Row="2" Grid.Column="2" Content="Type:" HorizontalAlignment="Right"/>
+        <StackPanel Name="rbtnlistType" Grid.Row="2" Grid.Column="3">
+            <RadioButton Name="rbtnTypeRental" Content="Rental"/>
+            <RadioButton Name="rbtnTypeDelivery" Content="Delivery"/>
+            <RadioButton Name="rbtnTypeCharter" Content="Charter"/>
+            <RadioButton Name="rbtnTypeAll" Content="All"/>
+        </StackPanel>
+        <Label Content="Seating Capacity:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right"/>
+        <TextBox Name="txtSeatingCapacity" Width="150" Grid.Row="3" Grid.Column="1" Margin="3" />
+        
+        <Button Name="btnSearchCustomer" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Content="Search" HorizontalContentAlignment="Center" Width="100"/>
+    </Grid>
+</Page>

@@ -1,0 +1,44 @@
+﻿<Page x:Class="TransportCompany.Miscellaneous.SearchDriver"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:MinDesignHeight="300" d:MinDesignWidth="300"
+	Title="SearchDriver">
+
+    <Grid Name="SearchDriverForm">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="First Name:" HorizontalAlignment="Right"/>
+        <TextBox Name="txtFirstName" Width="150" Grid.Row="0" Grid.Column="1" Margin="3"/>
+
+        <Label Grid.Row="0" Grid.Column="2" Content="LastName:" HorizontalAlignment="Right"/>
+        <TextBox Name="txtLastName" Width="150" Grid.Row="0" Grid.Column="3" Margin="3"/>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="NIS:" HorizontalAlignment="Right"/>
+        <TextBox Name="txtNis" Width="150" Grid.Row="1" Grid.Column="1" Margin="3"/>
+
+        <Label Grid.Row="1" Grid.Column="2" Content="TRN:" HorizontalAlignment="Right"/>
+        <TextBox Name="txtTrn" Width="150" Grid.Row="1" Grid.Column="3" Margin="3"/>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="Parish:" HorizontalAlignment="Right"/>
+        <TextBox Name="txtParish" Width="150" Grid.Row="2" Grid.Column="1" Margin="3"/>
+
+        <Label Grid.Row="2" Grid.Column="2" Content="Contact Number:" HorizontalAlignment="Right"/>
+        <TextBox Name="txtContactNumber" Width="150" Grid.Row="2" Grid.Column="3" Margin="3"/>
+        <Button Name="btnSearchCustomer" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Content="Search" HorizontalContentAlignment="Center" Width="100"/>
+    </Grid>
+</Page>

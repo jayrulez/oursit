@@ -38,6 +38,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -49,6 +50,7 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -63,10 +65,72 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CustomControls\LoginInfo.cs" />
+    <Compile Include="CustomControls\MainMenu.cs" />
     <Compile Include="login.xaml.cs">
       <DependentUpon>login.xaml</DependentUpon>
     </Compile>
     <Page Include="Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Miscellaneous\AddCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Miscellaneous\AddDriver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Miscellaneous\AddVehicle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Miscellaneous\DeleteCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Miscellaneous\DeleteDriver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Miscellaneous\DeleteVehicle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Miscellaneous\RentalRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Miscellaneous\SearchCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Miscellaneous\SearchDriver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Miscellaneous\SearchVehicle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Miscellaneous\UpdateCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Miscellaneous\UpdateDriver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Miscellaneous\UpdateVehicle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Miscellaneous\ViewDeliveryRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Miscellaneous\InquireReview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -80,6 +144,51 @@
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
     <Compile Include="MasterWindow.cs" />
+    <Compile Include="Miscellaneous\AddCustomer.xaml.cs">
+      <DependentUpon>AddCustomer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\AddDriver.xaml.cs">
+      <DependentUpon>AddDriver.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\AddVehicle.xaml.cs">
+      <DependentUpon>AddVehicle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\DeleteCustomer.xaml.cs">
+      <DependentUpon>DeleteCustomer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\DeleteDriver.xaml.cs">
+      <DependentUpon>DeleteDriver.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\DeleteVehicle.xaml.cs">
+      <DependentUpon>DeleteVehicle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\RentalRequest.xaml.cs">
+      <DependentUpon>RentalRequest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\SearchCustomer.xaml.cs">
+      <DependentUpon>SearchCustomer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\SearchDriver.xaml.cs">
+      <DependentUpon>SearchDriver.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\SearchVehicle.xaml.cs">
+      <DependentUpon>SearchVehicle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\UpdateCustomer.xaml.cs">
+      <DependentUpon>UpdateCustomer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\UpdateDriver.xaml.cs">
+      <DependentUpon>UpdateDriver.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\UpdateVehicle.xaml.cs">
+      <DependentUpon>UpdateVehicle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\ViewDeliveryRequest.xaml.cs">
+      <DependentUpon>ViewDeliveryRequest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\InquireReview.xaml.cs">
+      <DependentUpon>InquireReview.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -102,6 +211,47 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\ResourceManagement.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\CustomerManagment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\ServiceManagement.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UserControls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\DeleteCustomer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\AddCustomer.gif" />
+    <Resource Include="Images\Icon\AddDriver.png" />
+    <Resource Include="Images\Icon\UpdateIcon.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\SearchCustomer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\DriverManagement.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\VehicleManagement.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\AddVehicle.gif" />
+    <Resource Include="Images\Icon\DeleteDriver.png" />
+    <Resource Include="Images\Icon\DeleteVehicle.gif" />
+    <Resource Include="Images\Icon\SearchDriver.png" />
+    <Resource Include="Images\Icon\SearchVehicle.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\DeliveryService.gif" />
+    <Resource Include="Images\Icon\InquiryReview.png" />
+    <Resource Include="Images\Icon\RentalService.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
