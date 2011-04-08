@@ -2,16 +2,211 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:m="clr-namespace:TransportCompany"
-        Title="Main" Height="300" Width="300">
+        xmlns:c="clr-namespace:TransportCompany.CustomControls"
+        Title="Main" MinHeight="400" MinWidth="450" Width="600">
     <m:MasterWindow>
         <m:MasterWindow.Header>
             Header
         </m:MasterWindow.Header>
         <m:MasterWindow.SideMenuContent>
-            Side Menu
+            
+            <TreeView Name="MainSideMenu" VerticalAlignment="Stretch">
+                <TreeViewItem Name="CustomerManagementTreeItem" Margin="3">
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="./Images/Icon/CustomerManagment.png" Height="30" Width="30"/>
+                            <TextBlock Text="Customer Management"></TextBlock>
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                    
+                    <TreeViewItem Name="AddCustomer" Selected="selected_AddCustomer">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="./Images/Icon/AddCustomer.gif" Height="30" Width="30"/>
+                                <TextBlock Text="Add Customer"></TextBlock>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+
+                    <TreeViewItem Name="DeleteCustomer"  Selected="selected_DeleteCustomer">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="./Images/Icon/DeleteCustomer.png" Height="30" Width="30"/>
+                                <TextBlock Text="Delete Customer"></TextBlock>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+
+                    <TreeViewItem Name="SearchCustomer"  Selected="selected_SearchCustomer">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="./Images/Icon/SearchCustomer.png" Height="30" Width="30"/>
+                                <TextBlock Text="Search Customer"></TextBlock>
+                            </StackPanel>
+                        </TreeViewItem.Header>                        
+                    </TreeViewItem>
+
+                    <TreeViewItem Name="UpdateCustomer"  Selected="selected_UpdateCustomer">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="./Images/Icon/UpdateIcon.gif" Height="30" Width="30"/>
+                                <TextBlock Text="Update Customer"></TextBlock>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                </TreeViewItem>
+                <TreeViewItem Name="ResourceManagementTreeItem" Margin="3">
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="./Images/Icon/ResourceManagement.jpg" Height="30" Width="30"/>
+                            <TextBlock Text="Resource Management"></TextBlock>
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                    <TreeViewItem Name="DriverManagement">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="./Images/Icon/DriverManagement.gif" Height="30" Width="30"/>
+                                <TextBlock Text="Driver Management"></TextBlock>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                        <TreeViewItem Name="AddDriver"  Selected="selected_AddDriver">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="./Images/Icon/AddDriver.png" Height="30" Width="30"/>
+                                    <TextBlock Text="Add Driver"></TextBlock>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+
+                        <TreeViewItem Name="DeleteDriver"  Selected="selected_DeleteDriver">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="./Images/Icon/DeleteDriver.png" Height="30" Width="30"/>
+                                    <TextBlock Text="Delete Driver"></TextBlock>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+
+                        <TreeViewItem Name="SearchDriver"  Selected="selected_SearchDriver">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="./Images/Icon/SearchDriver.png" Height="30" Width="30"/>
+                                    <TextBlock Text="Search Driver"></TextBlock>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+
+                        <TreeViewItem Name="UpdateDriver"  Selected="selected_UpdateDriver">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="./Images/Icon/UpdateIcon.gif" Height="30" Width="30"/>
+                                    <TextBlock Text="Update Driver"></TextBlock>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                    <TreeViewItem Name="VehicleManagement" >
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="./Images/Icon/VehicleManagement.png" Height="30" Width="30"/>
+                                <TextBlock Text="Vehicle Management"></TextBlock>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                        <TreeViewItem Name="AddVehicle"  Selected="selected_AddVehicle">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="./Images/Icon/AddVehicle.gif" Height="30" Width="30"/>
+                                    <TextBlock Text="Add Vehicle"></TextBlock>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem Name="DeleteVehicle"  Selected="selected_DeleteVehicle">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="./Images/Icon/DeleteVehicle.gif" Height="30" Width="30"/>
+                                    <TextBlock Text="Delete Vehicle"></TextBlock>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem Name="SearchVehicle"  Selected="selected_SearchVehicle">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="./Images/Icon/SearchVehicle.jpg" Height="30" Width="30"/>
+                                    <TextBlock Text="Search Vehicle"></TextBlock>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem Name="UpdateVehicle"  Selected="selected_UpdateVehicle">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="./Images/Icon/UpdateIcon.gif" Height="30" Width="30"/>
+                                    <TextBlock Text="Update Vehicle"></TextBlock>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                </TreeViewItem>
+                <TreeViewItem Name="ServiceManagementTreeItem" Margin="3">
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="./Images/Icon/ServiceManagement.png" Height="30" Width="30"/>
+                            <TextBlock Text="Service Management"></TextBlock>
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                    <TreeViewItem Name="CharterService">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="./Images/Icon/DeliveryService.gif" Height="30" Width="30"/>
+                                <TextBlock Text="Charter Service"></TextBlock>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                        
+                    </TreeViewItem>
+                    <TreeViewItem Name="DeliveryService" >
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="./Images/Icon/DeliveryService.gif" Height="30" Width="30"/>
+                                <TextBlock Text="Delivery Service"></TextBlock>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem Name="RentalService">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="./Images/Icon/RentalService.png" Height="30" Width="30"/>
+                                <TextBlock Text="Rental Service"></TextBlock>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                        <TreeViewItem Name="RentalRequest" Selected="selected_RentalRequest">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="./Images/Icon/RentalService.png" Height="30" Width="30"/>
+                                    <TextBlock Text="Rental Request"></TextBlock>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                    <TreeViewItem Name="InquiryReview" Selected="selected_InquiryReview">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="./Images/Icon/InquiryReview.png" Height="30" Width="30"/>
+                                <TextBlock Text="View Inquiry"></TextBlock>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                </TreeViewItem>
+
+
+            </TreeView>
+           
         </m:MasterWindow.SideMenuContent>
         <m:MasterWindow.MainContent>
-            Main Content
+            <StackPanel MinWidth="200" >
+                <Label Margin="0,0,5,0"></Label>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <Frame Name="MainContentFrame" Height="auto" Width="auto" Background="Gray" ></Frame>
+                </ScrollViewer>
+            </StackPanel>
         </m:MasterWindow.MainContent>
     </m:MasterWindow>
 </Window>

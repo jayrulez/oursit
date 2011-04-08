@@ -22,5 +22,62 @@ namespace TransportCompany
         {
             InitializeComponent();
         }
+
+        public void selected_AddCustomer(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Source = new Uri("./Miscellaneous/AddCustomer.xaml", UriKind.Relative);
+        }
+        public void selected_UpdateCustomer(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Source = new Uri("./Miscellaneous/UpdateCustomer.xaml", UriKind.Relative);
+        }
+        public void selected_SearchCustomer(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Source = new Uri("./Miscellaneous/SearchCustomer.xaml", UriKind.Relative);
+        }
+        public void selected_DeleteCustomer(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Source = new Uri("./Miscellaneous/DeleteCustomer.xaml", UriKind.Relative);
+        }
+        public void selected_AddDriver(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Source = new Uri("./Miscellaneous/AddDriver.xaml", UriKind.Relative);
+        }
+        public void selected_DeleteDriver(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Source = new Uri("./Miscellaneous/DeleteDriver.xaml", UriKind.Relative);
+        }
+        public void selected_SearchDriver(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Source = new Uri("./Miscellaneous/SearchDriver.xaml", UriKind.Relative);
+        }
+        public void selected_UpdateDriver(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Source = new Uri("./Miscellaneous/UpdateDriver.xaml", UriKind.Relative);
+        }
+        public void selected_AddVehicle(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Source = new Uri("./Miscellaneous/AddVehicle.xaml", UriKind.Relative);
+        }
+        public void selected_DeleteVehicle(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Source = new Uri("./Miscellaneous/DeleteVehicle.xaml", UriKind.Relative);
+        }
+        public void selected_UpdateVehicle(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Source = new Uri("./Miscellaneous/UpdateVehicle.xaml", UriKind.Relative);
+        }
+        public void selected_SearchVehicle(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Source = new Uri("./Miscellaneous/SearchVehicle.xaml", UriKind.Relative);
+        }
+        public void selected_InquiryReview(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Source = new Uri("./Miscellaneous/AddCustomer.xaml", UriKind.Relative);
+        }
+        public void selected_RentalRequest(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Source = new Uri("./Miscellaneous/RentalRequest.xaml", UriKind.Relative);
+        }
     }
 }

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\DsD\oursit\TransportCompany\TransportCompany\App.xaml
-3-872426448
+18-1814938561
 
-81033096699
-12-1547151337
-login.xaml;Main.xaml;Themes\Generic.xaml;
+2511621310
+14755108621
+login.xaml;Main.xaml;Miscellaneous\AddCustomer.xaml;Miscellaneous\AddDriver.xaml;Miscellaneous\AddVehicle.xaml;Miscellaneous\DeleteCustomer.xaml;Miscellaneous\DeleteDriver.xaml;Miscellaneous\DeleteVehicle.xaml;Miscellaneous\RentalRequest.xaml;Miscellaneous\SearchCustomer.xaml;Miscellaneous\SearchDriver.xaml;Miscellaneous\SearchVehicle.xaml;Miscellaneous\UpdateCustomer.xaml;Miscellaneous\UpdateDriver.xaml;Miscellaneous\UpdateVehicle.xaml;Miscellaneous\ViewDeliveryRequest.xaml;Miscellaneous\InquireReview.xaml;Themes\Generic.xaml;
 
 True
 
