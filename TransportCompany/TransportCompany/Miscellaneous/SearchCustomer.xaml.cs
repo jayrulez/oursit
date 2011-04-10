@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -17,11 +18,31 @@ namespace TransportCompany.Miscellaneous
     /// <summary>
     /// Interaction logic for SearchCustomer.xaml
     /// </summary>
+    /// 
+    using DataAccessLayer;
     public partial class SearchCustomer : Page
     {
+        
         public SearchCustomer()
         {
             InitializeComponent();
+        }
+
+        private void btnSearchCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            OurSitDb OurSitSchema = new OurSitDb();
+            DataTable CustomerResultSet = new DataTable();
+            IDataReader CustomerReader = OurSitSchema.GetCustomerById(Convert.ToString(txtId));//OurSitSchema.GetCustomer(Convert.ToString(txtId.Text), Convert.ToString(txtFirstName.Text), Convert.ToString(txtLastName.Text), Convert.ToString(txtEmailAddress.Text));
+            if (CustomerReader == null)
+            {
+                lblSearchStatus.Content = "No customer data found.";
+            }
+            else
+            {
+                lblSearchStatus.Content = "";
+                CustomerResultSet.Load(CustomerReader);
+                SearchCustomerDataGrid.ItemsSource = CustomerResultSet.DefaultView;
+            }
         }
     }
 }

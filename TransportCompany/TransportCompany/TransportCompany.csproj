@@ -67,6 +67,7 @@
     </Compile>
     <Compile Include="CustomControls\LoginInfo.cs" />
     <Compile Include="CustomControls\MainMenu.cs" />
+    <Compile Include="DataAccessLayer\OurSitDb.cs" />
     <Compile Include="login.xaml.cs">
       <DependentUpon>login.xaml</DependentUpon>
     </Compile>
