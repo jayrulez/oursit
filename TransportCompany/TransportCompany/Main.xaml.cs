@@ -79,5 +79,9 @@ namespace TransportCompany
         {
             MainContentFrame.Source = new Uri("./Miscellaneous/RentalRequest.xaml", UriKind.Relative);
         }
+        public void selected_AddOperator(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Source = new Uri("./Miscellaneous/AddOperator.xaml", UriKind.Relative);
+        }
     }
 }

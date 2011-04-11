@@ -14,7 +14,7 @@ namespace TransportCompany
     {
         public App()
         {
-            string LocalConnectionString = @"Data Source=DSD-PC\SQLEXPRESS;Initial Catalog=oursitdb;Integrated Security=SSPI";
+            string LocalConnectionString = @"Data Source=SYNC-PC\SQLEXPRESS;Initial Catalog=oursitdb;Integrated Security=SSPI";
             Application.Current.Properties["LocalConnectionString"] = LocalConnectionString;
         }
     }
