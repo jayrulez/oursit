@@ -41,8 +41,8 @@ namespace TransportCompany.Miscellaneous
             else
             {
                 lblSearchStatus.Content = "";
-       
-                SearchCustomerDataGrid.ItemsSource = CustomerResult.CreateDataReader();
+                //SearchCustomerDataGrid.AutoGenerateColumns = true;
+                SearchCustomerDataGrid.ItemsSource = CustomerResult.DefaultView;
             }
         }
     }

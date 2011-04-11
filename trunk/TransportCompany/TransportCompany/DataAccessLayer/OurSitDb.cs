@@ -109,28 +109,128 @@ namespace TransportCompany.DataAccessLayer
             {
                 oursitdbcommand.Connection = oursitdbconnection;
                 oursitdbcommand.Connection.Open();
-                status = MessageBox.Show("connection is open");
                 try
                 {
-                    status = MessageBox.Show("Before Reader");
                     GetCustomerReader = oursitdbcommand.ExecuteReader();
-                    status = MessageBox.Show("After Reader");
+       
                     if (GetCustomerReader.HasRows)
                     {
                         CustomerDataTable.Load(GetCustomerReader);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    status = MessageBox.Show(ex.Message + " Stack trace: " + ex.StackTrace + " Target Site: " + ex.TargetSite);
+                    status = MessageBox.Show("An error occured while attempting to retreive customer data. Please contact administrator");
                 }
                 oursitdbcommand.Connection.Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                status = MessageBox.Show(ex.Message + " Stack trace: " + ex.StackTrace + " Target Site: " + ex.TargetSite);
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.");
             }
             return CustomerDataTable ;
+        }
+
+        public bool AddCustomer(string FirstName, string LastName, string EmailAddress, string Password, string ContactNumber)
+        {
+            oursitdbcommand.CommandType = System.Data.CommandType.StoredProcedure;
+            oursitdbcommand.CommandText = "sp_AddCustomer";
+            oursitdbcommand.Parameters.AddWithValue("@FirstName", FirstName);
+            oursitdbcommand.Parameters.AddWithValue("@LastName", LastName);
+            oursitdbcommand.Parameters.AddWithValue("@EmailAddress", EmailAddress);
+            oursitdbcommand.Parameters.AddWithValue("@Password", Password);
+            oursitdbcommand.Parameters.AddWithValue("@ContactNumber", ContactNumber);
+            oursitdbcommand.Connection = oursitdbconnection;
+            MessageBoxResult status;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    int result = oursitdbcommand.ExecuteNonQuery();
+                    oursitdbcommand.Connection.Close();
+                    if (result == 1)
+                    {
+                        return true;    
+                    }
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    status = MessageBox.Show("An error occured while attempting to save customer data. Please contact administrator", "Data Connectivity");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.","Data Connectivity");
+            }
+            return false;
+        }
+
+        public DataTable GetOperatorByUsername(string Username)
+        {
+            oursitdbcommand.CommandType = System.Data.CommandType.StoredProcedure;
+            oursitdbcommand.CommandText = "sp_GetOperatorByUsername";
+            oursitdbcommand.Parameters.AddWithValue("@Username", Username);
+            oursitdbcommand.Connection = oursitdbconnection;
+            SqlDataReader GetOperatorReader = null;
+            DataTable OperatorDataTable = new DataTable("Operator");
+            MessageBoxResult status;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    GetOperatorReader = oursitdbcommand.ExecuteReader();
+                    if (GetOperatorReader.HasRows)
+                    {
+                        OperatorDataTable.Load(GetOperatorReader);
+                    }
+                    oursitdbcommand.Connection.Close();
+                }
+                catch (Exception)
+                {
+                    status = MessageBox.Show("An error occured while attempting to save operator data. Please contact administrator","Data Connectivity");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.","Data Access");
+            }
+            return OperatorDataTable;
+        }
+        public bool AddOperator(string Username, string Password, string Type)
+        {
+            oursitdbcommand.CommandType = System.Data.CommandType.StoredProcedure;
+            oursitdbcommand.CommandText = "sp_AddOperator";
+            oursitdbcommand.Parameters.AddWithValue("@Username",Username);
+            oursitdbcommand.Parameters.AddWithValue("@Password", Password);
+            oursitdbcommand.Parameters.AddWithValue("@Type", Type);
+            oursitdbcommand.Connection = oursitdbconnection;
+            MessageBoxResult status;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    int result = oursitdbcommand.ExecuteNonQuery();
+                    oursitdbcommand.Connection.Close();
+                    if (result == 1)
+                    {
+                        return true;
+                    }
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    status = MessageBox.Show("An error occured while attempting to save customer data. Please contact administrator", "Data Connectivity");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.", "Data Connectivity");
+            }
+            return false;
         }
     }
 }

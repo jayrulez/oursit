@@ -14,6 +14,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         
         <Grid.ColumnDefinitions>
@@ -29,7 +30,8 @@
         <TextBox Name="txtLastName" Grid.Row="1" Grid.Column="1" Margin="3"/>
         <TextBox Name="txtEmailAddress" Grid.Row="2" Grid.Column="1" Margin="3"/>
         <TextBox Name="txtContactNumber" Grid.Row="3" Grid.Column="1" Margin="3"/>
-        <Button Name="btnAddCustomer" Grid.Row="4" Grid.Column="0" Content="Add" HorizontalContentAlignment="Center" Width="100"/>
+        <Button Name="btnAddCustomer" Grid.Row="4" Grid.Column="0" Content="Add" HorizontalContentAlignment="Center" Width="100" Click="btnAddCustomer_Click" />
         <Button Name="btnClearField" Grid.Row="4" Grid.Column="1" Content="Clear Fields" HorizontalContentAlignment="Center" Width="110"/>
+        <Label Name="lblAddCustomerStatus" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="3"/>
     </Grid>
 </Page>

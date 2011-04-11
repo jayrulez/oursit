@@ -195,7 +195,22 @@
                         </TreeViewItem.Header>
                     </TreeViewItem>
                 </TreeViewItem>
-
+                <TreeViewItem Name="Ultilities">
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="./Images/Icon/Administration.jpg" Height="30" Width="30"/>
+                            <TextBlock Text="Administration"></TextBlock>
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                    <TreeViewItem Name="AddOperator" Selected="selected_AddOperator">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="./Images/Icon/AddOperator.gif" Height="30" Width="30"/>
+                                <TextBlock Text="Add Operator"></TextBlock>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                </TreeViewItem>
 
             </TreeView>
            

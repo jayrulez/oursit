@@ -83,6 +83,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Miscellaneous\AddOperator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Miscellaneous\AddVehicle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -150,6 +154,9 @@
     </Compile>
     <Compile Include="Miscellaneous\AddDriver.xaml.cs">
       <DependentUpon>AddDriver.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\AddOperator.xaml.cs">
+      <DependentUpon>AddOperator.xaml</DependentUpon>
     </Compile>
     <Compile Include="Miscellaneous\AddVehicle.xaml.cs">
       <DependentUpon>AddVehicle.xaml</DependentUpon>
@@ -253,6 +260,12 @@
     <Resource Include="Images\Icon\DeliveryService.gif" />
     <Resource Include="Images\Icon\InquiryReview.png" />
     <Resource Include="Images\Icon\RentalService.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\Administration.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\AddOperator.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

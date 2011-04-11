@@ -57,6 +57,9 @@
                 <DataGridTextColumn Header="Email Address">
 
                 </DataGridTextColumn>
+                <DataGridTextColumn Header="Email Address">
+
+                </DataGridTextColumn>
                 <DataGridTextColumn Header="Account Created">
 
                 </DataGridTextColumn>
