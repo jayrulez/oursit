@@ -42,6 +42,12 @@ namespace TransportCompany.Miscellaneous
             {
                 lblSearchStatus.Content = "";
                 //SearchCustomerDataGrid.AutoGenerateColumns = true;
+                ((DataGridTextColumn)SearchCustomerDataGrid.Columns[0]).Binding = new Binding("Id");
+                ((DataGridTextColumn)SearchCustomerDataGrid.Columns[1]).Binding = new Binding("FirstName");
+                ((DataGridTextColumn)SearchCustomerDataGrid.Columns[2]).Binding = new Binding("LastName");
+                ((DataGridTextColumn)SearchCustomerDataGrid.Columns[3]).Binding = new Binding("EmailAddress");
+                ((DataGridTextColumn)SearchCustomerDataGrid.Columns[4]).Binding = new Binding("ContactNumber");
+                ((DataGridTextColumn)SearchCustomerDataGrid.Columns[5]).Binding = new Binding("CreatedAt");
                 SearchCustomerDataGrid.ItemsSource = CustomerResult.DefaultView;
             }
         }

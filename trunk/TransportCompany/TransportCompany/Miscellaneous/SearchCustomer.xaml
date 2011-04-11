@@ -43,6 +43,7 @@
     </Grid>
         <Label Name="lblSearchStatus" Margin="3,3,3,3" DockPanel.Dock="Top"></Label>
         <DataGrid Name="SearchCustomerDataGrid" CanUserResizeColumns="True" Margin="3,3,3,3">
+            
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Customer ID">
                     
