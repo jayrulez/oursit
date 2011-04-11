@@ -36,7 +36,7 @@ namespace TransportCompany.Miscellaneous
             MessageBoxResult Result;
             if (OurSitSchema.AddCustomer(FirstName, LastName, EmailAddress, Password, ContactNumber))
             {
-                Result = MessageBox.Show(FirstName + LastName + "was added successfully.");
+                Result = MessageBox.Show(FirstName + " " + LastName + " was added successfully.");
             }
             else
             {
