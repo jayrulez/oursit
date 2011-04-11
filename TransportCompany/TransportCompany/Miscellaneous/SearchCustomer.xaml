@@ -42,8 +42,25 @@
         <Button Name="btnSearchCustomer" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Search" HorizontalContentAlignment="Center" Width="100" Click="btnSearchCustomer_Click" />
     </Grid>
         <Label Name="lblSearchStatus" Margin="3,3,3,3" DockPanel.Dock="Top"></Label>
-        <DataGrid Name="SearchCustomerDataGrid" Margin="3,3,3,3">
-            
+        <DataGrid Name="SearchCustomerDataGrid" CanUserResizeColumns="True" Margin="3,3,3,3">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Customer ID">
+                    
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="First Name">
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Last Name">
+
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Email Address">
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Account Created">
+
+                </DataGridTextColumn>
+            </DataGrid.Columns>
         </DataGrid>
 
     </DockPanel>
