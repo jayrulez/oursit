@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -31,17 +33,16 @@ namespace TransportCompany.Miscellaneous
         private void btnSearchCustomer_Click(object sender, RoutedEventArgs e)
         {
             OurSitDb OurSitSchema = new OurSitDb();
-            DataTable CustomerResultSet = new DataTable();
-            IDataReader CustomerReader = OurSitSchema.GetCustomerById(Convert.ToString(txtId));//OurSitSchema.GetCustomer(Convert.ToString(txtId.Text), Convert.ToString(txtFirstName.Text), Convert.ToString(txtLastName.Text), Convert.ToString(txtEmailAddress.Text));
-            if (CustomerReader == null)
+            DataTable CustomerResult = OurSitSchema.GetCustomerById(Convert.ToString(txtId.Text));//OurSitSchema.GetCustomer(Convert.ToString(txtId.Text), Convert.ToString(txtFirstName.Text), Convert.ToString(txtLastName.Text), Convert.ToString(txtEmailAddress.Text));
+            if (CustomerResult == null)
             {
                 lblSearchStatus.Content = "No customer data found.";
             }
             else
             {
                 lblSearchStatus.Content = "";
-                CustomerResultSet.Load(CustomerReader);
-                SearchCustomerDataGrid.ItemsSource = CustomerResultSet.DefaultView;
+       
+                SearchCustomerDataGrid.ItemsSource = CustomerResult.CreateDataReader();
             }
         }
     }

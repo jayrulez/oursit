@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows;
+using System.Data;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +13,7 @@ namespace TransportCompany.DataAccessLayer
 {
     class OurSitDb
     {
-        private SqlConnection oursitdbconnection = new SqlConnection((string)(Application.Current.Properties["LocalConnectionString"]));
+        private SqlConnection oursitdbconnection = new SqlConnection((string)(App.Current.Properties["LocalConnectionString"]));
         public SqlConnection OurSitDbConnection
         {
             get
@@ -93,17 +95,19 @@ namespace TransportCompany.DataAccessLayer
             return GetCustomerReader;
         }
 
-        public SqlDataReader GetCustomerById(string Id)
+        public DataTable GetCustomerById(string Id)
         {
             oursitdbcommand.CommandType = System.Data.CommandType.StoredProcedure;
-            oursitdbcommand.CommandText = "exec sp_SearchCustomer";
+            oursitdbcommand.CommandText = "sp_GetCustomerById";
             int ParsedId;
             Int32.TryParse(Id, out ParsedId);
-            oursitdbcommand.Parameters.AddWithValue("@Id", Id);
+            oursitdbcommand.Parameters.AddWithValue("@Id", ParsedId);
             SqlDataReader GetCustomerReader = null;
+            DataTable CustomerDataTable = new DataTable("Customer");
             MessageBoxResult status;
             try
             {
+                oursitdbcommand.Connection = oursitdbconnection;
                 oursitdbcommand.Connection.Open();
                 status = MessageBox.Show("connection is open");
                 try
@@ -111,17 +115,22 @@ namespace TransportCompany.DataAccessLayer
                     status = MessageBox.Show("Before Reader");
                     GetCustomerReader = oursitdbcommand.ExecuteReader();
                     status = MessageBox.Show("After Reader");
+                    if (GetCustomerReader.HasRows)
+                    {
+                        CustomerDataTable.Load(GetCustomerReader);
+                    }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    status = MessageBox.Show(ex.Message + " Stack trace: " + ex.StackTrace + " Target Site: " + ex.TargetSite);
                 }
                 oursitdbcommand.Connection.Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                status = MessageBox.Show("connection.open() failed.");
+                status = MessageBox.Show(ex.Message + " Stack trace: " + ex.StackTrace + " Target Site: " + ex.TargetSite);
             }
-            return GetCustomerReader;
+            return CustomerDataTable ;
         }
     }
 }
