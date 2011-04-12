@@ -232,5 +232,41 @@ namespace TransportCompany.DataAccessLayer
             }
             return false;
         }
+
+        public bool UpdateCustomer(int Id,string FirstName, string LastName, string EmailAddress,string ContactNumber)
+        {
+            oursitdbcommand.CommandType = System.Data.CommandType.StoredProcedure;
+            oursitdbcommand.CommandText = "sp_UpdateCustomer";
+            oursitdbcommand.Parameters.AddWithValue("@Id", Id);
+            oursitdbcommand.Parameters.AddWithValue("@FirstName", FirstName);
+            oursitdbcommand.Parameters.AddWithValue("@LastName", LastName);
+            oursitdbcommand.Parameters.AddWithValue("@EmailAddress", EmailAddress);
+            oursitdbcommand.Parameters.AddWithValue("@ContactNumber", ContactNumber);
+            oursitdbcommand.Connection = oursitdbconnection;
+            MessageBoxResult status;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    int result = oursitdbcommand.ExecuteNonQuery();
+                    oursitdbcommand.Connection.Close();
+                    if (result == 1)
+                    {
+                        return true;
+                    }
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    status = MessageBox.Show("An error occured while attempting to update customer data. Please contact administrator", "Data Connectivity");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.", "Data Connectivity");
+            }
+            return false;
+        }
     }
 }
