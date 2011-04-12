@@ -48,34 +48,20 @@ namespace TransportCompany
         {
             MainContentFrame.Source = new Uri("./Miscellaneous/AddDriver.xaml", UriKind.Relative);
         }
-        public void selected_DeleteDriver(object sender, RoutedEventArgs e)
-        {
-            MainContentFrame.Source = new Uri("./Miscellaneous/DeleteDriver.xaml", UriKind.Relative);
-        }
         public void selected_SearchDriver(object sender, RoutedEventArgs e)
         {
             MainContentFrame.Source = new Uri("./Miscellaneous/SearchDriver.xaml", UriKind.Relative);
         }
-        public void selected_UpdateDriver(object sender, RoutedEventArgs e)
-        {
-            MainContentFrame.Source = new Uri("./Miscellaneous/UpdateDriver.xaml", UriKind.Relative);
-        }
+
         public void selected_AddVehicle(object sender, RoutedEventArgs e)
         {
             MainContentFrame.Source = new Uri("./Miscellaneous/AddVehicle.xaml", UriKind.Relative);
-        }
-        public void selected_DeleteVehicle(object sender, RoutedEventArgs e)
-        {
-            MainContentFrame.Source = new Uri("./Miscellaneous/DeleteVehicle.xaml", UriKind.Relative);
-        }
-        public void selected_UpdateVehicle(object sender, RoutedEventArgs e)
-        {
-            MainContentFrame.Source = new Uri("./Miscellaneous/UpdateVehicle.xaml", UriKind.Relative);
         }
         public void selected_SearchVehicle(object sender, RoutedEventArgs e)
         {
             MainContentFrame.Source = new Uri("./Miscellaneous/SearchVehicle.xaml", UriKind.Relative);
         }
+
         public void selected_InquiryReview(object sender, RoutedEventArgs e)
         {
             MainContentFrame.Source = new Uri("./Miscellaneous/AddCustomer.xaml", UriKind.Relative);

@@ -60,32 +60,15 @@
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
-                        <TreeViewItem Name="DeleteDriver"  Selected="selected_DeleteDriver">
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="./Images/Icon/DeleteDriver.png" Height="30" Width="30"/>
-                                    <TextBlock Text="Delete Driver"></TextBlock>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-
                         <TreeViewItem Name="SearchDriver"  Selected="selected_SearchDriver">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="./Images/Icon/SearchDriver.png" Height="30" Width="30"/>
-                                    <TextBlock Text="Search Driver"></TextBlock>
+                                    <TextBlock Text="Search and Edit Driver"></TextBlock>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
-                        <TreeViewItem Name="UpdateDriver"  Selected="selected_UpdateDriver">
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="./Images/Icon/UpdateIcon.gif" Height="30" Width="30"/>
-                                    <TextBlock Text="Update Driver"></TextBlock>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
                     </TreeViewItem>
                     <TreeViewItem Name="VehicleManagement" >
                         <TreeViewItem.Header>
@@ -102,27 +85,11 @@
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem Name="DeleteVehicle"  Selected="selected_DeleteVehicle">
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="./Images/Icon/DeleteVehicle.gif" Height="30" Width="30"/>
-                                    <TextBlock Text="Delete Vehicle"></TextBlock>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
                         <TreeViewItem Name="SearchVehicle"  Selected="selected_SearchVehicle">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="./Images/Icon/SearchVehicle.jpg" Height="30" Width="30"/>
-                                    <TextBlock Text="Search Vehicle"></TextBlock>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-                        <TreeViewItem Name="UpdateVehicle"  Selected="selected_UpdateVehicle">
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="./Images/Icon/UpdateIcon.gif" Height="30" Width="30"/>
-                                    <TextBlock Text="Update Vehicle"></TextBlock>
+                                    <TextBlock Text="Search and Edit Vehicle"></TextBlock>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
