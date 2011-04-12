@@ -501,6 +501,73 @@ namespace TransportCompany.DataAccessLayer
             }
             return false;
         }
+
+        public DataTable SearchVehicle(string VIN, string ServiceType, string SeatingCapacity)
+        {
+            oursitdbcommand.CommandType = System.Data.CommandType.StoredProcedure;
+            oursitdbcommand.CommandText = "sp_SearchVehicle";
+            MessageBoxResult status;
+            SqlDataReader GetDriverReader = null;
+            DataTable VehicleDataTable = new DataTable("Driver");
+
+            if (String.IsNullOrEmpty(VIN))
+            {
+                oursitdbcommand.Parameters.AddWithValue("@VIN", System.DBNull.Value);
+            }
+            else
+            {
+                oursitdbcommand.Parameters.AddWithValue("@VIN", VIN);
+            }
+            if (String.IsNullOrEmpty(ServiceType))
+            {
+                oursitdbcommand.Parameters.AddWithValue("@ServiceType", System.DBNull.Value);
+            }
+            else
+            {
+                oursitdbcommand.Parameters.AddWithValue("@ServiceType", ServiceType);
+            }
+            if (String.IsNullOrEmpty(SeatingCapacity))
+            {
+                oursitdbcommand.Parameters.AddWithValue("@SeatingCapacity", System.DBNull.Value);
+            }
+            else
+            {
+                int ParsedSeatingCapacity;
+                if (Int32.TryParse(SeatingCapacity, out ParsedSeatingCapacity))
+                {
+                    oursitdbcommand.Parameters.AddWithValue("@SeatingCapacity", ParsedSeatingCapacity);
+                }
+                else
+                {
+                    status = MessageBox.Show("Seating Capacity must be numeric.", "Field Format");
+                    return VehicleDataTable;
+                }
+            }
+
+            try
+            {
+                oursitdbcommand.Connection = oursitdbconnection;
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    GetDriverReader = oursitdbcommand.ExecuteReader();
+                    if (GetDriverReader.HasRows)
+                    {
+                        VehicleDataTable.Load(GetDriverReader);
+                    }
+                }
+                catch (Exception)
+                {
+                    status = MessageBox.Show("An error occured while attempting to retreive Driver data. Please contact administrator");
+                }
+                oursitdbcommand.Connection.Close();
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.");
+            }
+            return VehicleDataTable;
+        }
     }
 }
 
