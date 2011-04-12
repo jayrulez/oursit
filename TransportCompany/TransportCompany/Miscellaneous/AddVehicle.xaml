@@ -18,31 +18,34 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" Content="Make:" HorizontalAlignment="Right" />
-        <Label Grid.Row="1" Grid.Column="0" Content="Model:" HorizontalAlignment="Right"/>
-        <Label Grid.Row="2" Grid.Column="0" Content="Color:" HorizontalAlignment="Right"/>
-        <Label Grid.Row="3" Grid.Column="0" Content="Condition:" HorizontalAlignment="Right"/>
-        <Label Grid.Row="4" Grid.Column="0" Content="Type:" HorizontalAlignment="Right"/>
-        <Label Grid.Row="5" Grid.Column="0" Content="Seating Capacity:" HorizontalAlignment="Right"/>
+        <Label Grid.Row="0" Grid.Column="0" Content="VIN:" HorizontalAlignment="Right" />
+        <Label Grid.Row="1" Grid.Column="0" Content="Make:" HorizontalAlignment="Right" />
+        <Label Grid.Row="2" Grid.Column="0" Content="Model:" HorizontalAlignment="Right"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="Color:" HorizontalAlignment="Right"/>
+        <Label Grid.Row="4" Grid.Column="0" Content="Condition:" HorizontalAlignment="Right"/>
+        <Label Grid.Row="5" Grid.Column="0" Content="Service Type:" HorizontalAlignment="Right"/>
+        <Label Grid.Row="6" Grid.Column="0" Content="Seating Capacity:" HorizontalAlignment="Right"/>
 
-        <TextBox Name="txtMake" Grid.Row="0" Grid.Column="1" Margin="3"/>
-        <TextBox Name="txtModel" Grid.Row="1" Grid.Column="1" Margin="3"/>
-        <TextBox Name="txtColor" Grid.Row="2" Grid.Column="1" Margin="3"/>
-        <TextBox Name="txtCondition" Grid.Row="3" Grid.Column="1" Margin="3"/>
-        <StackPanel Name="rbtnlistType" Grid.Row="4" Grid.Column="1" Margin="4,4,4,4">
+        <TextBox Name="txtVIN" Grid.Row="0" Grid.Column="1" Margin="3"/>
+        <TextBox Name="txtMake" Grid.Row="1" Grid.Column="1" Margin="3"/>
+        <TextBox Name="txtModel" Grid.Row="2" Grid.Column="1" Margin="3"/>
+        <TextBox Name="txtColor" Grid.Row="3" Grid.Column="1" Margin="3"/>
+        <TextBox Name="txtCondition" Grid.Row="4" Grid.Column="1" Margin="3"/>
+        <StackPanel Name="rbtnlistType" Grid.Row="5" Grid.Column="1" Margin="4,4,4,4">
             <RadioButton Name="rbtnTypeRental" Margin="2" Content="Rental"/>
             <RadioButton Name="rbtnTypeDelivery" Margin="2"  Content="Delivery"/>
             <RadioButton Name="rbtnTypeCharter" Margin="2"  Content="Charter"/>
         </StackPanel>
-        <TextBox Name="txtSeatingCapacity" Grid.Row="5" Grid.Column="1" Margin="3"/>
-        <Button Name="btnAddDriver" Grid.Row="6" Grid.Column="0" Content="Add" HorizontalContentAlignment="Center" Width="100" Click="btnAddDriver_Click" />
-        <Button Name="btnClearField" Grid.Row="6" Grid.Column="1" Content="Clear Fields" HorizontalContentAlignment="Center" Width="110" Click="btnClearField_Click" />
-        <Label Name="lblAddVehicleStatus" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Margin="3"></Label>
+        <TextBox Name="txtSeatingCapacity" Grid.Row="6" Grid.Column="1" Margin="3"/>
+        <Button Name="btnAddDriver" Grid.Row="7" Grid.Column="0" Content="Add" HorizontalContentAlignment="Center" Width="100" Click="btnAddDriver_Click" />
+        <Button Name="btnClearField" Grid.Row="7" Grid.Column="1" Content="Clear Fields" HorizontalContentAlignment="Center" Width="110" Click="btnClearField_Click" />
+        <Label Name="lblAddVehicleStatus" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Margin="3"></Label>
     </Grid>
 </Page>

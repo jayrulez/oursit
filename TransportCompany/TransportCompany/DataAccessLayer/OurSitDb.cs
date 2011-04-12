@@ -463,6 +463,44 @@ namespace TransportCompany.DataAccessLayer
             }
             return DriverDataTable;
         }
+
+        public bool AddVehicle(string VIN, string Make, string Model, string Color, string Condition, string ServiceType, int SeatingCapacity)
+        {
+            oursitdbcommand.CommandType = System.Data.CommandType.StoredProcedure;
+            oursitdbcommand.CommandText = "sp_AddVehicle";
+            oursitdbcommand.Parameters.AddWithValue("@VIN", VIN);
+            oursitdbcommand.Parameters.AddWithValue("@Make", Make);
+            oursitdbcommand.Parameters.AddWithValue("@Model", Model);
+            oursitdbcommand.Parameters.AddWithValue("@Color", Color);
+            oursitdbcommand.Parameters.AddWithValue("@Condition", Condition);
+            oursitdbcommand.Parameters.AddWithValue("@ServiceType", ServiceType);
+            oursitdbcommand.Parameters.AddWithValue("@SeatingCapacity", SeatingCapacity);
+            oursitdbcommand.Connection = oursitdbconnection;
+            MessageBoxResult status;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    int result = oursitdbcommand.ExecuteNonQuery();
+                    oursitdbcommand.Connection.Close();
+                    if (result == 1)
+                    {
+                        return true;
+                    }
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    status = MessageBox.Show("An error occured while attempting to save Vehicle data. Please contact administrator", "Data Connectivity");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.", "Data Connectivity");
+            }
+            return false;
+        }
     }
 }
 
