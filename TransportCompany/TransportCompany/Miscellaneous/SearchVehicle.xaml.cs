@@ -32,12 +32,29 @@ namespace TransportCompany.Miscellaneous
 
         private void btnSearchVehicle_Click(object sender, RoutedEventArgs e)
         {
+            string ServiceType = "";
+            if ((bool)rbtnTypeCharter.IsChecked)
+            {
+                ServiceType = "charter";
+            }
+            else if ((bool)rbtnTypeDelivery.IsChecked)
+            {
+                ServiceType = "delivery";
+            }
+            else if ((bool)rbtnTypeRental.IsChecked)
+            {
+                ServiceType = "rental";
+            }
+            else if ((bool)rbtnTypeAll.IsChecked)
+            {
+                ServiceType = "all";
+            }
 
-           OurSitDb OurSitSchema = new OurSitDb();
-            DataTable DriverResult = OurSitSchema.SearchDriver(txtId.Text.Trim(),txtNis.Text.Trim(),txtTrn.Text.Trim());
+            OurSitDb OurSitSchema = new OurSitDb();
+            DataTable DriverResult = OurSitSchema.SearchVehicle(txtVIN.Text.Trim(),ServiceType.Trim(),txtSeatingCapacity.Text.Trim());
             if (DriverResult == null)
             {
-                lblSearchStatus.Content = "No Driver data found.";
+                lblSearchVehicleStatus.Content = "No Driver data found.";
             }
             else
             {
@@ -51,19 +68,19 @@ namespace TransportCompany.Miscellaneous
                 {
                     ext = "";
                 }
-                lblSearchStatus.Content = Convert.ToString(count) + " Driver" + ext + " found.";
-                //SearchDriverDataGrid.AutoGenerateColumns = true;
-                ((DataGridTextColumn)SearchDriverDataGrid.Columns[0]).Binding = new Binding("Id");
-                ((DataGridTextColumn)SearchDriverDataGrid.Columns[1]).Binding = new Binding("FirstName");
-                ((DataGridTextColumn)SearchDriverDataGrid.Columns[2]).Binding = new Binding("LastName");
-                ((DataGridTextColumn)SearchDriverDataGrid.Columns[3]).Binding = new Binding("TRN");
-                ((DataGridTextColumn)SearchDriverDataGrid.Columns[4]).Binding = new Binding("NIS");
-                ((DataGridTextColumn)SearchDriverDataGrid.Columns[5]).Binding = new Binding("District");
-                ((DataGridTextColumn)SearchDriverDataGrid.Columns[6]).Binding = new Binding("Parish");
-                ((DataGridTextColumn)SearchDriverDataGrid.Columns[7]).Binding = new Binding("ContactNumber");
+                lblSearchVehicleStatus.Content = Convert.ToString(count) + " Driver" + ext + " found.";
+                //SearchVehicleDataGrid.AutoGenerateColumns = true;
+                ((DataGridTextColumn)SearchVehicleDataGrid.Columns[0]).Binding = new Binding("Id");
+                ((DataGridTextColumn)SearchVehicleDataGrid.Columns[1]).Binding = new Binding("FirstName");
+                ((DataGridTextColumn)SearchVehicleDataGrid.Columns[2]).Binding = new Binding("LastName");
+                ((DataGridTextColumn)SearchVehicleDataGrid.Columns[3]).Binding = new Binding("TRN");
+                ((DataGridTextColumn)SearchVehicleDataGrid.Columns[4]).Binding = new Binding("NIS");
+                ((DataGridTextColumn)SearchVehicleDataGrid.Columns[5]).Binding = new Binding("District");
+                ((DataGridTextColumn)SearchVehicleDataGrid.Columns[6]).Binding = new Binding("Parish");
+                ((DataGridTextColumn)SearchVehicleDataGrid.Columns[7]).Binding = new Binding("ContactNumber");
                 
-                SearchDriverDataGrid.AutoGenerateColumns = false;
-                SearchDriverDataGrid.ItemsSource = DriverResult.DefaultView;
+                SearchVehicleDataGrid.AutoGenerateColumns = false;
+                SearchVehicleDataGrid.ItemsSource = DriverResult.DefaultView;
             }
         }
 
@@ -72,13 +89,13 @@ namespace TransportCompany.Miscellaneous
 
         }
 
-        private void SearchDriverDataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        private void SearchVehicleDataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             DataRowView rowView = e.Row.Item as DataRowView;
             rowBeingEdited = rowView;
         }
 
-        private void SearchDriverDataGrid_CurrentCellChanged(object sender, EventArgs e)
+        private void SearchVehicleDataGrid_CurrentCellChanged(object sender, EventArgs e)
         {
             if (rowBeingEdited != null)
             {
@@ -100,9 +117,9 @@ namespace TransportCompany.Miscellaneous
             }
         }
 
-        private void SearchDriverDataGrid_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
+        private void SearchVehicleDataGrid_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
         {
-            CurrentColumnHeader = SearchDriverDataGrid.CurrentColumn.Header.ToString();
+            CurrentColumnHeader = SearchVehicleDataGrid.CurrentColumn.Header.ToString();
             DataRowView rowView = e.Row.Item as DataRowView;
             CurrentColumnIndex = e.Column.DisplayIndex;
             CurrentColumnData = rowView[CurrentColumnIndex].ToString();

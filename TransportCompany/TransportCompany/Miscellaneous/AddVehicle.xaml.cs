@@ -32,7 +32,7 @@ namespace TransportCompany.Miscellaneous
             string Model = txtModel.Text.Trim();
             string Color = txtColor.Text.Trim();
             string Condition = txtCondition.Text.Trim();
-            string ServiceType; 
+            string ServiceType=""; 
             if((bool)rbtnTypeCharter.IsChecked)
             {
                 ServiceType = "charter";          
