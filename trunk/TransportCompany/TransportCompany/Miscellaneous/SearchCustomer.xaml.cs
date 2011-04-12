@@ -102,5 +102,9 @@ namespace TransportCompany.Miscellaneous
             CurrentColumnData = rowView[CurrentColumnIndex].ToString();
             
         }
+        private void SearchCustomerForm_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !App.IsTextAllowed(e.Text);
+        }
     }
 }

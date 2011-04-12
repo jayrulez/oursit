@@ -29,8 +29,8 @@ namespace TransportCompany
         {
             OurSitDb OurSitSchema = new OurSitDb();
             DataTable LoginDetail = new DataTable();
-            string UserName = txtUsername.Text;
-            string Password = txtPassword.Text;
+            string UserName = txtUsername.Text.Trim() ;
+            string Password = txtPassword.Password;
             if (!string.IsNullOrEmpty(UserName) && !string.IsNullOrEmpty(Password))
             {
                 LoginDetail = OurSitSchema.GetOperatorByUsername(UserName);

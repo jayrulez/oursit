@@ -33,14 +33,14 @@ namespace TransportCompany.Miscellaneous
         private void btnSearchDriver_Click(object sender, RoutedEventArgs e)
         {
             OurSitDb OurSitSchema = new OurSitDb();
-            DataTable CustomerResult = OurSitSchema.GetCustomerById(Convert.ToString(txtId.Text));//OurSitSchema.GetCustomer(Convert.ToString(txtId.Text), Convert.ToString(txtFirstName.Text), Convert.ToString(txtLastName.Text), Convert.ToString(txtEmailAddress.Text));
-            if (CustomerResult == null)
+            DataTable DriverResult = OurSitSchema.SearchDriver(txtId.Text.Trim(),txtNis.Text.Trim(),txtTrn.Text.Trim());
+            if (DriverResult == null)
             {
-                lblSearchStatus.Content = "No customer data found.";
+                lblSearchStatus.Content = "No Driver data found.";
             }
             else
             {
-                int count = CustomerResult.Rows.Count;
+                int count = DriverResult.Rows.Count;
                 string ext;
                 if (count > 1)
                 {
@@ -50,16 +50,19 @@ namespace TransportCompany.Miscellaneous
                 {
                     ext = "";
                 }
-                lblSearchStatus.Content = Convert.ToString(count) + " customer" + ext + " found.";
+                lblSearchStatus.Content = Convert.ToString(count) + " Driver" + ext + " found.";
                 //SearchDriverDataGrid.AutoGenerateColumns = true;
                 ((DataGridTextColumn)SearchDriverDataGrid.Columns[0]).Binding = new Binding("Id");
                 ((DataGridTextColumn)SearchDriverDataGrid.Columns[1]).Binding = new Binding("FirstName");
                 ((DataGridTextColumn)SearchDriverDataGrid.Columns[2]).Binding = new Binding("LastName");
-                ((DataGridTextColumn)SearchDriverDataGrid.Columns[3]).Binding = new Binding("EmailAddress");
-                ((DataGridTextColumn)SearchDriverDataGrid.Columns[4]).Binding = new Binding("ContactNumber");
-                ((DataGridTextColumn)SearchDriverDataGrid.Columns[5]).Binding = new Binding("CreatedAt");
+                ((DataGridTextColumn)SearchDriverDataGrid.Columns[3]).Binding = new Binding("TRN");
+                ((DataGridTextColumn)SearchDriverDataGrid.Columns[4]).Binding = new Binding("NIS");
+                ((DataGridTextColumn)SearchDriverDataGrid.Columns[5]).Binding = new Binding("District");
+                ((DataGridTextColumn)SearchDriverDataGrid.Columns[6]).Binding = new Binding("Parish");
+                ((DataGridTextColumn)SearchDriverDataGrid.Columns[7]).Binding = new Binding("ContactNumber");
+                
                 SearchDriverDataGrid.AutoGenerateColumns = false;
-                SearchDriverDataGrid.ItemsSource = CustomerResult.DefaultView;
+                SearchDriverDataGrid.ItemsSource = DriverResult.DefaultView;
             }
         }
 
@@ -70,7 +73,6 @@ namespace TransportCompany.Miscellaneous
 
         private void SearchDriverDataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            //MessageBox.Show("editing " + SearchDriverDataGrid.CurrentColumn.Header.ToString());
             DataRowView rowView = e.Row.Item as DataRowView;
             rowBeingEdited = rowView;
         }
@@ -81,9 +83,9 @@ namespace TransportCompany.Miscellaneous
             {
                 OurSitDb OurSitSchema = new OurSitDb();
                 MessageBoxResult Result;
-                if (!string.IsNullOrEmpty(rowBeingEdited[1].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[2].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[3].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[4].ToString()))
+                if (!string.IsNullOrEmpty(rowBeingEdited[1].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[2].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[3].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[4].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[5].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[6].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[7].ToString()))
                 {
-                    if (OurSitSchema.UpdateCustomer(Convert.ToInt32(rowBeingEdited[0]), rowBeingEdited[1].ToString(), rowBeingEdited[2].ToString(), rowBeingEdited[3].ToString(), rowBeingEdited[4].ToString()))
+                    if (OurSitSchema.UpdateDriver(Convert.ToInt32(rowBeingEdited[0]), rowBeingEdited[1].ToString(), rowBeingEdited[2].ToString(), rowBeingEdited[4].ToString(), Convert.ToInt32(rowBeingEdited[3]), rowBeingEdited[5].ToString(), rowBeingEdited[6].ToString(), rowBeingEdited[7].ToString()))
                     {
                     }
                 }
@@ -103,6 +105,10 @@ namespace TransportCompany.Miscellaneous
             CurrentColumnIndex = e.Column.DisplayIndex;
             CurrentColumnData = rowView[CurrentColumnIndex].ToString();
 
+        }
+        private void SearchCustomerForm_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !App.IsTextAllowed(e.Text);
         }
     }
 }

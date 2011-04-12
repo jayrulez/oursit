@@ -23,5 +23,42 @@ namespace TransportCompany.Miscellaneous
         {
             InitializeComponent();
         }
+
+        private void btnAddDriver_Click(object sender, RoutedEventArgs e)
+        {
+            string FirstName = txtFirstName.Text.Trim();
+            string LastName = txtLastName.Text.Trim();
+            string TRN = txtTrn.Text.Trim();
+            string NIS = txtNis.Text.Trim();
+            string District = txtDistrictAddress.Text.Trim();
+            string Parish = txtParishAddress.Text.Trim();
+            string ContactNumber = txtContactNumber.Text.Trim();
+            int ParsedTRN;
+            if (!string.IsNullOrEmpty(FirstName) && !string.IsNullOrEmpty(LastName) && !string.IsNullOrEmpty(TRN) && !string.IsNullOrEmpty(NIS) && !string.IsNullOrEmpty(District) && !string.IsNullOrEmpty(Parish) && !string.IsNullOrEmpty(ContactNumber))
+            {
+                if (Int32.TryParse(TRN, out ParsedTRN))
+                {
+                    OurSitDb OurSitSchema = new OurSitDb();
+                    MessageBoxResult Result;
+                    if (OurSitSchema.AddDriver(FirstName, LastName, NIS, ParsedTRN, District, Parish, ContactNumber))
+                    {
+                        Result = MessageBox.Show(FirstName + " " + LastName + " was added successfully.");
+                    }
+                    else
+                    {
+                        lblAddDriverStatus.Content = "Driver data was not added.";
+                    }
+                }
+            }
+            else
+            {
+                lblAddDriverStatus.Content = "All fields must contain data";
+            }
+        }
+
+        private void btnClearField_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

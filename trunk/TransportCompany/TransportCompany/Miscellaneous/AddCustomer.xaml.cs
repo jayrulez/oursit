@@ -27,10 +27,10 @@ namespace TransportCompany.Miscellaneous
 
         private void btnAddCustomer_Click(object sender, RoutedEventArgs e)
         {
-            string FirstName = txtFirstName.Text;
-            string LastName = txtLastName.Text;
-            string EmailAddress = txtEmailAddress.Text;
-            string ContactNumber = txtContactNumber.Text;
+            string FirstName = txtFirstName.Text.Trim();
+            string LastName = txtLastName.Text.Trim();
+            string EmailAddress = txtEmailAddress.Text.Trim();
+            string ContactNumber = txtContactNumber.Text.Trim();
             string Password = "pass123";
             OurSitDb OurSitSchema = new OurSitDb();
             MessageBoxResult Result;
