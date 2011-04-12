@@ -24,14 +24,18 @@ namespace TransportCompany
             if (string.Compare(Application.Current.Properties["UserType"].ToString(), "admin", true) == 0)
             {
                 AdministrationUltilities.IsEnabled = true;
-                AdministrationUltilities.Visibility = Visibility.Hidden;
-               
+                AdministrationUltilities.Visibility = Visibility.Hidden;   
             }
             else
             {
                 AdministrationUltilities.IsEnabled = false;
                 AdministrationUltilities.Visibility = Visibility.Hidden; 
             }
+        }
+
+        private void MenuExit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
 
         public void selected_AddCustomer(object sender, RoutedEventArgs e)
@@ -64,7 +68,7 @@ namespace TransportCompany
 
         public void selected_InquiryReview(object sender, RoutedEventArgs e)
         {
-            MainContentFrame.Source = new Uri("./Miscellaneous/AddCustomer.xaml", UriKind.Relative);
+            MainContentFrame.Source = new Uri("./Miscellaneous/InquiryReview.xaml", UriKind.Relative);
         }
         public void selected_RentalRequest(object sender, RoutedEventArgs e)
         {

@@ -34,7 +34,7 @@
             <RadioButton Name="rbtnTypeAll" Content="All"/>
         </StackPanel>
         <Label Content="Seating Capacity:" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right"/>
-        <TextBox Name="txtSeatingCapacity" Width="150" Grid.Row="0" Grid.Column="3" Margin="3" />
+        <TextBox Name="txtSeatingCapacity" Width="150" Grid.Row="0" Grid.Column="3" Margin="3" PreviewTextInput="SearchCustomerForm_PreviewTextInput" />
         
         <Button Name="btnSearchVehicle" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Search" HorizontalContentAlignment="Center" Width="100" Click="btnSearchVehicle_Click" />
         <Label Name="lblSearchVehicleStatus" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="4" Margin="3"></Label>
@@ -42,10 +42,7 @@
     <DataGrid Name="SearchVehicleDataGrid" CanUserAddRows="False" CanUserResizeColumns="True" Margin="3,3,3,3" IsReadOnly="False" CanUserDeleteRows="True" CanUserSortColumns="True" CellEditEnding="SearchVehicleDataGrid_CellEditEnding" CurrentCellChanged="SearchVehicleDataGrid_CurrentCellChanged" BeginningEdit="SearchVehicleDataGrid_BeginningEdit">
 
         <DataGrid.Columns>
-            <DataGridTextColumn Header="VIN">
-
-            </DataGridTextColumn>
-            <DataGridTextColumn Header="Color" >
+            <DataGridTextColumn Header="VIN" IsReadOnly="True">
 
             </DataGridTextColumn>
             <DataGridTextColumn Header="Make">

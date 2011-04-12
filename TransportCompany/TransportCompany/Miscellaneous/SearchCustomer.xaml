@@ -33,16 +33,13 @@
         <Label Grid.Row="1" Grid.Column="2" Content="LastName:" HorizontalAlignment="Right"/>
         <TextBox Name="txtLastName" Width="150" Grid.Row="1" Grid.Column="3" Margin="3"/>
         
-        <Label Grid.Row="2" Grid.Column="0" Content="Contact Number:" HorizontalAlignment="Right"/>
-        <TextBox Name="txtContactNumber" Width="150" Grid.Row="2" Grid.Column="1" Margin="3"/>
-        
-        <Label Grid.Row="2" Grid.Column="2" Content="Email Address:" HorizontalAlignment="Right"/>
-        <TextBox Name="txtEmailAddress" Width="150" Grid.Row="2" Grid.Column="3" Margin="3"/>
+        <Label Grid.Row="2" Grid.Column="0" Content="Email Address:" HorizontalAlignment="Right"/>
+        <TextBox Name="txtEmailAddress" Width="150" Grid.Row="2" Grid.Column="1" Margin="3"/>
 
         <Button Name="btnSearchCustomer" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Search" HorizontalContentAlignment="Center" Width="100" Click="btnSearchCustomer_Click" />
     </Grid>
         <Label Name="lblSearchStatus" Margin="3,3,3,3" DockPanel.Dock="Top"></Label>
-        <DataGrid Name="SearchCustomerDataGrid" CanUserAddRows="False" CanUserResizeColumns="True" Margin="3,3,3,3" IsReadOnly="False" CanUserDeleteRows="True" CanUserSortColumns="True" CellEditEnding="SearchCustomerDataGrid_CellEditEnding" CurrentCellChanged="SearchCustomerDataGrid_CurrentCellChanged" BeginningEdit="SearchCustomerDataGrid_BeginningEdit">
+        <DataGrid Background="Gray" Name="SearchCustomerDataGrid" CanUserAddRows="False" CanUserResizeColumns="True" Margin="3,3,3,3" IsReadOnly="False" CanUserDeleteRows="True" CanUserSortColumns="True" CellEditEnding="SearchCustomerDataGrid_CellEditEnding" CurrentCellChanged="SearchCustomerDataGrid_CurrentCellChanged" BeginningEdit="SearchCustomerDataGrid_BeginningEdit">
             
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Customer ID" IsReadOnly="True">

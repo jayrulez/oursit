@@ -60,7 +60,6 @@ C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit
 C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\SearchDriver.baml
 C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\SearchVehicle.baml
 C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\ViewDeliveryRequest.baml
-C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\InquireReview.baml
 C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\login.g.cs
 C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Main.g.cs
 C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\AddCustomer.g.cs
@@ -71,7 +70,6 @@ C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit
 C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\SearchDriver.g.cs
 C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\SearchVehicle.g.cs
 C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\ViewDeliveryRequest.g.cs
-C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\InquireReview.g.cs
 C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\App.g.cs
 C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\TransportCompany_MarkupCompile.cache
@@ -84,3 +82,5 @@ C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit
 C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\AddOperator.baml
 C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\AddOperator.g.cs
+C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\InquiryReview.baml
+C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\InquiryReview.g.cs

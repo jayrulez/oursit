@@ -3,14 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:m="clr-namespace:TransportCompany"
         xmlns:c="clr-namespace:TransportCompany.CustomControls"
-        Title="Main" MinHeight="400" MinWidth="450" Width="600">
+        Title="Prendergast Transportation Services" MinHeight="400" MinWidth="450" Width="600">
     <m:MasterWindow>
         <m:MasterWindow.Header>
             Header
         </m:MasterWindow.Header>
         <m:MasterWindow.SideMenuContent>
-            
-            <TreeView Name="MainSideMenu" VerticalAlignment="Stretch">
+
+            <TreeView Name="MainSideMenu" VerticalAlignment="Stretch" Background="LightBlue">
                 <TreeViewItem Name="CustomerManagementTreeItem" Margin="3">
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
@@ -168,7 +168,7 @@
             <StackPanel MinWidth="200" >
                 <Label Margin="0,0,5,0"></Label>
                 <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                    <Frame Name="MainContentFrame" Height="auto" Width="auto" Background="Gray" NavigationUIVisibility="Hidden"  ></Frame>
+                    <Frame Name="MainContentFrame" Height="auto" Width="auto" Background="LightBlue" NavigationUIVisibility="Hidden"  ></Frame>
                 </ScrollViewer>
             </StackPanel>
         </m:MasterWindow.MainContent>
