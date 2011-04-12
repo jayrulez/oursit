@@ -21,6 +21,17 @@ namespace TransportCompany
         public Main()
         {
             InitializeComponent();
+            if (string.Compare(Application.Current.Properties["UserType"].ToString(), "admin", true) == 0)
+            {
+                AdministrationUltilities.IsEnabled = true;
+                AdministrationUltilities.Visibility = Visibility.Hidden;
+               
+            }
+            else
+            {
+                AdministrationUltilities.IsEnabled = false;
+                AdministrationUltilities.Visibility = Visibility.Hidden; 
+            }
         }
 
         public void selected_AddCustomer(object sender, RoutedEventArgs e)

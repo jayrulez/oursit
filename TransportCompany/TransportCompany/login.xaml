@@ -1,7 +1,7 @@
 ﻿<Window x:Class="TransportCompany.login"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="login" MinHeight="200" MaxHeight="350" MinWidth="300" MaxWidth="300">
+        Title="login" MinHeight="240" MaxHeight="480" MinWidth="320" MaxWidth="640">
     <DockPanel MinHeight="200" MinWidth="200">
         <Menu Name="ApplicationMenu" Width="auto" Height="20" DockPanel.Dock="top">
             <MenuItem Header="File">
@@ -14,9 +14,10 @@
         <StackPanel DockPanel.Dock="Top">
             <Label Content="Header"></Label>
         </StackPanel>
-        <StackPanel Width="auto" MinHeight="200">
-            <Grid Name="LoginGrid" Width="auto" Height="auto">
+        <StackPanel Width="auto" MinHeight="200" Margin="2,2,2,2" >
+            <Grid Name="LoginGrid" Width="auto" Height="auto" HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
@@ -24,12 +25,14 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Content="Username:"/>
                 <Label Grid.Row="1" Grid.Column="0" Content="Password:"/>
-                <TextBox Grid.Row="0" Grid.Column="1" Margin="3"/>
-                <TextBox Grid.Row="1" Grid.Column="1" Margin="3"/>
+                <TextBox Name="txtUsername" Grid.Row="0" Grid.Column="1" Margin="3"/>
+                <TextBox Name="txtPassword" Grid.Row="1" Grid.Column="1" Margin="3"/>
                 <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="left" Content="login" Width="50" Click="Button_Click" />
+                <Label Name="lblLoginStatus" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" Margin="3"></Label>
             </Grid>
         </StackPanel>
     </DockPanel>

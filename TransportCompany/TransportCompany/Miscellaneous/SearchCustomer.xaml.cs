@@ -24,7 +24,10 @@ namespace TransportCompany.Miscellaneous
     using DataAccessLayer;
     public partial class SearchCustomer : Page
     {
-        
+        DataRowView rowBeingEdited = null;
+        string CurrentColumnHeader;
+        string CurrentColumnData;
+        int CurrentColumnIndex;
         public SearchCustomer()
         {
             InitializeComponent();
@@ -40,7 +43,17 @@ namespace TransportCompany.Miscellaneous
             }
             else
             {
-                lblSearchStatus.Content = "";
+                int count = CustomerResult.Rows.Count;
+                string ext;
+                if (count > 1)
+                {
+                    ext = "s";
+                }
+                else
+                {
+                    ext = "";
+                }
+                    lblSearchStatus.Content = Convert.ToString(count) + " customer" + ext + " found.";
                 //SearchCustomerDataGrid.AutoGenerateColumns = true;
                 ((DataGridTextColumn)SearchCustomerDataGrid.Columns[0]).Binding = new Binding("Id");
                 ((DataGridTextColumn)SearchCustomerDataGrid.Columns[1]).Binding = new Binding("FirstName");
@@ -48,8 +61,46 @@ namespace TransportCompany.Miscellaneous
                 ((DataGridTextColumn)SearchCustomerDataGrid.Columns[3]).Binding = new Binding("EmailAddress");
                 ((DataGridTextColumn)SearchCustomerDataGrid.Columns[4]).Binding = new Binding("ContactNumber");
                 ((DataGridTextColumn)SearchCustomerDataGrid.Columns[5]).Binding = new Binding("CreatedAt");
+                SearchCustomerDataGrid.AutoGenerateColumns = false;
                 SearchCustomerDataGrid.ItemsSource = CustomerResult.DefaultView;
             }
+        }
+        
+        private void SearchCustomerDataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            //MessageBox.Show("editing " + SearchCustomerDataGrid.CurrentColumn.Header.ToString());
+            DataRowView rowView = e.Row.Item as DataRowView;
+            rowBeingEdited = rowView;
+        }
+        
+        private void SearchCustomerDataGrid_CurrentCellChanged(object sender, EventArgs e)
+        {
+            if (rowBeingEdited != null)
+            {
+                OurSitDb OurSitSchema = new OurSitDb();
+                MessageBoxResult Result;
+                if (!string.IsNullOrEmpty(rowBeingEdited[1].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[2].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[3].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[4].ToString()))
+                {
+                    if (OurSitSchema.UpdateCustomer(Convert.ToInt32(rowBeingEdited[0]), rowBeingEdited[1].ToString(), rowBeingEdited[2].ToString(), rowBeingEdited[3].ToString(), rowBeingEdited[4].ToString()))
+                    {
+                    }
+                }
+                else
+                {
+                    rowBeingEdited.CancelEdit();
+                    Result = MessageBox.Show("\"" + CurrentColumnHeader + "\"" + " must contain data.");
+                    rowBeingEdited[CurrentColumnIndex] = CurrentColumnData;
+                }
+                rowBeingEdited.EndEdit();
+            }
+        }
+        private void SearchCustomerDataGrid_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
+        {
+            CurrentColumnHeader = SearchCustomerDataGrid.CurrentColumn.Header.ToString();
+            DataRowView rowView = e.Row.Item as DataRowView;
+            CurrentColumnIndex = e.Column.DisplayIndex;
+            CurrentColumnData = rowView[CurrentColumnIndex].ToString();
+            
         }
     }
 }

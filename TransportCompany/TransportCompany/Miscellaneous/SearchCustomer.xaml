@@ -42,10 +42,10 @@
         <Button Name="btnSearchCustomer" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Search" HorizontalContentAlignment="Center" Width="100" Click="btnSearchCustomer_Click" />
     </Grid>
         <Label Name="lblSearchStatus" Margin="3,3,3,3" DockPanel.Dock="Top"></Label>
-        <DataGrid Name="SearchCustomerDataGrid" CanUserResizeColumns="True" Margin="3,3,3,3">
+        <DataGrid Name="SearchCustomerDataGrid" CanUserAddRows="False" CanUserResizeColumns="True" Margin="3,3,3,3" IsReadOnly="False" CanUserDeleteRows="True" CanUserSortColumns="True" CellEditEnding="SearchCustomerDataGrid_CellEditEnding" CurrentCellChanged="SearchCustomerDataGrid_CurrentCellChanged" BeginningEdit="SearchCustomerDataGrid_BeginningEdit">
             
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Customer ID">
+                <DataGridTextColumn Header="Customer ID" IsReadOnly="True">
                     
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="First Name">
@@ -58,10 +58,10 @@
                 <DataGridTextColumn Header="Email Address">
 
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Email Address">
+                <DataGridTextColumn Header="Contact Number">
 
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Account Created">
+                <DataGridTextColumn Header="Account Created" IsReadOnly="True">
 
                 </DataGridTextColumn>
             </DataGrid.Columns>

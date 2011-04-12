@@ -195,7 +195,7 @@
                         </TreeViewItem.Header>
                     </TreeViewItem>
                 </TreeViewItem>
-                <TreeViewItem Name="Ultilities">
+                <TreeViewItem Name="AdministrationUltilities" Margin="3">
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Image Source="./Images/Icon/Administration.jpg" Height="30" Width="30"/>
