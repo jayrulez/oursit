@@ -6,8 +6,8 @@
       mc:Ignorable="d" 
       d:MinDesignHeight="300" d:MinDesignWidth="300"
 	Title="SearchVehicle">
-
-    <Grid Name="SearchDriverForm">
+    <DockPanel>
+    <Grid Name="SearchVehicleForm" DockPanel.Dock="Top">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -26,28 +26,48 @@
         <Label Grid.Row="0" Grid.Column="0" Content="VIN:" HorizontalAlignment="Right"/>
         <TextBox Name="txtVIN" Width="150" Grid.Row="0" Grid.Column="1" Margin="3"/>
 
-        <Label Grid.Row="0" Grid.Column="2" Content="Make:" HorizontalAlignment="Right"/>
-        <TextBox Name="txtMake" Width="150" Grid.Row="0" Grid.Column="3" Margin="3"/>
-
-        <Label Grid.Row="1" Grid.Column="0" Content="Model:" HorizontalAlignment="Right"/>
-        <TextBox Name="txtModel" Width="150" Grid.Row="1" Grid.Column="1" Margin="3"/>
-
-        <Label Grid.Row="1" Grid.Column="2" Content="Colour:" HorizontalAlignment="Right"/>
-        <TextBox Name="txtColour" Width="150" Grid.Row="1" Grid.Column="3" Margin="3"/>
-
-        <Label Grid.Row="2" Grid.Column="0" Content="Condition:" HorizontalAlignment="Right"/>
-        <TextBox Name="txtCondition" Width="150" Height="23" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1" Margin="3"/>
-
-        <Label Grid.Row="2" Grid.Column="2" Content="Type:" HorizontalAlignment="Right"/>
-        <StackPanel Name="rbtnlistType" Grid.Row="2" Grid.Column="3">
+        <Label Grid.Row="1" Grid.Column="0" Content="ServiceType:" HorizontalAlignment="Right"/>
+        <StackPanel Name="rbtnlistType" Grid.Row="1" Grid.Column="1">
             <RadioButton Name="rbtnTypeRental" Content="Rental"/>
             <RadioButton Name="rbtnTypeDelivery" Content="Delivery"/>
             <RadioButton Name="rbtnTypeCharter" Content="Charter"/>
             <RadioButton Name="rbtnTypeAll" Content="All"/>
         </StackPanel>
-        <Label Content="Seating Capacity:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right"/>
-        <TextBox Name="txtSeatingCapacity" Width="150" Grid.Row="3" Grid.Column="1" Margin="3" />
+        <Label Content="Seating Capacity:" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right"/>
+        <TextBox Name="txtSeatingCapacity" Width="150" Grid.Row="0" Grid.Column="3" Margin="3" />
         
-        <Button Name="btnSearchCustomer" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Content="Search" HorizontalContentAlignment="Center" Width="100"/>
+        <Button Name="btnSearchVehicle" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Search" HorizontalContentAlignment="Center" Width="100" Click="btnSearchVehicle_Click" />
+        <Label Name="lblSearchVEhicleStatus" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="4" Margin="3"></Label>
     </Grid>
+    <DataGrid Name="SearchVehicleDataGrid" CanUserAddRows="False" CanUserResizeColumns="True" Margin="3,3,3,3" IsReadOnly="False" CanUserDeleteRows="True" CanUserSortColumns="True" CellEditEnding="SearchVehicleDataGrid_CellEditEnding" CurrentCellChanged="SearchVehicleDataGrid_CurrentCellChanged" BeginningEdit="SearchVehicleDataGrid_BeginningEdit">
+
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="VIN">
+
+            </DataGridTextColumn>
+            <DataGridTextColumn Header="Color" >
+
+            </DataGridTextColumn>
+            <DataGridTextColumn Header="Make">
+
+            </DataGridTextColumn>
+            <DataGridTextColumn Header="Model">
+
+            </DataGridTextColumn>
+            <DataGridTextColumn Header="Color">
+
+            </DataGridTextColumn>
+            <DataGridTextColumn Header="Condition">
+
+            </DataGridTextColumn>
+
+            <DataGridTextColumn Header="Service Type">
+
+            </DataGridTextColumn>
+            <DataGridTextColumn Header="Seating Capacity">
+
+            </DataGridTextColumn>
+        </DataGrid.Columns>
+    </DataGrid>
+    </DockPanel>
 </Page>
