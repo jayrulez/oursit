@@ -9,7 +9,7 @@
       d:DesignHeight="200" d:MinDesignWidth="500"
 	Title="SearchCustomer">
     <DockPanel>
-    <Grid DockPanel.Dock="Top">
+    <Grid Name="SearchCustomerForm" DockPanel.Dock="Top">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
 			<RowDefinition Height="auto"/>
@@ -25,7 +25,7 @@
 		</Grid.ColumnDefinitions>
 
         <Label Grid.Row="0" Grid.Column="0" Content="ID:" HorizontalAlignment="Right"/>
-        <TextBox Name="txtId" Width="150" Grid.Row="0" Grid.Column="1" Margin="3"/>
+        <TextBox Name="txtId" Width="150" Grid.Row="0" Grid.Column="1" Margin="3" PreviewTextInput="SearchCustomerForm_PreviewTextInput"/>
 
         <Label Grid.Row="1" Grid.Column="0" Content="First Name:" HorizontalAlignment="Right"/>
         <TextBox Name="txtFirstName" Width="150" Grid.Row="1" Grid.Column="1" Margin="3"/>

@@ -17,6 +17,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -40,7 +41,8 @@
             <RadioButton Name="rbtnTypeCharter" Margin="2"  Content="Charter"/>
         </StackPanel>
         <TextBox Name="txtSeatingCapacity" Grid.Row="5" Grid.Column="1" Margin="3"/>
-        <Button Name="btnAddDriver" Grid.Row="6" Grid.Column="0" Content="Add" HorizontalContentAlignment="Center" Width="100"/>
-        <Button Name="btnClearField" Grid.Row="6" Grid.Column="1" Content="Clear Fields" HorizontalContentAlignment="Center" Width="110"/>
+        <Button Name="btnAddDriver" Grid.Row="6" Grid.Column="0" Content="Add" HorizontalContentAlignment="Center" Width="100" Click="btnAddDriver_Click" />
+        <Button Name="btnClearField" Grid.Row="6" Grid.Column="1" Content="Clear Fields" HorizontalContentAlignment="Center" Width="110" Click="btnClearField_Click" />
+        <Label Name="lblAddVehicleStatus" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Margin="3"></Label>
     </Grid>
 </Page>

@@ -23,22 +23,13 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Row="0" Grid.Column="0" Content="Id:" HorizontalAlignment="Right"/>
-        <TextBox Name="txtId" Width="150" Grid.Row="0" Grid.Column="1" Margin="3"/>
-
-        <Label Grid.Row="1" Grid.Column="0" Content="First Name:" HorizontalAlignment="Right"/>
-        <TextBox Name="txtFirstName" Width="150" Grid.Row="1" Grid.Column="1" Margin="3"/>
-
-        <Label Grid.Row="1" Grid.Column="2" Content="LastName:" HorizontalAlignment="Right"/>
-        <TextBox Name="txtLastName" Width="150" Grid.Row="1" Grid.Column="3" Margin="3"/>
+            <TextBox Name="txtId" Width="150" Grid.Row="0" Grid.Column="1" Margin="3" PreviewTextInput="SearchCustomerForm_PreviewTextInput"/>
 
         <Label Grid.Row="2" Grid.Column="0" Content="NIS:" HorizontalAlignment="Right"/>
         <TextBox Name="txtNis" Width="150" Grid.Row="2" Grid.Column="1" Margin="3"/>
 
         <Label Grid.Row="2" Grid.Column="2" Content="TRN:" HorizontalAlignment="Right"/>
-        <TextBox Name="txtTrn" Width="150" Grid.Row="2" Grid.Column="3" Margin="3"/>
-
-        <Label Grid.Row="0" Grid.Column="2" Content="Parish:" HorizontalAlignment="Right"/>
-        <TextBox Name="txtParish" Width="150" Grid.Row="0" Grid.Column="3" Margin="3"/>
+        <TextBox Name="txtTrn" Width="150" Grid.Row="2" Grid.Column="3" Margin="3" PreviewTextInput="SearchCustomerForm_PreviewTextInput"/>
 
         <Button Name="btnSearchDriver" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Search" HorizontalContentAlignment="Center" Width="100" Click="btnSearchDriver_Click" />
         <Button Name="btnClearFields" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Content="Clear Fields" HorizontalContentAlignment="Center" Width="100" Click="btnClearFields_Click" />
@@ -50,7 +41,7 @@
             <DataGridTextColumn Header="Driver ID" IsReadOnly="True">
 
             </DataGridTextColumn>
-            <DataGridTextColumn Header="First Name">
+            <DataGridTextColumn Header="First Name" >
 
             </DataGridTextColumn>
             <DataGridTextColumn Header="Last Name">

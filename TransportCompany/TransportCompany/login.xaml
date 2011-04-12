@@ -30,7 +30,7 @@
                 <Label Grid.Row="0" Grid.Column="0" Content="Username:"/>
                 <Label Grid.Row="1" Grid.Column="0" Content="Password:"/>
                 <TextBox Name="txtUsername" Grid.Row="0" Grid.Column="1" Margin="3"/>
-                <TextBox Name="txtPassword" Grid.Row="1" Grid.Column="1" Margin="3"/>
+                <PasswordBox Name="txtPassword" Grid.Row="1" Grid.Column="1" Margin="3" PasswordChar="*"/>
                 <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="left" Content="login" Width="50" Click="Button_Click" />
                 <Label Name="lblLoginStatus" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" Margin="3"></Label>
             </Grid>

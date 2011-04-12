@@ -42,7 +42,7 @@ namespace TransportCompany.DataAccessLayer
         {
             
         }
-        public SqlDataReader GetCustomer(string Id, string FirstName, string LastName, string EmailAddress)
+        public DataTable GetCustomer(string Id, string FirstName, string LastName, string EmailAddress)
         {
             oursitdbcommand.CommandType = System.Data.CommandType.StoredProcedure;
             oursitdbcommand.CommandText="sp_SearchCustomer";
@@ -75,24 +75,31 @@ namespace TransportCompany.DataAccessLayer
                 oursitdbcommand.Parameters.AddWithValue("@EmailAddress",System.DBNull.Value);
             }
             SqlDataReader GetCustomerReader = null;
+            DataTable CustomerDataTable = new DataTable("Customer");
+            MessageBoxResult status;
             try
             {
+                oursitdbcommand.Connection = oursitdbconnection;
                 oursitdbcommand.Connection.Open();
                 try
                 {
                     GetCustomerReader = oursitdbcommand.ExecuteReader();
+                    if (GetCustomerReader.HasRows)
+                    {
+                        CustomerDataTable.Load(GetCustomerReader);
+                    }
                 }
                 catch (Exception)
                 {
-                    
+                    status = MessageBox.Show("An error occured while attempting to retreive customer data. Please contact administrator");
                 }
                 oursitdbcommand.Connection.Close();
             }
             catch (Exception)
             {
-                
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.");
             }
-            return GetCustomerReader;
+            return CustomerDataTable;
         }
 
         public DataTable GetCustomerById(string Id)
@@ -268,5 +275,194 @@ namespace TransportCompany.DataAccessLayer
             }
             return false;
         }
+
+        public bool UpdateDriver(int Id, string FirstName, string LastName, string NIS, int TRN, string District, string Parish, string ContactNumber)
+        {
+            oursitdbcommand.CommandType = System.Data.CommandType.StoredProcedure;
+            oursitdbcommand.CommandText = "sp_UpdateDriver";
+            oursitdbcommand.Parameters.AddWithValue("@Id", Id);
+            oursitdbcommand.Parameters.AddWithValue("@FirstName", FirstName);
+            oursitdbcommand.Parameters.AddWithValue("@LastName", LastName);
+            oursitdbcommand.Parameters.AddWithValue("@NIS", NIS);
+            oursitdbcommand.Parameters.AddWithValue("@TRN", TRN);
+            oursitdbcommand.Parameters.AddWithValue("@District", District);
+            oursitdbcommand.Parameters.AddWithValue("@Parish", Parish);
+            oursitdbcommand.Parameters.AddWithValue("@ContactNumber", ContactNumber);
+            oursitdbcommand.Connection = oursitdbconnection;
+            MessageBoxResult status;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    int result = oursitdbcommand.ExecuteNonQuery();
+                    oursitdbcommand.Connection.Close();
+                    if (result == 1)
+                    {
+                        return true;
+                    }
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    status = MessageBox.Show("An error occured while attempting to update driver data. Please contact administrator", "Data Connectivity");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.", "Data Connectivity");
+            }
+            return false;
+        }
+
+        public bool AddDriver(string FirstName, string LastName, string NIS, int TRN, string District, string Parish, string ContactNumber)
+        {
+            oursitdbcommand.CommandType = System.Data.CommandType.StoredProcedure;
+            oursitdbcommand.CommandText = "sp_AddDriver";
+            oursitdbcommand.Parameters.AddWithValue("@FirstName", FirstName);
+            oursitdbcommand.Parameters.AddWithValue("@LastName", LastName);
+            oursitdbcommand.Parameters.AddWithValue("@NIS", NIS);
+            oursitdbcommand.Parameters.AddWithValue("@TRN", TRN);
+            oursitdbcommand.Parameters.AddWithValue("@District", District);
+            oursitdbcommand.Parameters.AddWithValue("@Parish", Parish);
+            oursitdbcommand.Parameters.AddWithValue("@ContactNumber", ContactNumber);
+            oursitdbcommand.Connection = oursitdbconnection;
+            MessageBoxResult status;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    int result = oursitdbcommand.ExecuteNonQuery();
+                    oursitdbcommand.Connection.Close();
+                    if (result == 1)
+                    {
+                        return true;
+                    }
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    status = MessageBox.Show("An error occured while attempting to save Driver data. Please contact administrator", "Data Connectivity");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.", "Data Connectivity");
+            }
+            return false;
+        }
+
+        public DataTable GetDriverById(string Id)
+        {
+            oursitdbcommand.CommandType = System.Data.CommandType.StoredProcedure;
+            oursitdbcommand.CommandText = "sp_GetDriverById";
+            int ParsedId;
+            Int32.TryParse(Id, out ParsedId);
+            oursitdbcommand.Parameters.AddWithValue("@Id", ParsedId);
+            SqlDataReader GetDriverReader = null;
+            DataTable DriverDataTable = new DataTable("Driver");
+            MessageBoxResult status;
+            try
+            {
+                oursitdbcommand.Connection = oursitdbconnection;
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    GetDriverReader = oursitdbcommand.ExecuteReader();
+
+                    if (GetDriverReader.HasRows)
+                    {
+                        DriverDataTable.Load(GetDriverReader);
+                    }
+                }
+                catch (Exception)
+                {
+                    status = MessageBox.Show("An error occured while attempting to retreive Driver data. Please contact administrator");
+                }
+                oursitdbcommand.Connection.Close();
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.");
+            }
+            return DriverDataTable;
+        }
+
+        public DataTable SearchDriver(string Id, string NIS, string TRN)
+        {
+            oursitdbcommand.CommandType = System.Data.CommandType.StoredProcedure;
+            oursitdbcommand.CommandText = "sp_SearchDriver";
+            MessageBoxResult status;
+            if (String.IsNullOrEmpty(Id))
+            {
+                oursitdbcommand.Parameters.AddWithValue("@Id", System.DBNull.Value);
+            }
+            else
+            {
+                int ParsedId;   
+                if (Int32.TryParse(Id, out ParsedId))
+                {
+                    oursitdbcommand.Parameters.AddWithValue("@Id", ParsedId);
+                    
+                }
+                else
+                {
+                    status = MessageBox.Show("Id must be numeric.", "field format error");
+                    return null;
+                }
+            }
+            if (String.IsNullOrEmpty(TRN))
+            {
+                oursitdbcommand.Parameters.AddWithValue("@TRN", System.DBNull.Value);
+            }
+            else
+            {
+                int ParsedTRN;
+                if (Int32.TryParse(TRN, out ParsedTRN))
+                {
+                    oursitdbcommand.Parameters.AddWithValue("@TRN", ParsedTRN);
+                }
+                else
+                {
+                    status = MessageBox.Show("TRN must be numeric.", "field format error");
+                    return null;
+                }
+            }
+            if (String.IsNullOrEmpty(NIS))
+            {
+                oursitdbcommand.Parameters.AddWithValue("@NIS", System.DBNull.Value);
+            }
+            else
+            {
+                oursitdbcommand.Parameters.AddWithValue("@NIS", NIS);
+            }
+            SqlDataReader GetDriverReader = null;
+            DataTable DriverDataTable = new DataTable("Driver");
+            try
+            {
+                oursitdbcommand.Connection = oursitdbconnection;
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    GetDriverReader = oursitdbcommand.ExecuteReader();
+                    if (GetDriverReader.HasRows)
+                    {
+                        DriverDataTable.Load(GetDriverReader);
+                    }
+                }
+                catch (Exception)
+                {
+                    status = MessageBox.Show("An error occured while attempting to retreive Driver data. Please contact administrator");
+                }
+                oursitdbcommand.Connection.Close();
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.");
+            }
+            return DriverDataTable;
+        }
     }
 }
+
