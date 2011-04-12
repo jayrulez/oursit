@@ -28,31 +28,13 @@
                         </TreeViewItem.Header>
                     </TreeViewItem>
 
-                    <TreeViewItem Name="DeleteCustomer"  Selected="selected_DeleteCustomer">
-                        <TreeViewItem.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="./Images/Icon/DeleteCustomer.png" Height="30" Width="30"/>
-                                <TextBlock Text="Delete Customer"></TextBlock>
-                            </StackPanel>
-                        </TreeViewItem.Header>
-                    </TreeViewItem>
-
                     <TreeViewItem Name="SearchCustomer"  Selected="selected_SearchCustomer">
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="./Images/Icon/SearchCustomer.png" Height="30" Width="30"/>
-                                <TextBlock Text="Search Customer"></TextBlock>
+                                <TextBlock Text="Search and Edit Customer"></TextBlock>
                             </StackPanel>
                         </TreeViewItem.Header>                        
-                    </TreeViewItem>
-
-                    <TreeViewItem Name="UpdateCustomer"  Selected="selected_UpdateCustomer">
-                        <TreeViewItem.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="./Images/Icon/UpdateIcon.gif" Height="30" Width="30"/>
-                                <TextBlock Text="Update Customer"></TextBlock>
-                            </StackPanel>
-                        </TreeViewItem.Header>
                     </TreeViewItem>
                 </TreeViewItem>
                 <TreeViewItem Name="ResourceManagementTreeItem" Margin="3">
