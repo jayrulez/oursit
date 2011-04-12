@@ -91,18 +91,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Miscellaneous\DeleteCustomer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Miscellaneous\DeleteDriver.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Miscellaneous\DeleteVehicle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Miscellaneous\RentalRequest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,18 +104,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Miscellaneous\SearchVehicle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Miscellaneous\UpdateCustomer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Miscellaneous\UpdateDriver.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Miscellaneous\UpdateVehicle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -161,15 +137,6 @@
     <Compile Include="Miscellaneous\AddVehicle.xaml.cs">
       <DependentUpon>AddVehicle.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Miscellaneous\DeleteCustomer.xaml.cs">
-      <DependentUpon>DeleteCustomer.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Miscellaneous\DeleteDriver.xaml.cs">
-      <DependentUpon>DeleteDriver.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Miscellaneous\DeleteVehicle.xaml.cs">
-      <DependentUpon>DeleteVehicle.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Miscellaneous\RentalRequest.xaml.cs">
       <DependentUpon>RentalRequest.xaml</DependentUpon>
     </Compile>
@@ -181,15 +148,6 @@
     </Compile>
     <Compile Include="Miscellaneous\SearchVehicle.xaml.cs">
       <DependentUpon>SearchVehicle.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Miscellaneous\UpdateCustomer.xaml.cs">
-      <DependentUpon>UpdateCustomer.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Miscellaneous\UpdateDriver.xaml.cs">
-      <DependentUpon>UpdateDriver.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Miscellaneous\UpdateVehicle.xaml.cs">
-      <DependentUpon>UpdateVehicle.xaml</DependentUpon>
     </Compile>
     <Compile Include="Miscellaneous\ViewDeliveryRequest.xaml.cs">
       <DependentUpon>ViewDeliveryRequest.xaml</DependentUpon>

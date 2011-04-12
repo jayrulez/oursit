@@ -38,18 +38,12 @@ namespace TransportCompany
         {
             MainContentFrame.Source = new Uri("./Miscellaneous/AddCustomer.xaml", UriKind.Relative);
         }
-        public void selected_UpdateCustomer(object sender, RoutedEventArgs e)
-        {
-            MainContentFrame.Source = new Uri("./Miscellaneous/UpdateCustomer.xaml", UriKind.Relative);
-        }
+
         public void selected_SearchCustomer(object sender, RoutedEventArgs e)
         {
             MainContentFrame.Source = new Uri("./Miscellaneous/SearchCustomer.xaml", UriKind.Relative);
         }
-        public void selected_DeleteCustomer(object sender, RoutedEventArgs e)
-        {
-            MainContentFrame.Source = new Uri("./Miscellaneous/DeleteCustomer.xaml", UriKind.Relative);
-        }
+
         public void selected_AddDriver(object sender, RoutedEventArgs e)
         {
             MainContentFrame.Source = new Uri("./Miscellaneous/AddDriver.xaml", UriKind.Relative);
