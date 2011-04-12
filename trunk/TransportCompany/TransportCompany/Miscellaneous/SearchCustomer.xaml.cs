@@ -36,7 +36,7 @@ namespace TransportCompany.Miscellaneous
         private void btnSearchCustomer_Click(object sender, RoutedEventArgs e)
         {
             OurSitDb OurSitSchema = new OurSitDb();
-            DataTable CustomerResult = OurSitSchema.GetCustomerById(Convert.ToString(txtId.Text));//OurSitSchema.GetCustomer(Convert.ToString(txtId.Text), Convert.ToString(txtFirstName.Text), Convert.ToString(txtLastName.Text), Convert.ToString(txtEmailAddress.Text));
+            DataTable CustomerResult = OurSitSchema.GetCustomer(txtId.Text.Trim(),txtFirstName.Text.Trim(),txtLastName.Text.Trim(),txtEmailAddress.Text.Trim());//OurSitSchema.GetCustomer(Convert.ToString(txtId.Text), Convert.ToString(txtFirstName.Text), Convert.ToString(txtLastName.Text), Convert.ToString(txtEmailAddress.Text));
             if (CustomerResult == null)
             {
                 lblSearchStatus.Content = "No customer data found.";

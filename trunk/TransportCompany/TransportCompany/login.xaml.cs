@@ -25,6 +25,11 @@ namespace TransportCompany
             InitializeComponent();
         }
 
+        private void MenuExit_click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             OurSitDb OurSitSchema = new OurSitDb();

@@ -46,6 +46,7 @@ namespace TransportCompany.DataAccessLayer
         {
             oursitdbcommand.CommandType = System.Data.CommandType.StoredProcedure;
             oursitdbcommand.CommandText="sp_SearchCustomer";
+            MessageBoxResult status;
             if(String.IsNullOrEmpty(Id))
             {
                 oursitdbcommand.Parameters.AddWithValue("@Id",System.DBNull.Value);
@@ -59,24 +60,36 @@ namespace TransportCompany.DataAccessLayer
                 }
                 else
                 {
-                    throw new FormatException("Customer Id not in the correct Format.");
+                    status = MessageBox.Show("Id must be numeric", "field data format");
+                    return null;
                 }
             }
-            if(String.IsNullOrEmpty(FirstName))
+            if (String.IsNullOrEmpty(FirstName))
             {
-                oursitdbcommand.Parameters.AddWithValue("@FirstName",System.DBNull.Value);
+                oursitdbcommand.Parameters.AddWithValue("@FirstName", System.DBNull.Value);
             }
-            if(String.IsNullOrEmpty(LastName))
+            else
             {
-                oursitdbcommand.Parameters.AddWithValue("@LastName",System.DBNull.Value);
+                oursitdbcommand.Parameters.AddWithValue("@FirstName", FirstName);
             }
-            if(String.IsNullOrEmpty(EmailAddress))
+            if (String.IsNullOrEmpty(LastName))
             {
-                oursitdbcommand.Parameters.AddWithValue("@EmailAddress",System.DBNull.Value);
+                oursitdbcommand.Parameters.AddWithValue("@LastName", System.DBNull.Value);
+            }
+            else
+            {
+                oursitdbcommand.Parameters.AddWithValue("@LastName", LastName);
+            }
+            if (String.IsNullOrEmpty(EmailAddress))
+            {
+                oursitdbcommand.Parameters.AddWithValue("@EmailAddress", System.DBNull.Value);
+            }
+            else
+            {
+                oursitdbcommand.Parameters.AddWithValue("@EmailAddress", EmailAddress);
             }
             SqlDataReader GetCustomerReader = null;
             DataTable CustomerDataTable = new DataTable("Customer");
-            MessageBoxResult status;
             try
             {
                 oursitdbcommand.Connection = oursitdbconnection;
@@ -475,10 +488,50 @@ namespace TransportCompany.DataAccessLayer
             oursitdbcommand.Parameters.AddWithValue("@Condition", Condition);
             oursitdbcommand.Parameters.AddWithValue("@ServiceType", ServiceType);
             oursitdbcommand.Parameters.AddWithValue("@SeatingCapacity", SeatingCapacity);
-            oursitdbcommand.Connection = oursitdbconnection;
+            
             MessageBoxResult status;
             try
             {
+                oursitdbcommand.Connection = oursitdbconnection;
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    int result = oursitdbcommand.ExecuteNonQuery();
+                    oursitdbcommand.Connection.Close();
+                    if (result == 1)
+                    {
+                        return true;
+                    }
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    status = MessageBox.Show("An error occured while attempting to save Vehicle data. Please contact administrator", "Data Connectivity");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.", "Data Connectivity");
+            }
+            return false;
+        }
+
+        public bool UpdateVehicle(string VIN, string Make, string Model, string Color, string Condition, string ServiceType, int SeatingCapacity)
+        {
+            oursitdbcommand.CommandType = System.Data.CommandType.StoredProcedure;
+            oursitdbcommand.CommandText = "sp_UpdateVehicle";
+            oursitdbcommand.Parameters.AddWithValue("@VIN", VIN);
+            oursitdbcommand.Parameters.AddWithValue("@Make", Make);
+            oursitdbcommand.Parameters.AddWithValue("@Model", Model);
+            oursitdbcommand.Parameters.AddWithValue("@Color", Color);
+            oursitdbcommand.Parameters.AddWithValue("@Condition", Condition);
+            oursitdbcommand.Parameters.AddWithValue("@ServiceType", ServiceType);
+            oursitdbcommand.Parameters.AddWithValue("@SeatingCapacity", SeatingCapacity);
+
+            MessageBoxResult status;
+            try
+            {
+                oursitdbcommand.Connection = oursitdbconnection;
                 oursitdbcommand.Connection.Open();
                 try
                 {
@@ -524,7 +577,14 @@ namespace TransportCompany.DataAccessLayer
             }
             else
             {
-                oursitdbcommand.Parameters.AddWithValue("@ServiceType", ServiceType);
+                if (ServiceType == "all")
+                {
+                    oursitdbcommand.Parameters.AddWithValue("@ServiceType", System.DBNull.Value);
+                }
+                else
+                {
+                    oursitdbcommand.Parameters.AddWithValue("@ServiceType", ServiceType);
+                }
             }
             if (String.IsNullOrEmpty(SeatingCapacity))
             {
@@ -567,6 +627,73 @@ namespace TransportCompany.DataAccessLayer
                 status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.");
             }
             return VehicleDataTable;
+        }
+
+        public DataTable SearchInquiry(string CustomerId, string InquiryDate)
+        {
+            oursitdbcommand.CommandType = System.Data.CommandType.StoredProcedure;
+            oursitdbcommand.CommandText = "sp_SearchInquiry";
+            MessageBoxResult status;
+            if (String.IsNullOrEmpty(CustomerId))
+            {
+                oursitdbcommand.Parameters.AddWithValue("@CustomerId", System.DBNull.Value);
+            }
+            else
+            {
+                int ParsedId;
+                if (Int32.TryParse(CustomerId, out ParsedId))
+                {
+                    oursitdbcommand.Parameters.AddWithValue("@CustomerId", ParsedId);
+
+                }
+                else
+                {
+                    status = MessageBox.Show("Customer Id must be numeric.", "field format error");
+                    return null;
+                }
+            }
+
+            if (String.IsNullOrEmpty(InquiryDate))
+            {
+                oursitdbcommand.Parameters.AddWithValue("@CreatedAt", System.DBNull.Value);
+            }
+            else
+            {
+                DateTime ParsedInquiryDate; //must fix
+                if (DateTime.TryParse(InquiryDate, out ParsedInquiryDate))
+                {
+                    oursitdbcommand.Parameters.AddWithValue("@CreatedAt", ParsedInquiryDate);
+                }
+                else
+                {
+                    status = MessageBox.Show("Date is not in the correct format.", "field format error.");
+                }
+            }
+            SqlDataReader GetInquiryReader = null;
+            DataTable InquiryDataTable = new DataTable("Driver");
+            try
+            {
+                oursitdbcommand.Connection = oursitdbconnection;
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    GetInquiryReader = oursitdbcommand.ExecuteReader();
+                    if (GetInquiryReader.HasRows)
+                    {
+                        InquiryDataTable.Load(GetInquiryReader);
+                    }
+                }
+                catch (Exception)
+                {
+                    status = MessageBox.Show("An error occured while attempting to retreive Driver data. Please contact administrator");
+                }
+                oursitdbcommand.Connection.Close();
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.");
+            }
+            return InquiryDataTable;
         }
     }
 }

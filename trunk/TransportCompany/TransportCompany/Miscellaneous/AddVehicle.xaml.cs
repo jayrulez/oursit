@@ -43,25 +43,30 @@ namespace TransportCompany.Miscellaneous
             }
             else if ((bool)rbtnTypeRental.IsChecked)
             {
-                ServiceType = "Rental";
+                ServiceType = "rental";
             }
 
             string SeatingCapacity = txtSeatingCapacity.Text.Trim();
             int ParsedSeatingCapacity;
-            if (!string.IsNullOrEmpty(Make) && !string.IsNullOrEmpty(Model) && !string.IsNullOrEmpty(Color) && !string.IsNullOrEmpty(ServiceType) && !string.IsNullOrEmpty(SeatingCapacity)  && !string.IsNullOrEmpty(Condition))
+
+            if (!string.IsNullOrEmpty(VIN) && !string.IsNullOrEmpty(Make) && !string.IsNullOrEmpty(Model) && !string.IsNullOrEmpty(Color) && !string.IsNullOrEmpty(ServiceType) && !string.IsNullOrEmpty(SeatingCapacity)  && !string.IsNullOrEmpty(Condition))
             {
                 if (Int32.TryParse(SeatingCapacity, out ParsedSeatingCapacity))
                 {
                     OurSitDb OurSitSchema = new OurSitDb();
                     MessageBoxResult Result;
-                    if (OurSitSchema.AddVehicle(VIN,Make,Model,Color,Condition,ServiceType,ParsedSeatingCapacity))
+                    if (OurSitSchema.AddVehicle(VIN, Make, Model, Color, Condition, ServiceType, ParsedSeatingCapacity))
                     {
-                        Result = MessageBox.Show("Vehicle was added successfully.");
+                        Result = MessageBox.Show("Vehicle was added successfully.","Success");
                     }
                     else
                     {
                         lblAddVehicleStatus.Content = "Vehicle data was not added.";
                     }
+                }
+                else
+                {
+                    lblAddVehicleStatus.Content = "Seating Capacity must be numeric.";
                 }
             }
             else

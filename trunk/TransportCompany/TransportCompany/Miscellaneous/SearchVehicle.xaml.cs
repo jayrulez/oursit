@@ -32,7 +32,8 @@ namespace TransportCompany.Miscellaneous
 
         private void btnSearchVehicle_Click(object sender, RoutedEventArgs e)
         {
-            string ServiceType = "";
+            MessageBoxResult result;
+            string ServiceType;
             if ((bool)rbtnTypeCharter.IsChecked)
             {
                 ServiceType = "charter";
@@ -49,38 +50,47 @@ namespace TransportCompany.Miscellaneous
             {
                 ServiceType = "all";
             }
-
-            OurSitDb OurSitSchema = new OurSitDb();
-            DataTable DriverResult = OurSitSchema.SearchVehicle(txtVIN.Text.Trim(),ServiceType.Trim(),txtSeatingCapacity.Text.Trim());
-            if (DriverResult == null)
+            else
             {
-                lblSearchVehicleStatus.Content = "No Driver data found.";
+                ServiceType = string.Empty;
+            }
+            if (string.IsNullOrEmpty(txtVIN.Text.Trim()) && string.IsNullOrEmpty(ServiceType.Trim()) && string.IsNullOrEmpty(txtSeatingCapacity.Text.Trim()))
+            {
+                result = MessageBox.Show("Enter a search criteria.");    
             }
             else
             {
-                int count = DriverResult.Rows.Count;
-                string ext;
-                if (count > 1)
+                OurSitDb OurSitSchema = new OurSitDb();
+                DataTable DriverResult = OurSitSchema.SearchVehicle(txtVIN.Text.Trim(), ServiceType.Trim(), txtSeatingCapacity.Text.Trim());
+                if (DriverResult == null)
                 {
-                    ext = "s";
+                    lblSearchVehicleStatus.Content = "No Driver data found.";
                 }
                 else
                 {
-                    ext = "";
+                    int count = DriverResult.Rows.Count;
+                    string ext;
+                    if (count > 1)
+                    {
+                        ext = "s";
+                    }
+                    else
+                    {
+                        ext = "";
+                    }
+                    lblSearchVehicleStatus.Content = Convert.ToString(count) + " Driver" + ext + " found.";
+                    //SearchVehicleDataGrid.AutoGenerateColumns = true;
+                    ((DataGridTextColumn)SearchVehicleDataGrid.Columns[0]).Binding = new Binding("VIN");
+                    ((DataGridTextColumn)SearchVehicleDataGrid.Columns[1]).Binding = new Binding("Make");
+                    ((DataGridTextColumn)SearchVehicleDataGrid.Columns[2]).Binding = new Binding("Model");
+                    ((DataGridTextColumn)SearchVehicleDataGrid.Columns[3]).Binding = new Binding("Color");
+                    ((DataGridTextColumn)SearchVehicleDataGrid.Columns[4]).Binding = new Binding("Condition");
+                    ((DataGridTextColumn)SearchVehicleDataGrid.Columns[5]).Binding = new Binding("ServiceType");
+                    ((DataGridTextColumn)SearchVehicleDataGrid.Columns[6]).Binding = new Binding("SeatingCapacity");
+
+                    SearchVehicleDataGrid.AutoGenerateColumns = false;
+                    SearchVehicleDataGrid.ItemsSource = DriverResult.DefaultView;
                 }
-                lblSearchVehicleStatus.Content = Convert.ToString(count) + " Driver" + ext + " found.";
-                //SearchVehicleDataGrid.AutoGenerateColumns = true;
-                ((DataGridTextColumn)SearchVehicleDataGrid.Columns[0]).Binding = new Binding("Id");
-                ((DataGridTextColumn)SearchVehicleDataGrid.Columns[1]).Binding = new Binding("FirstName");
-                ((DataGridTextColumn)SearchVehicleDataGrid.Columns[2]).Binding = new Binding("LastName");
-                ((DataGridTextColumn)SearchVehicleDataGrid.Columns[3]).Binding = new Binding("TRN");
-                ((DataGridTextColumn)SearchVehicleDataGrid.Columns[4]).Binding = new Binding("NIS");
-                ((DataGridTextColumn)SearchVehicleDataGrid.Columns[5]).Binding = new Binding("District");
-                ((DataGridTextColumn)SearchVehicleDataGrid.Columns[6]).Binding = new Binding("Parish");
-                ((DataGridTextColumn)SearchVehicleDataGrid.Columns[7]).Binding = new Binding("ContactNumber");
-                
-                SearchVehicleDataGrid.AutoGenerateColumns = false;
-                SearchVehicleDataGrid.ItemsSource = DriverResult.DefaultView;
             }
         }
 
@@ -101,9 +111,9 @@ namespace TransportCompany.Miscellaneous
             {
                 OurSitDb OurSitSchema = new OurSitDb();
                 MessageBoxResult Result;
-                if (!string.IsNullOrEmpty(rowBeingEdited[1].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[2].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[3].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[4].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[5].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[6].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[7].ToString()))
+                if (!string.IsNullOrEmpty(rowBeingEdited[0].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[1].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[2].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[3].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[4].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[5].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[6].ToString()))
                 {
-                    if (OurSitSchema.UpdateDriver(Convert.ToInt32(rowBeingEdited[0]), rowBeingEdited[1].ToString(), rowBeingEdited[2].ToString(), rowBeingEdited[4].ToString(), Convert.ToInt32(rowBeingEdited[3]), rowBeingEdited[5].ToString(), rowBeingEdited[6].ToString(), rowBeingEdited[7].ToString()))
+                    if (OurSitSchema.UpdateVehicle(rowBeingEdited[0].ToString(), rowBeingEdited[1].ToString(), rowBeingEdited[2].ToString(), rowBeingEdited[3].ToString(), rowBeingEdited[4].ToString(), rowBeingEdited[5].ToString(), Convert.ToInt32(rowBeingEdited[6])))
                     {
                     }
                 }
