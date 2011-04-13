@@ -8,7 +8,7 @@
 	Title="ViewDeliveryRequest">
 
     <DockPanel>
-        <Grid Name="InquiryReviewForm" DockPanel.Dock="Top">
+        <Grid Name="DeliveryReviewForm" DockPanel.Dock="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
@@ -27,10 +27,10 @@
             <Button Name="btnViewDelivery" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Width="100" Content="View" Margin="3" Click="btnViewDelivery_Click" />
             <Label Name="lblViewDeliveryRequest" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4"/>
         </Grid>
-        <DataGrid Name="SearchInquiryDataGrid">
+        <DataGrid Name="SearchDeliveryDataGrid" CanUserAddRows="False" CanUserSortColumns="True">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" IsReadOnly="True">
+                <DataGridTextColumn Header="Ref. Id" IsReadOnly="True">
 
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Customer ID" IsReadOnly="True">

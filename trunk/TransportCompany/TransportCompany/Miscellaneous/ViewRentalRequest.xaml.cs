@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +18,49 @@ namespace TransportCompany.Miscellaneous
     /// <summary>
     /// Interaction logic for ViewRentalRequest.xaml
     /// </summary>
+    using DataAccessLayer;
     public partial class ViewRentalRequest : Page
     {
         public ViewRentalRequest()
         {
             InitializeComponent();
+        }
+
+        private void btnViewRental_Click(object sender, RoutedEventArgs e)
+        {
+            OurSitDb OurSitSchema = new OurSitDb();
+            DataTable RequestResult = OurSitSchema.SearchRentalRequest(txtCustomerId.Text.Trim());
+            if (RequestResult == null)
+            {
+                lblViewRentalRequest.Content = "No Rental Request data found.";
+            }
+            else
+            {
+                int count = RequestResult.Rows.Count;
+                string ext;
+                if (count > 1)
+                {
+                    ext = "s";
+                }
+                else
+                {
+                    ext = "";
+                }
+                lblViewRentalRequest.Content = Convert.ToString(count) + " Requests" + ext + " found.";
+                //SearchDriverDataGrid.AutoGenerateColumns = true;
+                ((DataGridTextColumn)SearchRentalDataGrid.Columns[0]).Binding = new Binding("Id");
+                ((DataGridTextColumn)SearchRentalDataGrid.Columns[1]).Binding = new Binding("CustomerId");
+                ((DataGridTextColumn)SearchRentalDataGrid.Columns[2]).Binding = new Binding("VehicleId");
+                ((DataGridTextColumn)SearchRentalDataGrid.Columns[3]).Binding = new Binding("Description");
+                
+                SearchRentalDataGrid.AutoGenerateColumns = false;
+                SearchRentalDataGrid.ItemsSource = RequestResult.DefaultView;
+            }
+        }
+
+        private void chbxViewAll_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

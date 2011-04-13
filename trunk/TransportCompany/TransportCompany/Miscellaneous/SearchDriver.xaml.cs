@@ -98,6 +98,7 @@ namespace TransportCompany.Miscellaneous
                 rowBeingEdited.EndEdit();
             }
         }
+
         private void SearchDriverDataGrid_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
         {
             CurrentColumnHeader = SearchDriverDataGrid.CurrentColumn.Header.ToString();
@@ -106,6 +107,7 @@ namespace TransportCompany.Miscellaneous
             CurrentColumnData = rowView[CurrentColumnIndex].ToString();
 
         }
+
         private void SearchCustomerForm_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !App.IsTextAllowed(e.Text);
