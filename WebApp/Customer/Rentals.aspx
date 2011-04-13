@@ -34,11 +34,13 @@
                         <asp:EntityDataSource ID="VehicleEntityDataSource" runat="server" 
                             ConnectionString="name=Entities" DefaultContainerName="Entities" 
                             EnableFlattening="False" EntitySetName="Vehicles" 
-                            Select="it.[VIN], it.[Make], it.[Model], it.[Color], it.[Condition], it.[ServiceType], it.[SeatingCapacity]">
+                            
+                            Select="it.[VIN], it.[Make], it.[Color], it.[Model], it.[Condition], it.[ServiceType], it.[SeatingCapacity]">
                         </asp:EntityDataSource>
                         <label>Vehicle</label><asp:DropDownList ID="ddlVehicleList" 
                             runat="server" AutoPostBack="True" DataSourceID="VehicleEntityDataSource" 
-                            DataTextField="VIN" DataValueField="Model">
+                            DataTextField="VIN" DataValueField="VIN" 
+                            onselectedindexchanged="ddlVehicleList_SelectedIndexChanged">
                         </asp:DropDownList>
                     </div>
                     <div class="clearfix">
