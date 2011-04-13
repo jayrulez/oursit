@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/icon/charterservice.gif")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("oursitdb_log.ldf")]
 
 

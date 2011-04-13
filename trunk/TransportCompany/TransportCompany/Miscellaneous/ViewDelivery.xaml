@@ -51,7 +51,11 @@
                 <DataGridTextColumn Header="From Location" IsReadOnly="True">
 
                 </DataGridTextColumn>
+                
                 <DataGridTextColumn Header="Destination" IsReadOnly="True">
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Cost" IsReadOnly="True">
 
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Dispatch Time" IsReadOnly="True">
@@ -59,7 +63,21 @@
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Arrival Time" IsReadOnly="True">
 
+              
                 </DataGridTextColumn>
+
+                <!--	Id INT IDENTITY(1,1) PRIMARY KEY NOT NULL, 
+	CustomerId int not null, 
+	DriverId int not null, 
+	VehicleId varchar(50) not null, 
+	ItemDimension Varchar(20) default null,  
+	ItemQuantity int default null, 
+	FromLocation varchar(255) not null, 
+	Destination varchar(255) not null,
+	Cost float(11) not null, 
+	DispatchTime DATETIME NOT NULL, 
+	ArrivalTime DATETIME NOT NULL,
+	ReturnTime DATETIME NOT NULL-->
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>

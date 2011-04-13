@@ -63,6 +63,7 @@ namespace TransportCompany.Miscellaneous
                 ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[4]).Binding = new Binding("ItemQuantity");
                 ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[5]).Binding = new Binding("FromLocation");
                 ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[6]).Binding = new Binding("Destination");
+                ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[6]).Binding = new Binding("Cost");
                 ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[7]).Binding = new Binding("DispatchTime");
                 ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[8]).Binding = new Binding("ArrivalTime");
 
