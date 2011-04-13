@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Customer_Rentals : SecurePage
+public partial class Customer_Logout : SecurePage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
