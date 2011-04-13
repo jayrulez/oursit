@@ -87,6 +87,8 @@ ADD CONSTRAINT FK_Trip_Driver foreign key(DriverId) references Driver(Id) on del
 create table TripDestination (
 	Id INT IDENTITY(1,1) PRIMARY KEY NOT NULL, 
 	TripId int not null, 
+	DestinationName varchar(255) not null,
+	DestinationAddress varchar(255) not null,
 	ArrivalTime DATETIME NOT NULL, 
 	DispatchTime DATETIME NOT NULL, 
 	Address Text not null
