@@ -61,9 +61,10 @@ namespace TransportCompany.Miscellaneous
                 ((DataGridTextColumn)SearchRentalDataGrid.Columns[3]).Binding = new Binding("RentalDate");
                 ((DataGridTextColumn)SearchRentalDataGrid.Columns[3]).Binding = new Binding("ReturnDate");
                 ((DataGridTextColumn)SearchRentalDataGrid.Columns[3]).Binding = new Binding("Cost");
-                
+
                 SearchRentalDataGrid.AutoGenerateColumns = false;
                 SearchRentalDataGrid.ItemsSource = RequestResult.DefaultView;
+            }
         }
         private void chbxViewAll_Checked(object sender, RoutedEventArgs e)
         {

@@ -580,3 +580,45 @@ begin
 	end
 end 
 go
+
+create procedure sp_SearchDelivery @CustomerId int
+as
+begin
+	if @CustomerId is not null begin
+		select * from Delivery where CustomerId = @CustomerId;
+		return
+	end
+	if @CustomerId is null begin
+		select * from Delivery;
+		return
+	end
+end 
+go 
+
+create procedure sp_SearchCharter @CustomerId int
+as
+begin
+	if @CustomerId is not null begin
+		select * from Trip where CustomerId = @CustomerId;
+		return
+	end
+	if @CustomerId is null begin
+		select * from Trip;
+		return
+	end
+end 
+go
+
+create procedure sp_SearchRental @CustomerId int
+as
+begin
+	if @CustomerId is not null begin
+		select * from Rental where CustomerId = @CustomerId;
+		return
+	end
+	if @CustomerId is null begin
+		select * from Rental;
+		return
+	end
+end 
+go 

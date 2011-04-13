@@ -801,7 +801,7 @@ namespace TransportCompany.DataAccessLayer
         public DataTable SearchCharterRequest(string CustomerId)
         {
             MessageBoxResult status;
-            DataTable SearchRequestTable = new DataTable("CharterRequest");
+            DataTable SearchRequestTable = new DataTable("Charter");
             SqlDataReader SearchRequestReader;
 
             oursitdbcommand.CommandText = "sp_SearchCharterRequest";
@@ -851,7 +851,7 @@ namespace TransportCompany.DataAccessLayer
         public DataTable SearchDelivery(string CustomerId)
         {
             MessageBoxResult status;
-            DataTable SearchRequestTable = new DataTable("DeliveryRequest");
+            DataTable SearchRequestTable = new DataTable("Delivery");
             SqlDataReader SearchRequestReader;
 
             oursitdbcommand.CommandText = "sp_SearchDelivery";
@@ -902,7 +902,7 @@ namespace TransportCompany.DataAccessLayer
         public DataTable SearchRental(string CustomerId)
         {
             MessageBoxResult status;
-            DataTable SearchRequestTable = new DataTable("RentalRequest");
+            DataTable SearchRequestTable = new DataTable("Rental");
             SqlDataReader SearchRequestReader;
 
             oursitdbcommand.CommandText = "sp_SearchRental";
@@ -953,7 +953,7 @@ namespace TransportCompany.DataAccessLayer
         public DataTable SearchCharter(string CustomerId)
         {
             MessageBoxResult status;
-            DataTable SearchRequestTable = new DataTable("CharterRequest");
+            DataTable SearchRequestTable = new DataTable("Charter");
             SqlDataReader SearchRequestReader;
 
             oursitdbcommand.CommandText = "sp_SearchCharter";
