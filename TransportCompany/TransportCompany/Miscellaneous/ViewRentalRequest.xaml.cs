@@ -54,7 +54,7 @@ namespace TransportCompany.Miscellaneous
                 {
                     ext = "";
                 }
-                lblViewRentalRequest.Content = Convert.ToString(count) + " Requests" + ext + " found.";
+                lblViewRentalRequest.Content = Convert.ToString(count) + " Request" + ext + " found.";
                 //SearchDriverDataGrid.AutoGenerateColumns = true;
                 ((DataGridTextColumn)SearchRentalDataGrid.Columns[0]).Binding = new Binding("Id");
                 ((DataGridTextColumn)SearchRentalDataGrid.Columns[1]).Binding = new Binding("CustomerId");
