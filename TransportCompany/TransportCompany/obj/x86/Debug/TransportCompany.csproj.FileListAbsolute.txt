@@ -84,3 +84,4 @@ C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit
 C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\ViewDelivery.g.cs
 C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\ViewRental.g.cs
 C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\ViewRentalRequest.g.cs
+C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\bin\Debug\TransportCompany.exe.config

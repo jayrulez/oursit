@@ -42,6 +42,10 @@
                 <DataGridTextColumn Header="Description" IsReadOnly="True">
 
                 </DataGridTextColumn>
+
+                <DataGridCheckBoxColumn Header="Accept Request" IsReadOnly="False"/>
+
+                <DataGridCheckBoxColumn Header="Cancel Request" IsReadOnly="False"/>
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>

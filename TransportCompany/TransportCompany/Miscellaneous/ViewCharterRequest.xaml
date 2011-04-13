@@ -28,7 +28,7 @@
             <Label Name="lblViewCharterRequest" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4"/>
         </Grid>
         <DataGrid Name="SearchCharterDataGrid" CanUserAddRows="False" CanUserSortColumns="True">
-
+            
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Ref. Id" IsReadOnly="True"/>
 
@@ -37,6 +37,8 @@
                 <DataGridTextColumn Header="Description" IsReadOnly="True"/>
 
                 <DataGridTextColumn Header="Number of Passengers" IsReadOnly="True"/>
+                <DataGridCheckBoxColumn Header="Accepted" IsReadOnly="False"/>
+                
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>

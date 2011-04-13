@@ -35,11 +35,11 @@ namespace TransportCompany.Miscellaneous
             }
             else
             {
-                RequestResult = OurSitSchema.SearchRentalRequest(txtCustomerId.Text.Trim());
+                RequestResult = OurSitSchema.SearchRental(txtCustomerId.Text.Trim());
             }
             if (RequestResult == null)
             {
-                lblViewRentalRequest.Content = "No Rental data found.";
+                lblViewRentalRequest.Content = "No Customer Rental data found.";
             }
             else
             {
@@ -53,7 +53,7 @@ namespace TransportCompany.Miscellaneous
                 {
                     ext = "";
                 }
-                lblViewRentalRequest.Content = Convert.ToString(count) + " Rental" + ext + " found.";
+                lblViewRentalRequest.Content = Convert.ToString(count) + " Customer Rental" + ext + " found.";
                 //SearchDriverDataGrid.AutoGenerateColumns = true;
                 ((DataGridTextColumn)SearchRentalDataGrid.Columns[0]).Binding = new Binding("Id");
                 ((DataGridTextColumn)SearchRentalDataGrid.Columns[1]).Binding = new Binding("CustomerId");
