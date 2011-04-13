@@ -29,7 +29,15 @@ namespace TransportCompany.Miscellaneous
         private void btnViewCharter_Click(object sender, RoutedEventArgs e)
         {
             OurSitDb OurSitSchema = new OurSitDb();
-            DataTable RequestResult = OurSitSchema.SearchCharterRequest(txtCustomerId.Text.Trim());
+            DataTable RequestResult;
+            if ((bool)chbxViewAll.IsChecked)
+            {
+                RequestResult = OurSitSchema.SearchCharterRequest(string.Empty);
+            }
+            else
+            {
+                RequestResult = OurSitSchema.SearchCharterRequest(txtCustomerId.Text.Trim());
+            }
             if (RequestResult == null)
             {
                 lblViewCharterRequest.Content = "No Charter Request data found.";
@@ -60,7 +68,12 @@ namespace TransportCompany.Miscellaneous
 
         private void chbxViewAll_Checked(object sender, RoutedEventArgs e)
         {
+            txtCustomerId.IsEnabled = false;
+        }
 
+        private void chbxViewAll_UnChecked(object sender, RoutedEventArgs e)
+        {
+            txtCustomerId.IsEnabled = true;
         }
     }
 }

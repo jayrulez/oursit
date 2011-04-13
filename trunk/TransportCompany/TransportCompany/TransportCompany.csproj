@@ -107,7 +107,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Miscellaneous\ViewCharter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Miscellaneous\ViewCharterRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Miscellaneous\ViewDelivery.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -116,6 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Miscellaneous\InquiryReview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Miscellaneous\ViewRental.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -157,14 +169,23 @@
     <Compile Include="Miscellaneous\SearchVehicle.xaml.cs">
       <DependentUpon>SearchVehicle.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Miscellaneous\ViewCharter.xaml.cs">
+      <DependentUpon>ViewCharter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Miscellaneous\ViewCharterRequest.xaml.cs">
       <DependentUpon>ViewCharterRequest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\ViewDelivery.xaml.cs">
+      <DependentUpon>ViewDelivery.xaml</DependentUpon>
     </Compile>
     <Compile Include="Miscellaneous\ViewDeliveryRequest.xaml.cs">
       <DependentUpon>ViewDeliveryRequest.xaml</DependentUpon>
     </Compile>
     <Compile Include="Miscellaneous\InquiryReview.xaml.cs">
       <DependentUpon>InquiryReview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\ViewRental.xaml.cs">
+      <DependentUpon>ViewRental.xaml</DependentUpon>
     </Compile>
     <Compile Include="Miscellaneous\ViewRentalRequest.xaml.cs">
       <DependentUpon>ViewRentalRequest.xaml</DependentUpon>
@@ -238,6 +259,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Icon\AddOperator.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\CharterService.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

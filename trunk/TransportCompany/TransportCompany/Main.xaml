@@ -105,11 +105,27 @@
                     <TreeViewItem Name="CharterService">
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="./Images/Icon/DeliveryService.gif" Height="30" Width="30"/>
+                                <Image Source="./Images/Icon/CharterService.gif" Height="30" Width="30"/>
                                 <TextBlock Text="Charter Service"></TextBlock>
                             </StackPanel>
                         </TreeViewItem.Header>
-                        
+                        <TreeViewItem Name="ViewCharterRequest" Selected="selected_CharterRequest">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="./Images/Icon/CharterService.gif" Height="30" Width="30"/>
+                                    <TextBlock Text="Charter Request"></TextBlock>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem Name="ViewCharter" Selected="selected_ViewCharter">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="./Images/Icon/CharterService.gif" Height="30" Width="30"/>
+                                    <TextBlock Text="View Charter"></TextBlock>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+
+                        </TreeViewItem>
                     </TreeViewItem>
                     <TreeViewItem Name="DeliveryService" >
                         <TreeViewItem.Header>
@@ -122,7 +138,15 @@
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="./Images/Icon/DeliveryService.gif" Height="30" Width="30"/>
-                                    <TextBlock Text="View Delivery Request"></TextBlock>
+                                    <TextBlock Text="Delivery Request"></TextBlock>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem Name="ViewDelivery" Selected="selected_ViewDelivery">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="./Images/Icon/DeliveryService.gif" Height="30" Width="30"/>
+                                    <TextBlock Text="View Delivery"></TextBlock>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
@@ -139,6 +163,14 @@
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="./Images/Icon/RentalService.png" Height="30" Width="30"/>
                                     <TextBlock Text="Rental Request"></TextBlock>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem Name="ViewRental" Selected="selected_ViewRental">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="./Images/Icon/RentalService.png" Height="30" Width="30"/>
+                                    <TextBlock Text="View Rental"></TextBlock>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>

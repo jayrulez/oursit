@@ -74,3 +74,13 @@ C:\Users\DsD\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneou
 C:\Users\DsD\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\InquiryReview.baml
 C:\Users\DsD\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\AddOperator.g.cs
 C:\Users\DsD\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\InquiryReview.g.cs
+C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\ViewCharter.baml
+C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\ViewCharterRequest.baml
+C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\ViewDelivery.baml
+C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\ViewRental.baml
+C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\ViewRentalRequest.baml
+C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\ViewCharter.g.cs
+C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\ViewCharterRequest.g.cs
+C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\ViewDelivery.g.cs
+C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\ViewRental.g.cs
+C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\ViewRentalRequest.g.cs
