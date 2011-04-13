@@ -29,7 +29,15 @@ namespace TransportCompany.Miscellaneous
         private void btnViewDelivery_Click(object sender, RoutedEventArgs e)
         {
             OurSitDb OurSitSchema = new OurSitDb();
-            DataTable RequestResult = OurSitSchema.SearchDeliveryRequest(txtCustomerId.Text.Trim());
+            DataTable RequestResult;
+            if ((bool)chbxViewAll.IsChecked)
+            {
+                RequestResult = OurSitSchema.SearchDeliveryRequest(string.Empty);
+            }
+            else
+            {
+                RequestResult = OurSitSchema.SearchDeliveryRequest(txtCustomerId.Text.Trim());
+            }
             if (RequestResult == null)
             {
                 lblViewDeliveryRequest.Content = "No Delivery Request data found.";
@@ -65,7 +73,12 @@ namespace TransportCompany.Miscellaneous
 
         private void chbxViewAll_Checked(object sender, RoutedEventArgs e)
         {
+            txtCustomerId.IsEnabled = false;
+        }
 
+        private void chbxViewAll_UnChecked(object sender, RoutedEventArgs e)
+        {
+            txtCustomerId.IsEnabled = true;
         }
     }
 }

@@ -72,7 +72,7 @@ namespace TransportCompany
         }
         public void selected_RentalRequest(object sender, RoutedEventArgs e)
         {
-            MainContentFrame.Source = new Uri("./Miscellaneous/RentalRequest.xaml", UriKind.Relative);
+            MainContentFrame.Source = new Uri("./Miscellaneous/ViewRentalRequest.xaml", UriKind.Relative);
         }
         public void selected_AddOperator(object sender, RoutedEventArgs e)
         {
@@ -83,5 +83,22 @@ namespace TransportCompany
         {
             MainContentFrame.Source = new Uri("./Miscellaneous/ViewDeliveryRequest.xaml", UriKind.Relative);
         }
+        public void selected_CharterRequest(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Source = new Uri("./Miscellaneous/ViewCharterRequest.xaml", UriKind.Relative);
+        }
+        public void selected_ViewDelivery(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Source = new Uri("./Miscellaneous/ViewDelivery.xaml", UriKind.Relative);
+        }
+        public void selected_ViewRental(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Source = new Uri("./Miscellaneous/ViewRental.xaml", UriKind.Relative);
+        }
+        public void selected_ViewCharter(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Source = new Uri("./Miscellaneous/ViewCharter.xaml", UriKind.Relative);
+        }
+
     }
 }

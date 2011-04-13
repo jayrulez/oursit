@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/icon/addoperator.gif")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/icon/charterservice.gif")]
 
 
