@@ -15,7 +15,8 @@ create table Customer (
 	EmailAddress varchar(50) not null, 
 	Password varchar(32) not null,
 	ContactNumber varchar(12) not null,
-	CreatedAt DATETIME NOT NULL
+	CreatedAt DATETIME NOT NULL,
+	CONSTRAINT UK_EmailAddress UNIQUE(EmailAddress)
 );
 
 create table Driver (
@@ -26,7 +27,9 @@ create table Driver (
 	NIS varchar(7) default null, 
 	District varchar(30) not null, 
 	Parish varchar(30) not null, 
-	ContactNumber varchar(12) not null
+	ContactNumber varchar(12) not null,
+	CONSTRAINT UK_TRN UNIQUE(TRN),
+	CONSTRAINT UK_NIS UNIQUE(NIS)
 );
 
 create table Inquiry 

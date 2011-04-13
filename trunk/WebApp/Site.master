@@ -15,7 +15,7 @@
     <asp:ContentPlaceHolder id="headJs" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body<asp:ContentPlaceHolder id="bodyClass" runat="server"/>>
+<body>
     <form id="MainForm" runat="server">
     <asp:ContentPlaceHolder id="MainContent" runat="server"></asp:ContentPlaceHolder>
     </form>

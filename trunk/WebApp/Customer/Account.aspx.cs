@@ -5,10 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Customer_Account : SecurePage
+public partial class Customer_Account : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        base.Page_Load(sender, e);
+        if (!WebUser.IsLoggedIn())
+        {
+            Response.Redirect("~/Default.aspx");
+        }
     }
 }
