@@ -1,0 +1,1154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Customer" EntityType="Model.Store.Customer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Delivery" EntityType="Model.Store.Delivery" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DeliveryRequest" EntityType="Model.Store.DeliveryRequest" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Driver" EntityType="Model.Store.Driver" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Inquiry" EntityType="Model.Store.Inquiry" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="InquiryFeedback" EntityType="Model.Store.InquiryFeedback" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Rental" EntityType="Model.Store.Rental" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RentalRequest" EntityType="Model.Store.RentalRequest" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Trip" EntityType="Model.Store.Trip" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TripDestination" EntityType="Model.Store.TripDestination" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TripRequest" EntityType="Model.Store.TripRequest" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Vehicle" EntityType="Model.Store.Vehicle" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Delivery_Customer" Association="Model.Store.FK_Delivery_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Delivery" EntitySet="Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Delivery_Driver" Association="Model.Store.FK_Delivery_Driver">
+            <End Role="Driver" EntitySet="Driver" />
+            <End Role="Delivery" EntitySet="Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Delivery_Vehicle" Association="Model.Store.FK_Delivery_Vehicle">
+            <End Role="Vehicle" EntitySet="Vehicle" />
+            <End Role="Delivery" EntitySet="Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryRequest_Customer" Association="Model.Store.FK_DeliveryRequest_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="DeliveryRequest" EntitySet="DeliveryRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inquiry_Customer" Association="Model.Store.FK_Inquiry_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Inquiry" EntitySet="Inquiry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InquiryFeedback_Inquiry" Association="Model.Store.FK_InquiryFeedback_Inquiry">
+            <End Role="Inquiry" EntitySet="Inquiry" />
+            <End Role="InquiryFeedback" EntitySet="InquiryFeedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rental_Customer" Association="Model.Store.FK_Rental_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Rental" EntitySet="Rental" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rental_Vehicle" Association="Model.Store.FK_Rental_Vehicle">
+            <End Role="Vehicle" EntitySet="Vehicle" />
+            <End Role="Rental" EntitySet="Rental" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentalRequest_Customer" Association="Model.Store.FK_RentalRequest_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="RentalRequest" EntitySet="RentalRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentalRequest_Vehicle" Association="Model.Store.FK_RentalRequest_Vehicle">
+            <End Role="Vehicle" EntitySet="Vehicle" />
+            <End Role="RentalRequest" EntitySet="RentalRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trip_Customer" Association="Model.Store.FK_Trip_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Trip" EntitySet="Trip" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trip_Driver" Association="Model.Store.FK_Trip_Driver">
+            <End Role="Driver" EntitySet="Driver" />
+            <End Role="Trip" EntitySet="Trip" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trip_Vehicle" Association="Model.Store.FK_Trip_Vehicle">
+            <End Role="Vehicle" EntitySet="Vehicle" />
+            <End Role="Trip" EntitySet="Trip" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TripDestination_Trip" Association="Model.Store.FK_TripDestination_Trip">
+            <End Role="Trip" EntitySet="Trip" />
+            <End Role="TripDestination" EntitySet="TripDestination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TripRequest_Customer" Association="Model.Store.FK_TripRequest_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="TripRequest" EntitySet="TripRequest" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="EmailAddress" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="ContactNumber" Type="varchar" Nullable="false" MaxLength="12" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Delivery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="DriverId" Type="int" Nullable="false" />
+          <Property Name="VehicleId" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ItemDimension" Type="varchar" MaxLength="20" />
+          <Property Name="ItemQuantity" Type="int" />
+          <Property Name="FromLocation" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Destination" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Cost" Type="real" Nullable="false" />
+          <Property Name="DispatchTime" Type="datetime" Nullable="false" />
+          <Property Name="ArrivalTime" Type="datetime" Nullable="false" />
+          <Property Name="ReturnTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeliveryRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="Description" Type="text" Nullable="false" />
+          <Property Name="ItemDimension" Type="varchar" MaxLength="20" />
+          <Property Name="ItemQuantity" Type="int" />
+          <Property Name="FromLocation" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Destination" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="DispatchTime" Type="datetime" Nullable="false" />
+          <Property Name="ArrivalTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Driver">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="TRN" Type="int" Nullable="false" />
+          <Property Name="NIS" Type="varchar" MaxLength="7" />
+          <Property Name="District" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Parish" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="ContactNumber" Type="varchar" Nullable="false" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="Inquiry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="Subject" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Body" Type="text" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InquiryFeedback">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="InquiryId" Type="int" Nullable="false" />
+          <Property Name="Body" Type="text" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rental">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="VehicleId" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="RentalDate" Type="datetime" Nullable="false" />
+          <Property Name="ReturnDate" Type="datetime" />
+          <Property Name="Cost" Type="real" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RentalRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="VehicleId" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Trip">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="VehicleId" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="DriverId" Type="int" Nullable="false" />
+          <Property Name="PassengerNum" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="decimal" />
+          <Property Name="DispatchTime" Type="datetime" Nullable="false" />
+          <Property Name="DispatchLocation" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="ReturnTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TripDestination">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TripId" Type="int" Nullable="false" />
+          <Property Name="ArrivalTime" Type="datetime" Nullable="false" />
+          <Property Name="DispatchTime" Type="datetime" Nullable="false" />
+          <Property Name="Address" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TripRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="Description" Type="text" Nullable="false" />
+          <Property Name="PassengerNum" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="VIN" />
+          </Key>
+          <Property Name="VIN" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Make" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Model" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Color" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Condition" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="ServiceType" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="SeatingCapacity" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Delivery_Customer">
+          <End Role="Customer" Type="Model.Store.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Delivery" Type="Model.Store.Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Delivery">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Delivery_Driver">
+          <End Role="Driver" Type="Model.Store.Driver" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Delivery" Type="Model.Store.Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Delivery">
+              <PropertyRef Name="DriverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Delivery_Vehicle">
+          <End Role="Vehicle" Type="Model.Store.Vehicle" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Delivery" Type="Model.Store.Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="VIN" />
+            </Principal>
+            <Dependent Role="Delivery">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryRequest_Customer">
+          <End Role="Customer" Type="Model.Store.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DeliveryRequest" Type="Model.Store.DeliveryRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeliveryRequest">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inquiry_Customer">
+          <End Role="Customer" Type="Model.Store.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Inquiry" Type="Model.Store.Inquiry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Inquiry">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InquiryFeedback_Inquiry">
+          <End Role="Inquiry" Type="Model.Store.Inquiry" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="InquiryFeedback" Type="Model.Store.InquiryFeedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inquiry">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InquiryFeedback">
+              <PropertyRef Name="InquiryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rental_Customer">
+          <End Role="Customer" Type="Model.Store.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rental" Type="Model.Store.Rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rental">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rental_Vehicle">
+          <End Role="Vehicle" Type="Model.Store.Vehicle" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rental" Type="Model.Store.Rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="VIN" />
+            </Principal>
+            <Dependent Role="Rental">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentalRequest_Customer">
+          <End Role="Customer" Type="Model.Store.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RentalRequest" Type="Model.Store.RentalRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RentalRequest">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentalRequest_Vehicle">
+          <End Role="Vehicle" Type="Model.Store.Vehicle" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RentalRequest" Type="Model.Store.RentalRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="VIN" />
+            </Principal>
+            <Dependent Role="RentalRequest">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trip_Customer">
+          <End Role="Customer" Type="Model.Store.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Trip" Type="Model.Store.Trip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Trip">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trip_Driver">
+          <End Role="Driver" Type="Model.Store.Driver" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Trip" Type="Model.Store.Trip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Trip">
+              <PropertyRef Name="DriverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trip_Vehicle">
+          <End Role="Vehicle" Type="Model.Store.Vehicle" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Trip" Type="Model.Store.Trip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="VIN" />
+            </Principal>
+            <Dependent Role="Trip">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TripDestination_Trip">
+          <End Role="Trip" Type="Model.Store.Trip" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TripDestination" Type="Model.Store.TripDestination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trip">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TripDestination">
+              <PropertyRef Name="TripId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TripRequest_Customer">
+          <End Role="Customer" Type="Model.Store.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TripRequest" Type="Model.Store.TripRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TripRequest">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="Model.Customer" />
+          <EntitySet Name="Deliveries" EntityType="Model.Delivery" />
+          <EntitySet Name="DeliveryRequests" EntityType="Model.DeliveryRequest" />
+          <EntitySet Name="Drivers" EntityType="Model.Driver" />
+          <EntitySet Name="Inquiries" EntityType="Model.Inquiry" />
+          <EntitySet Name="InquiryFeedbacks" EntityType="Model.InquiryFeedback" />
+          <EntitySet Name="Rentals" EntityType="Model.Rental" />
+          <EntitySet Name="RentalRequests" EntityType="Model.RentalRequest" />
+          <EntitySet Name="Trips" EntityType="Model.Trip" />
+          <EntitySet Name="TripDestinations" EntityType="Model.TripDestination" />
+          <EntitySet Name="TripRequests" EntityType="Model.TripRequest" />
+          <EntitySet Name="Vehicles" EntityType="Model.Vehicle" />
+          <AssociationSet Name="FK_Delivery_Customer" Association="Model.FK_Delivery_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Delivery" EntitySet="Deliveries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryRequest_Customer" Association="Model.FK_DeliveryRequest_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="DeliveryRequest" EntitySet="DeliveryRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inquiry_Customer" Association="Model.FK_Inquiry_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Inquiry" EntitySet="Inquiries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rental_Customer" Association="Model.FK_Rental_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Rental" EntitySet="Rentals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentalRequest_Customer" Association="Model.FK_RentalRequest_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="RentalRequest" EntitySet="RentalRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trip_Customer" Association="Model.FK_Trip_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Trip" EntitySet="Trips" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TripRequest_Customer" Association="Model.FK_TripRequest_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="TripRequest" EntitySet="TripRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Delivery_Driver" Association="Model.FK_Delivery_Driver">
+            <End Role="Driver" EntitySet="Drivers" />
+            <End Role="Delivery" EntitySet="Deliveries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Delivery_Vehicle" Association="Model.FK_Delivery_Vehicle">
+            <End Role="Vehicle" EntitySet="Vehicles" />
+            <End Role="Delivery" EntitySet="Deliveries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trip_Driver" Association="Model.FK_Trip_Driver">
+            <End Role="Driver" EntitySet="Drivers" />
+            <End Role="Trip" EntitySet="Trips" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InquiryFeedback_Inquiry" Association="Model.FK_InquiryFeedback_Inquiry">
+            <End Role="Inquiry" EntitySet="Inquiries" />
+            <End Role="InquiryFeedback" EntitySet="InquiryFeedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rental_Vehicle" Association="Model.FK_Rental_Vehicle">
+            <End Role="Vehicle" EntitySet="Vehicles" />
+            <End Role="Rental" EntitySet="Rentals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentalRequest_Vehicle" Association="Model.FK_RentalRequest_Vehicle">
+            <End Role="Vehicle" EntitySet="Vehicles" />
+            <End Role="RentalRequest" EntitySet="RentalRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trip_Vehicle" Association="Model.FK_Trip_Vehicle">
+            <End Role="Vehicle" EntitySet="Vehicles" />
+            <End Role="Trip" EntitySet="Trips" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TripDestination_Trip" Association="Model.FK_TripDestination_Trip">
+            <End Role="Trip" EntitySet="Trips" />
+            <End Role="TripDestination" EntitySet="TripDestinations" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+          <Property Name="ContactNumber" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Deliveries" Relationship="Model.FK_Delivery_Customer" FromRole="Customer" ToRole="Delivery" />
+          <NavigationProperty Name="DeliveryRequests" Relationship="Model.FK_DeliveryRequest_Customer" FromRole="Customer" ToRole="DeliveryRequest" />
+          <NavigationProperty Name="Inquiries" Relationship="Model.FK_Inquiry_Customer" FromRole="Customer" ToRole="Inquiry" />
+          <NavigationProperty Name="Rentals" Relationship="Model.FK_Rental_Customer" FromRole="Customer" ToRole="Rental" />
+          <NavigationProperty Name="RentalRequests" Relationship="Model.FK_RentalRequest_Customer" FromRole="Customer" ToRole="RentalRequest" />
+          <NavigationProperty Name="Trips" Relationship="Model.FK_Trip_Customer" FromRole="Customer" ToRole="Trip" />
+          <NavigationProperty Name="TripRequests" Relationship="Model.FK_TripRequest_Customer" FromRole="Customer" ToRole="TripRequest" />
+        </EntityType>
+        <EntityType Name="Delivery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="DriverId" Type="Int32" Nullable="false" />
+          <Property Name="VehicleId" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ItemDimension" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="ItemQuantity" Type="Int32" />
+          <Property Name="FromLocation" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Destination" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Cost" Type="Single" Nullable="false" />
+          <Property Name="DispatchTime" Type="DateTime" Nullable="false" />
+          <Property Name="ArrivalTime" Type="DateTime" Nullable="false" />
+          <Property Name="ReturnTime" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Model.FK_Delivery_Customer" FromRole="Delivery" ToRole="Customer" />
+          <NavigationProperty Name="Driver" Relationship="Model.FK_Delivery_Driver" FromRole="Delivery" ToRole="Driver" />
+          <NavigationProperty Name="Vehicle" Relationship="Model.FK_Delivery_Vehicle" FromRole="Delivery" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="DeliveryRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="ItemDimension" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="ItemQuantity" Type="Int32" />
+          <Property Name="FromLocation" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Destination" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="DispatchTime" Type="DateTime" Nullable="false" />
+          <Property Name="ArrivalTime" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Model.FK_DeliveryRequest_Customer" FromRole="DeliveryRequest" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Driver">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="TRN" Type="Int32" Nullable="false" />
+          <Property Name="NIS" Type="String" MaxLength="7" Unicode="false" FixedLength="false" />
+          <Property Name="District" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Parish" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="ContactNumber" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Deliveries" Relationship="Model.FK_Delivery_Driver" FromRole="Driver" ToRole="Delivery" />
+          <NavigationProperty Name="Trips" Relationship="Model.FK_Trip_Driver" FromRole="Driver" ToRole="Trip" />
+        </EntityType>
+        <EntityType Name="Inquiry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Body" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Model.FK_Inquiry_Customer" FromRole="Inquiry" ToRole="Customer" />
+          <NavigationProperty Name="InquiryFeedbacks" Relationship="Model.FK_InquiryFeedback_Inquiry" FromRole="Inquiry" ToRole="InquiryFeedback" />
+        </EntityType>
+        <EntityType Name="InquiryFeedback">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InquiryId" Type="Int32" Nullable="false" />
+          <Property Name="Body" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Inquiry" Relationship="Model.FK_InquiryFeedback_Inquiry" FromRole="InquiryFeedback" ToRole="Inquiry" />
+        </EntityType>
+        <EntityType Name="Rental">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="VehicleId" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="RentalDate" Type="DateTime" Nullable="false" />
+          <Property Name="ReturnDate" Type="DateTime" />
+          <Property Name="Cost" Type="Single" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Model.FK_Rental_Customer" FromRole="Rental" ToRole="Customer" />
+          <NavigationProperty Name="Vehicle" Relationship="Model.FK_Rental_Vehicle" FromRole="Rental" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="RentalRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="VehicleId" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Customer" Relationship="Model.FK_RentalRequest_Customer" FromRole="RentalRequest" ToRole="Customer" />
+          <NavigationProperty Name="Vehicle" Relationship="Model.FK_RentalRequest_Vehicle" FromRole="RentalRequest" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="Trip">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="VehicleId" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DriverId" Type="Int32" Nullable="false" />
+          <Property Name="PassengerNum" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DispatchTime" Type="DateTime" Nullable="false" />
+          <Property Name="DispatchLocation" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ReturnTime" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Model.FK_Trip_Customer" FromRole="Trip" ToRole="Customer" />
+          <NavigationProperty Name="Driver" Relationship="Model.FK_Trip_Driver" FromRole="Trip" ToRole="Driver" />
+          <NavigationProperty Name="Vehicle" Relationship="Model.FK_Trip_Vehicle" FromRole="Trip" ToRole="Vehicle" />
+          <NavigationProperty Name="TripDestinations" Relationship="Model.FK_TripDestination_Trip" FromRole="Trip" ToRole="TripDestination" />
+        </EntityType>
+        <EntityType Name="TripDestination">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TripId" Type="Int32" Nullable="false" />
+          <Property Name="ArrivalTime" Type="DateTime" Nullable="false" />
+          <Property Name="DispatchTime" Type="DateTime" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Trip" Relationship="Model.FK_TripDestination_Trip" FromRole="TripDestination" ToRole="Trip" />
+        </EntityType>
+        <EntityType Name="TripRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="PassengerNum" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Model.FK_TripRequest_Customer" FromRole="TripRequest" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="VIN" />
+          </Key>
+          <Property Name="VIN" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Make" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Model" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Color" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Condition" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceType" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="SeatingCapacity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Deliveries" Relationship="Model.FK_Delivery_Vehicle" FromRole="Vehicle" ToRole="Delivery" />
+          <NavigationProperty Name="Rentals" Relationship="Model.FK_Rental_Vehicle" FromRole="Vehicle" ToRole="Rental" />
+          <NavigationProperty Name="RentalRequests" Relationship="Model.FK_RentalRequest_Vehicle" FromRole="Vehicle" ToRole="RentalRequest" />
+          <NavigationProperty Name="Trips" Relationship="Model.FK_Trip_Vehicle" FromRole="Vehicle" ToRole="Trip" />
+        </EntityType>
+        <Association Name="FK_Delivery_Customer">
+          <End Role="Customer" Type="Model.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Delivery" Type="Model.Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Delivery">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryRequest_Customer">
+          <End Role="Customer" Type="Model.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DeliveryRequest" Type="Model.DeliveryRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeliveryRequest">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inquiry_Customer">
+          <End Role="Customer" Type="Model.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Inquiry" Type="Model.Inquiry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Inquiry">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rental_Customer">
+          <End Role="Customer" Type="Model.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rental" Type="Model.Rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rental">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentalRequest_Customer">
+          <End Role="Customer" Type="Model.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RentalRequest" Type="Model.RentalRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RentalRequest">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trip_Customer">
+          <End Role="Customer" Type="Model.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Trip" Type="Model.Trip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Trip">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TripRequest_Customer">
+          <End Role="Customer" Type="Model.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TripRequest" Type="Model.TripRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TripRequest">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Delivery_Driver">
+          <End Role="Driver" Type="Model.Driver" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Delivery" Type="Model.Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Delivery">
+              <PropertyRef Name="DriverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Delivery_Vehicle">
+          <End Role="Vehicle" Type="Model.Vehicle" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Delivery" Type="Model.Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="VIN" />
+            </Principal>
+            <Dependent Role="Delivery">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trip_Driver">
+          <End Role="Driver" Type="Model.Driver" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Trip" Type="Model.Trip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Trip">
+              <PropertyRef Name="DriverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InquiryFeedback_Inquiry">
+          <End Role="Inquiry" Type="Model.Inquiry" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="InquiryFeedback" Type="Model.InquiryFeedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inquiry">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InquiryFeedback">
+              <PropertyRef Name="InquiryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rental_Vehicle">
+          <End Role="Vehicle" Type="Model.Vehicle" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rental" Type="Model.Rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="VIN" />
+            </Principal>
+            <Dependent Role="Rental">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentalRequest_Vehicle">
+          <End Role="Vehicle" Type="Model.Vehicle" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RentalRequest" Type="Model.RentalRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="VIN" />
+            </Principal>
+            <Dependent Role="RentalRequest">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trip_Vehicle">
+          <End Role="Vehicle" Type="Model.Vehicle" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Trip" Type="Model.Trip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="VIN" />
+            </Principal>
+            <Dependent Role="Trip">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TripDestination_Trip">
+          <End Role="Trip" Type="Model.Trip" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TripDestination" Type="Model.TripDestination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trip">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TripDestination">
+              <PropertyRef Name="TripId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Customers"><EntityTypeMapping TypeName="Model.Customer"><MappingFragment StoreEntitySet="Customer">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+            <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+            <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Deliveries"><EntityTypeMapping TypeName="Model.Delivery"><MappingFragment StoreEntitySet="Delivery">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+            <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+            <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+            <ScalarProperty Name="ItemDimension" ColumnName="ItemDimension" />
+            <ScalarProperty Name="ItemQuantity" ColumnName="ItemQuantity" />
+            <ScalarProperty Name="FromLocation" ColumnName="FromLocation" />
+            <ScalarProperty Name="Destination" ColumnName="Destination" />
+            <ScalarProperty Name="Cost" ColumnName="Cost" />
+            <ScalarProperty Name="DispatchTime" ColumnName="DispatchTime" />
+            <ScalarProperty Name="ArrivalTime" ColumnName="ArrivalTime" />
+            <ScalarProperty Name="ReturnTime" ColumnName="ReturnTime" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="DeliveryRequests"><EntityTypeMapping TypeName="Model.DeliveryRequest"><MappingFragment StoreEntitySet="DeliveryRequest">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="ItemDimension" ColumnName="ItemDimension" />
+            <ScalarProperty Name="ItemQuantity" ColumnName="ItemQuantity" />
+            <ScalarProperty Name="FromLocation" ColumnName="FromLocation" />
+            <ScalarProperty Name="Destination" ColumnName="Destination" />
+            <ScalarProperty Name="DispatchTime" ColumnName="DispatchTime" />
+            <ScalarProperty Name="ArrivalTime" ColumnName="ArrivalTime" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Drivers"><EntityTypeMapping TypeName="Model.Driver"><MappingFragment StoreEntitySet="Driver">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="TRN" ColumnName="TRN" />
+            <ScalarProperty Name="NIS" ColumnName="NIS" />
+            <ScalarProperty Name="District" ColumnName="District" />
+            <ScalarProperty Name="Parish" ColumnName="Parish" />
+            <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Inquiries"><EntityTypeMapping TypeName="Model.Inquiry"><MappingFragment StoreEntitySet="Inquiry">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+            <ScalarProperty Name="Subject" ColumnName="Subject" />
+            <ScalarProperty Name="Body" ColumnName="Body" />
+            <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="InquiryFeedbacks"><EntityTypeMapping TypeName="Model.InquiryFeedback"><MappingFragment StoreEntitySet="InquiryFeedback">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="InquiryId" ColumnName="InquiryId" />
+            <ScalarProperty Name="Body" ColumnName="Body" />
+            <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Rentals"><EntityTypeMapping TypeName="Model.Rental"><MappingFragment StoreEntitySet="Rental">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+            <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+            <ScalarProperty Name="RentalDate" ColumnName="RentalDate" />
+            <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+            <ScalarProperty Name="Cost" ColumnName="Cost" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="RentalRequests"><EntityTypeMapping TypeName="Model.RentalRequest"><MappingFragment StoreEntitySet="RentalRequest">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+            <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Trips"><EntityTypeMapping TypeName="Model.Trip"><MappingFragment StoreEntitySet="Trip">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+            <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+            <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+            <ScalarProperty Name="PassengerNum" ColumnName="PassengerNum" />
+            <ScalarProperty Name="Cost" ColumnName="Cost" />
+            <ScalarProperty Name="DispatchTime" ColumnName="DispatchTime" />
+            <ScalarProperty Name="DispatchLocation" ColumnName="DispatchLocation" />
+            <ScalarProperty Name="ReturnTime" ColumnName="ReturnTime" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TripDestinations"><EntityTypeMapping TypeName="Model.TripDestination"><MappingFragment StoreEntitySet="TripDestination">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="TripId" ColumnName="TripId" />
+            <ScalarProperty Name="ArrivalTime" ColumnName="ArrivalTime" />
+            <ScalarProperty Name="DispatchTime" ColumnName="DispatchTime" />
+            <ScalarProperty Name="Address" ColumnName="Address" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TripRequests"><EntityTypeMapping TypeName="Model.TripRequest"><MappingFragment StoreEntitySet="TripRequest">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="PassengerNum" ColumnName="PassengerNum" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Vehicles"><EntityTypeMapping TypeName="Model.Vehicle"><MappingFragment StoreEntitySet="Vehicle">
+            <ScalarProperty Name="VIN" ColumnName="VIN" />
+            <ScalarProperty Name="Make" ColumnName="Make" />
+            <ScalarProperty Name="Model" ColumnName="Model" />
+            <ScalarProperty Name="Color" ColumnName="Color" />
+            <ScalarProperty Name="Condition" ColumnName="Condition" />
+            <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
+            <ScalarProperty Name="SeatingCapacity" ColumnName="SeatingCapacity" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model">
+        <EntityTypeShape EntityType="Model.Customer" Width="1.5" PointX="0.75" PointY="11.125" Height="3.2357796223958317" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Delivery" Width="1.5" PointX="3" PointY="8" Height="3.4001269531249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DeliveryRequest" Width="1.5" PointX="3" PointY="12.875" Height="2.5783902994791674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Driver" Width="1.5" PointX="0.75" PointY="6.625" Height="2.5783902994791665" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Inquiry" Width="1.5" PointX="3" PointY="16.25" Height="2.0853483072916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.InquiryFeedback" Width="1.5" PointX="5.25" PointY="16.375" Height="1.7566536458333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Rental" Width="1.5" PointX="6" PointY="11.5" Height="2.2496956380208317" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.RentalRequest" Width="1.5" PointX="6" PointY="8.75" Height="1.9210009765624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Trip" Width="1.5" PointX="8" PointY="15.125" Height="3.0714322916666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TripDestination" Width="1.5" PointX="10.25" PointY="15.75" Height="1.9210009765625014" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TripRequest" Width="1.5" PointX="3" PointY="28.5" Height="1.7566536458333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Vehicle" Width="1.5" PointX="0.75" PointY="16" Height="2.7427376302083317" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_Delivery_Customer" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="11.126152846153847" />
+          <ConnectorPoint PointX="2.625" PointY="10.751152846153847" />
+          <ConnectorPoint PointX="2.625" PointY="11.776279799278846" />
+          <ConnectorPoint PointX="2.6285744349011209" PointY="11.772705364377725" />
+          <ConnectorPoint PointX="2.7464255650988787" PointY="11.654854234179968" />
+          <ConnectorPoint PointX="3.0011528461538459" PointY="11.400126953125" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.FK_DeliveryRequest_Customer" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="13.617889811197916" />
+          <ConnectorPoint PointX="2.6041666666666665" PointY="13.617889811197914" />
+          <ConnectorPoint PointX="2.9583333333333335" PointY="13.617889811197916" />
+          <ConnectorPoint PointX="3" PointY="13.617889811197916" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.FK_Inquiry_Customer" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="14.30424016085737" />
+          <ConnectorPoint PointX="2.6285744349011217" PointY="14.68281459575849" />
+          <ConnectorPoint PointX="2.8089255650988791" PointY="14.863165725956248" />
+          <ConnectorPoint PointX="2.84375" PointY="14.89799016085737" />
+          <ConnectorPoint PointX="2.84375" PointY="17.292674153645834" />
+          <ConnectorPoint PointX="3" PointY="17.292674153645834" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.FK_Rental_Customer" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="12.15625" />
+          <ConnectorPoint PointX="2.6041666666666665" PointY="12.15625" />
+          <ConnectorPoint PointX="2.7708333333333335" PointY="12.15625" />
+          <ConnectorPoint PointX="2.7916666666666665" PointY="12.15625" />
+          <ConnectorPoint PointX="2.9583333333333335" PointY="12.15625" />
+          <ConnectorPoint PointX="6" PointY="12.15625" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.FK_RentalRequest_Customer" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="11.125" />
+          <ConnectorPoint PointX="1.5" PointY="9.71050048828125" />
+          <ConnectorPoint PointX="2.75" PointY="9.71050048828125" />
+          <ConnectorPoint PointX="2.75" PointY="11.650126953125" />
+          <ConnectorPoint PointX="5.291666666666667" PointY="11.650126953125" />
+          <ConnectorPoint PointX="5.458333333333333" PointY="11.650126953125" />
+          <ConnectorPoint PointX="5.625" PointY="11.650126953125" />
+          <ConnectorPoint PointX="5.625" PointY="9.71050048828125" />
+          <ConnectorPoint PointX="6" PointY="9.71050048828125" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.FK_Trip_Customer" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="12.887069905598958" />
+          <ConnectorPoint PointX="2.75" PointY="12.887069905598958" />
+          <ConnectorPoint PointX="2.75" PointY="15.703390299479167" />
+          <ConnectorPoint PointX="2.7604166666666665" PointY="15.703390299479167" />
+          <ConnectorPoint PointX="2.9270833333333335" PointY="15.703390299479167" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="15.703390299479167" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="15.703390299479167" />
+          <ConnectorPoint PointX="7.75" PointY="15.703390299479167" />
+          <ConnectorPoint PointX="7.75" PointY="14.875" />
+          <ConnectorPoint PointX="8.2604141666666653" PointY="14.875" />
+          <ConnectorPoint PointX="8.4270808333333331" PointY="14.875" />
+          <ConnectorPoint PointX="8.75" PointY="14.875" />
+          <ConnectorPoint PointX="8.75" PointY="15.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.FK_TripRequest_Customer" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.2257692307692305" PointY="14.360779622395832" />
+          <ConnectorPoint PointX="2.625" PointY="14.7600103916266" />
+          <ConnectorPoint PointX="2.625" PointY="29.378326822916669" />
+          <ConnectorPoint PointX="3" PointY="29.378326822916669" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.FK_Delivery_Driver" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="8.6016951497395837" />
+          <ConnectorPoint PointX="3" PointY="8.6016951497395837" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.FK_Delivery_Vehicle" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="16.063460538461534" />
+          <ConnectorPoint PointX="2.5660744349011204" PointY="15.747386103560412" />
+          <ConnectorPoint PointX="2.6839255650988791" PointY="15.629534973362656" />
+          <ConnectorPoint PointX="2.6875" PointY="15.625960538461534" />
+          <ConnectorPoint PointX="2.6875" PointY="10.555313220703125" />
+          <ConnectorPoint PointX="3" PointY="10.555313220703125" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.FK_Trip_Driver" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="7.28125" />
+          <ConnectorPoint PointX="8.3437475" PointY="7.28125" />
+          <ConnectorPoint PointX="8.3437475" PointY="15.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.FK_InquiryFeedback_Inquiry" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="17.253326822916666" />
+          <ConnectorPoint PointX="5.25" PointY="17.253326822916666" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.FK_Rental_Vehicle" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="18.57029296875" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="18.57029296875" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="18.57029296875" />
+          <ConnectorPoint PointX="7.15625" PointY="18.57029296875" />
+          <ConnectorPoint PointX="7.15625" PointY="13.749695638020832" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.FK_RentalRequest_Vehicle" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="16" />
+          <ConnectorPoint PointX="1.5" PointY="14.610779622395832" />
+          <ConnectorPoint PointX="2.3924358974358966" PointY="14.61077962239583" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="14.610779622395832" />
+          <ConnectorPoint PointX="2.875" PointY="14.610779622395832" />
+          <ConnectorPoint PointX="2.875" PointY="11.900126953125" />
+          <ConnectorPoint PointX="5.375" PointY="11.900126953125" />
+          <ConnectorPoint PointX="5.375" PointY="10.222002732421876" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="10.222002732421876" />
+          <ConnectorPoint PointX="5.708333333333333" PointY="10.222002732421876" />
+          <ConnectorPoint PointX="6" PointY="10.222002732421876" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.FK_Trip_Vehicle" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="16.063460538461534" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="16.063460538461534" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="16.063460538461534" />
+          <ConnectorPoint PointX="2.7604166666666665" PointY="16.063460538461534" />
+          <ConnectorPoint PointX="2.9270833333333335" PointY="16.063460538461534" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="16.063460538461534" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="16.063460538461534" />
+          <ConnectorPoint PointX="8" PointY="16.063460538461534" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.FK_TripDestination_Trip" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.5" PointY="16.710500488281252" />
+          <ConnectorPoint PointX="10.25" PointY="16.710500488281252" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
