@@ -13,7 +13,6 @@
 <asp:Content ID="headJsPlaceHolderContent" ContentPlaceHolderID="headJs" Runat="Server">
 <asp:ContentPlaceHolder id="headJs" runat="server"></asp:ContentPlaceHolder>
 </asp:Content>
-<asp:Content ID="bodyClassPlaceHolderContent" ContentPlaceHolderID="bodyClass" Runat="Server"><asp:ContentPlaceHolder id="bodyClass" runat="server"></asp:ContentPlaceHolder></asp:Content>
 
 <asp:Content ID="MainContentPlaceHolderContent" ContentPlaceHolderID="MainContent" Runat="Server">
     <div id="wrapper">
@@ -21,20 +20,20 @@
             <div class="wrapper">
                 <div id="util-nav">
                     <ul>
-                        <li>Logged in as Customer Name:</li>
-                        <li><a runat="server" href="~/Customer/Account.aspx">Account</a></li>
+                        <li>Logged in as <%= WebUser.GetInstance().FirstName + " " + WebUser.GetInstance().LastName %></li>
                         <li><a runat="server" href="~/Customer/Logout.aspx">Logout</a></li>
                     </ul>
                 </div>
                 <h1>Prendegast Transportation Services</h1>
                 <div id="main-nav">
                     <ul class="clearfix">
-                        <li class="active"><a href="">Dashboard</a></li>
-                        <li><a href="#">Inquiry</a></li>
-                        <li><a href="#">Trips</a></li>
-                        <li><a href="#">Deliveries</a></li>
-                        <li><a href="#">Rentals</a></li>
-                        <li><a href="#">History</a></li>
+                        <li><a id="linkCustomerDefault" runat="server" href="~/Customer/Default.aspx">Dashboard</a></li>
+                        <li><a id="linkCustomerInquiry" runat="server" href="~/Customer/Inquiries.aspx">Inquiry</a></li>
+                        <li><a id="linkCustomerTrips" runat="server" href="~/Customer/Trips.aspx">Trips</a></li>
+                        <li><a id="linkCustomerDeliveries" runat="server" href="~/Customer/Deliveries.aspx">Deliveries</a></li>
+                        <li><a id="linkCustomerRentals" runat="server" href="~/Customer/Rentals.aspx">Rentals</a></li>
+                        <li><a id="linkCustomerHistory" runat="server" href="~/Customer/History.aspx">History</a></li>
+                        <li><a id="linkCustomerAccount" runat="server" href="~/Customer/Account.aspx">Account</a></li>
                     </ul>
                 </div>
             </div>
@@ -51,7 +50,7 @@
         </div>
         <div id="page-footer">
 			<div id="footer-inner">
-				<p class="wrapper"><span style="float: right;"><a href="">Documentation</a> | <a href="">Feedback</a></span>Last account activity from 127.0.0.1 - <a href="">Details</a></p>
+				<p class="wrapper"><span style="float: right;"><a href="">Feedback</a></span></p>
 			</div>
         </div>
     </div>
