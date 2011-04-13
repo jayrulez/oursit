@@ -4,10 +4,40 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:MinDesignHeight="300" d:MinDesignWidth="300"
 	Title="ViewCharter">
 
-    <Grid>
-        
-    </Grid>
+    <DockPanel>
+        <Grid Name="ViewRequestForm" DockPanel.Dock="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Customer ID:" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Margin="3"></Label>
+            <TextBox Name="txtCustomerId" Grid.Column="1" Grid.Row="0" Width="150" Margin="3"/>
+            <CheckBox Content="View All Requests" Name ="chbxViewAll" Grid.Column="2" Grid.Row="0" Margin="3" VerticalAlignment="Center" Checked="chbxViewAll_Checked" Unchecked="chbxViewAll_UnChecked"/>
+            <Button Name="btnViewCharter" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Width="100" Content="View" Margin="3" Click="btnViewCharter_Click" />
+            <Label Name="lblViewCharterRequest" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4"/>
+        </Grid>
+        <DataGrid Name="SearchCharterDataGrid" CanUserAddRows="False" CanUserSortColumns="True">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Ref. Id" IsReadOnly="True"/>
+
+                <DataGridTextColumn Header="Customer ID" IsReadOnly="True"/>
+
+                <DataGridTextColumn Header="Description" IsReadOnly="True"/>
+
+                <DataGridTextColumn Header="Number of Passengers" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
 </Page>

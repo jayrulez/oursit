@@ -670,7 +670,7 @@ namespace TransportCompany.DataAccessLayer
                 }
             }
             SqlDataReader GetInquiryReader = null;
-            DataTable InquiryDataTable = new DataTable("Driver");
+            DataTable InquiryDataTable = new DataTable("Inquiry");
             try
             {
                 oursitdbcommand.Connection = oursitdbconnection;
@@ -699,7 +699,7 @@ namespace TransportCompany.DataAccessLayer
         public DataTable SearchDeliveryRequest(string CustomerId)
         {
             MessageBoxResult status;
-            DataTable SearchRequestTable = null;
+            DataTable SearchRequestTable = new DataTable("DeliveryRequest");
             SqlDataReader SearchRequestReader;
 
             oursitdbcommand.CommandText = "sp_SearchDeliveryRequest";
@@ -732,9 +732,11 @@ namespace TransportCompany.DataAccessLayer
                     {
                         SearchRequestTable.Load(SearchRequestReader);
                     }
+                    oursitdbcommand.Connection.Close();
                 }
                 catch (Exception)
                 {
+                    oursitdbcommand.Connection.Close();
                     MessageBox.Show("An error occured while attempting to retreive Delivery Request data. Please contact administrator");
                 }
             }
@@ -748,7 +750,7 @@ namespace TransportCompany.DataAccessLayer
         public DataTable SearchRentalRequest(string CustomerId)
         {
             MessageBoxResult status;
-            DataTable SearchRequestTable = null;
+            DataTable SearchRequestTable = new DataTable("RentalRequest"); 
             SqlDataReader SearchRequestReader;
 
             oursitdbcommand.CommandText = "sp_SearchRentalRequest";
@@ -781,10 +783,12 @@ namespace TransportCompany.DataAccessLayer
                     {
                         SearchRequestTable.Load(SearchRequestReader);
                     }
+                    oursitdbcommand.Connection.Close();
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("An error occured while attempting to retreive Delivery Request data. Please contact administrator");
+                    oursitdbcommand.Connection.Close();
+                    MessageBox.Show("An error occured while attempting to retreive Rental Request data. Please contact administrator");
                 }
             }
             catch (Exception)
@@ -797,7 +801,7 @@ namespace TransportCompany.DataAccessLayer
         public DataTable SearchCharterRequest(string CustomerId)
         {
             MessageBoxResult status;
-            DataTable SearchRequestTable = null;
+            DataTable SearchRequestTable = new DataTable("CharterRequest");
             SqlDataReader SearchRequestReader;
 
             oursitdbcommand.CommandText = "sp_SearchCharterRequest";
@@ -830,10 +834,12 @@ namespace TransportCompany.DataAccessLayer
                     {
                         SearchRequestTable.Load(SearchRequestReader);
                     }
+                    oursitdbcommand.Connection.Close();
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("An error occured while attempting to retreive Delivery Request data. Please contact administrator");
+                    oursitdbcommand.Connection.Close();
+                    MessageBox.Show("An error occured while attempting to retreive Charter Request data. Please contact administrator");
                 }
             }
             catch (Exception)
