@@ -22,31 +22,19 @@
                 <div id="util-nav">
                     <ul>
                         <li>Logged in as Customer Name:</li>
-                        <li><a href="">Profile</a></li>
-                        <li><a href="">Account</a></li>
-                        <li><a href="">Help</a></li>
-                        <li><a href="">Logout</a></li>
+                        <li><a runat="server" href="~/Customer/Account.aspx">Account</a></li>
+                        <li><a runat="server" href="~/Customer/Logout.aspx">Logout</a></li>
                     </ul>
                 </div>
                 <h1>Prendegast Transportation Services</h1>
                 <div id="main-nav">
                     <ul class="clearfix">
                         <li class="active"><a href="">Dashboard</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li id="quick-links">
-                            <a href="">Quick Links<span>&darr;</span></a>
-                            <ul>
-								<li><a href="#">Link</a></li>
-								<li><a href="#">Link</a></li>
-								<li><a href="#">Link</a></li>
-								<li><a href="#">Link</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="#">Inquiry</a></li>
+                        <li><a href="#">Trips</a></li>
+                        <li><a href="#">Deliveries</a></li>
+                        <li><a href="#">Rentals</a></li>
+                        <li><a href="#">History</a></li>
                     </ul>
                 </div>
             </div>
