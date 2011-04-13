@@ -848,6 +848,158 @@ namespace TransportCompany.DataAccessLayer
             }
             return SearchRequestTable;
         }
+        public DataTable SearchDelivery(string CustomerId)
+        {
+            MessageBoxResult status;
+            DataTable SearchRequestTable = new DataTable("DeliveryRequest");
+            SqlDataReader SearchRequestReader;
+
+            oursitdbcommand.CommandText = "sp_SearchDelivery";
+            oursitdbcommand.CommandType = CommandType.StoredProcedure;
+            if (string.IsNullOrEmpty(CustomerId))
+            {
+                oursitdbcommand.Parameters.AddWithValue("@CustomerId", DBNull.Value);
+            }
+            else
+            {
+                int ParsedId;
+                if (Int32.TryParse(CustomerId, out ParsedId))
+                {
+                    oursitdbcommand.Parameters.AddWithValue("@CustomerId", ParsedId);
+                }
+                else
+                {
+                    MessageBox.Show("Customer Id must me numeric", "field format error");
+                    return null;
+                }
+            }
+            oursitdbcommand.Connection = oursitdbconnection;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    SearchRequestReader = oursitdbcommand.ExecuteReader();
+                    if (SearchRequestReader.HasRows)
+                    {
+                        SearchRequestTable.Load(SearchRequestReader);
+                    }
+                    oursitdbcommand.Connection.Close();
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    MessageBox.Show("An error occured while attempting to retreive Delivery Request data. Please contact administrator");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.");
+            }
+            return SearchRequestTable;
+        }
+
+        public DataTable SearchRental(string CustomerId)
+        {
+            MessageBoxResult status;
+            DataTable SearchRequestTable = new DataTable("RentalRequest");
+            SqlDataReader SearchRequestReader;
+
+            oursitdbcommand.CommandText = "sp_SearchRental";
+            oursitdbcommand.CommandType = CommandType.StoredProcedure;
+            if (string.IsNullOrEmpty(CustomerId))
+            {
+                oursitdbcommand.Parameters.AddWithValue("@CustomerId", DBNull.Value);
+            }
+            else
+            {
+                int ParsedId;
+                if (Int32.TryParse(CustomerId, out ParsedId))
+                {
+                    oursitdbcommand.Parameters.AddWithValue("@CustomerId", ParsedId);
+                }
+                else
+                {
+                    MessageBox.Show("Customer Id must me numeric", "field format error");
+                    return null;
+                }
+            }
+            oursitdbcommand.Connection = oursitdbconnection;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    SearchRequestReader = oursitdbcommand.ExecuteReader();
+                    if (SearchRequestReader.HasRows)
+                    {
+                        SearchRequestTable.Load(SearchRequestReader);
+                    }
+                    oursitdbcommand.Connection.Close();
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    MessageBox.Show("An error occured while attempting to retreive Rental Request data. Please contact administrator");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.");
+            }
+            return SearchRequestTable;
+        }
+
+        public DataTable SearchCharter(string CustomerId)
+        {
+            MessageBoxResult status;
+            DataTable SearchRequestTable = new DataTable("CharterRequest");
+            SqlDataReader SearchRequestReader;
+
+            oursitdbcommand.CommandText = "sp_SearchCharter";
+            oursitdbcommand.CommandType = CommandType.StoredProcedure;
+            if (string.IsNullOrEmpty(CustomerId))
+            {
+                oursitdbcommand.Parameters.AddWithValue("@CustomerId", DBNull.Value);
+            }
+            else
+            {
+                int ParsedId;
+                if (Int32.TryParse(CustomerId, out ParsedId))
+                {
+                    oursitdbcommand.Parameters.AddWithValue("@CustomerId", ParsedId);
+                }
+                else
+                {
+                    MessageBox.Show("Customer Id must me numeric", "field format error");
+                    return null;
+                }
+            }
+            oursitdbcommand.Connection = oursitdbconnection;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    SearchRequestReader = oursitdbcommand.ExecuteReader();
+                    if (SearchRequestReader.HasRows)
+                    {
+                        SearchRequestTable.Load(SearchRequestReader);
+                    }
+                    oursitdbcommand.Connection.Close();
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    MessageBox.Show("An error occured while attempting to retreive Charter Request data. Please contact administrator");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.");
+            }
+            return SearchRequestTable;
+        }
     }
 }
 

@@ -23,5 +23,18 @@ namespace TransportCompany.Miscellaneous
         {
             InitializeComponent();
         }
+        private void btnViewCharter_Click(object sender, RoutedEventArgs e)
+        {
+        }
+        private void chbxViewAll_Checked(object sender, RoutedEventArgs e)
+        {
+            txtCustomerId.IsEnabled = false;
+        }
+
+        private void chbxViewAll_UnChecked(object sender, RoutedEventArgs e)
+        {
+            txtCustomerId.IsEnabled = true;
+        }
     }
+
 }

@@ -38,9 +38,22 @@
                 <DataGridTextColumn Header="Vehicle ID (vin)" IsReadOnly="True">
 
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Description" IsReadOnly="True">
+                <DataGridTextColumn Header="Rental Date" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Return Date" IsReadOnly="True">
+                    
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Cost" IsReadOnly="True">
 
                 </DataGridTextColumn>
+                <!--	Id INT IDENTITY(1,1) PRIMARY KEY NOT NULL, 
+	CustomerId int not null, 
+	VehicleId varchar(50) not null, 
+	RentalDate DATETIME NOT NULL, 
+	ReturnDate DATETIME DEFAULT NULL, 
+	Cost float(11) not null-->
+
+                
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>
