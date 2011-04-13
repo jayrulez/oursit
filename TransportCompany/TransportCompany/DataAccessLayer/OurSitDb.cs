@@ -696,16 +696,149 @@ namespace TransportCompany.DataAccessLayer
             return InquiryDataTable;
         }
 
-        public DataTable SearchDeliveryRequest(string Customer)
+        public DataTable SearchDeliveryRequest(string CustomerId)
         {
             MessageBoxResult status;
             DataTable SearchRequestTable = null;
+            SqlDataReader SearchRequestReader;
 
-            oursitdbcommand.CommandText = "";
+            oursitdbcommand.CommandText = "sp_SearchDeliveryRequest";
             oursitdbcommand.CommandType = CommandType.StoredProcedure;
-            if (string.IsNullOrEmpty(Customer))
+            if (string.IsNullOrEmpty(CustomerId))
             {
                 oursitdbcommand.Parameters.AddWithValue("@CustomerId", DBNull.Value);
+            }
+            else
+            {
+                int ParsedId;
+                if (Int32.TryParse(CustomerId, out ParsedId))
+                {
+                    oursitdbcommand.Parameters.AddWithValue("@CustomerId", ParsedId);
+                }
+                else
+                {
+                    MessageBox.Show("Customer Id must me numeric","field format error");
+                    return null;
+                }
+            }
+            oursitdbcommand.Connection = oursitdbconnection;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    SearchRequestReader = oursitdbcommand.ExecuteReader();
+                    if (SearchRequestReader.HasRows)
+                    {
+                        SearchRequestTable.Load(SearchRequestReader);
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("An error occured while attempting to retreive Delivery Request data. Please contact administrator");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.");
+            }
+            return SearchRequestTable;
+        }
+
+        public DataTable SearchRentalRequest(string CustomerId)
+        {
+            MessageBoxResult status;
+            DataTable SearchRequestTable = null;
+            SqlDataReader SearchRequestReader;
+
+            oursitdbcommand.CommandText = "sp_SearchRentalRequest";
+            oursitdbcommand.CommandType = CommandType.StoredProcedure;
+            if (string.IsNullOrEmpty(CustomerId))
+            {
+                oursitdbcommand.Parameters.AddWithValue("@CustomerId", DBNull.Value);
+            }
+            else
+            {
+                int ParsedId;
+                if (Int32.TryParse(CustomerId, out ParsedId))
+                {
+                    oursitdbcommand.Parameters.AddWithValue("@CustomerId", ParsedId);
+                }
+                else
+                {
+                    MessageBox.Show("Customer Id must me numeric", "field format error");
+                    return null;
+                }
+            }
+            oursitdbcommand.Connection = oursitdbconnection;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    SearchRequestReader = oursitdbcommand.ExecuteReader();
+                    if (SearchRequestReader.HasRows)
+                    {
+                        SearchRequestTable.Load(SearchRequestReader);
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("An error occured while attempting to retreive Delivery Request data. Please contact administrator");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.");
+            }
+            return SearchRequestTable;
+        }
+
+        public DataTable SearchCharterRequest(string CustomerId)
+        {
+            MessageBoxResult status;
+            DataTable SearchRequestTable = null;
+            SqlDataReader SearchRequestReader;
+
+            oursitdbcommand.CommandText = "sp_SearchCharterRequest";
+            oursitdbcommand.CommandType = CommandType.StoredProcedure;
+            if (string.IsNullOrEmpty(CustomerId))
+            {
+                oursitdbcommand.Parameters.AddWithValue("@CustomerId", DBNull.Value);
+            }
+            else
+            {
+                int ParsedId;
+                if (Int32.TryParse(CustomerId, out ParsedId))
+                {
+                    oursitdbcommand.Parameters.AddWithValue("@CustomerId", ParsedId);
+                }
+                else
+                {
+                    MessageBox.Show("Customer Id must me numeric", "field format error");
+                    return null;
+                }
+            }
+            oursitdbcommand.Connection = oursitdbconnection;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    SearchRequestReader = oursitdbcommand.ExecuteReader();
+                    if (SearchRequestReader.HasRows)
+                    {
+                        SearchRequestTable.Load(SearchRequestReader);
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("An error occured while attempting to retreive Delivery Request data. Please contact administrator");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.");
             }
             return SearchRequestTable;
         }
