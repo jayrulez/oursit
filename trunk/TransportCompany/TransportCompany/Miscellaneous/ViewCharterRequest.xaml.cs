@@ -15,23 +15,13 @@ using System.Windows.Shapes;
 namespace TransportCompany.Miscellaneous
 {
     /// <summary>
-    /// Interaction logic for ViewDeliveryRequest.xaml
+    /// Interaction logic for ViewCharterRequest.xaml
     /// </summary>
-    public partial class ViewDeliveryRequest : Page
+    public partial class ViewCharterRequest : Page
     {
-        public ViewDeliveryRequest()
+        public ViewCharterRequest()
         {
             InitializeComponent();
-        }
-
-        private void btnViewDelivery_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void chbxViewAll_Checked(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

@@ -6,7 +6,7 @@
         Title="Prendergast Transportation Services" MinHeight="400" MinWidth="450" Width="600">
     <m:MasterWindow>
         <m:MasterWindow.Header>
-            Header
+            <TextBlock Text="Prendergast Transportation Services" TextAlignment="Center" VerticalAlignment="Center" Margin="0,15,0,0" FontSize="16" FontWeight="Bold"/>
         </m:MasterWindow.Header>
         <m:MasterWindow.SideMenuContent>
 
@@ -118,6 +118,14 @@
                                 <TextBlock Text="Delivery Service"></TextBlock>
                             </StackPanel>
                         </TreeViewItem.Header>
+                        <TreeViewItem Name="ViewDeliveryRequest" Selected="selected_DeliveryRequest">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="./Images/Icon/DeliveryService.gif" Height="30" Width="30"/>
+                                    <TextBlock Text="View Delivery Request"></TextBlock>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
                     </TreeViewItem>
                     <TreeViewItem Name="RentalService">
                         <TreeViewItem.Header>
@@ -167,6 +175,7 @@
         <m:MasterWindow.MainContent>
             <StackPanel MinWidth="200" >
                 <Label Margin="0,0,5,0"></Label>
+
                 <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                     <Frame Name="MainContentFrame" Height="auto" Width="auto" Background="LightBlue" NavigationUIVisibility="Hidden"  ></Frame>
                 </ScrollViewer>

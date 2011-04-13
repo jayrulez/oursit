@@ -42,23 +42,23 @@
         <DataGrid Background="Gray" Name="SearchCustomerDataGrid" CanUserAddRows="False" CanUserResizeColumns="True" Margin="3,3,3,3" IsReadOnly="False" CanUserDeleteRows="True" CanUserSortColumns="True" CellEditEnding="SearchCustomerDataGrid_CellEditEnding" CurrentCellChanged="SearchCustomerDataGrid_CurrentCellChanged" BeginningEdit="SearchCustomerDataGrid_BeginningEdit">
             
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Customer ID" IsReadOnly="True">
+                <DataGridTextColumn Header="Customer ID" IsReadOnly="True" Width="80">
                     
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="First Name">
+                <DataGridTextColumn Header="First Name" Width="80">
 
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Last Name">
+                <DataGridTextColumn Header="Last Name" Width="80">
 
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Header="Email Address">
+                <DataGridTextColumn Header="Email Address" Width="80">
 
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Contact Number">
+                <DataGridTextColumn Header="Contact Number" Width="80">
 
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Account Created" IsReadOnly="True">
+                <DataGridTextColumn Header="Account Created" IsReadOnly="True" Width="80">
 
                 </DataGridTextColumn>
             </DataGrid.Columns>

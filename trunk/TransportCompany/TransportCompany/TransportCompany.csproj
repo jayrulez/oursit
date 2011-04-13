@@ -107,11 +107,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Miscellaneous\ViewCharterRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Miscellaneous\ViewDeliveryRequest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Miscellaneous\InquiryReview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Miscellaneous\ViewRentalRequest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -149,11 +157,17 @@
     <Compile Include="Miscellaneous\SearchVehicle.xaml.cs">
       <DependentUpon>SearchVehicle.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Miscellaneous\ViewCharterRequest.xaml.cs">
+      <DependentUpon>ViewCharterRequest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Miscellaneous\ViewDeliveryRequest.xaml.cs">
       <DependentUpon>ViewDeliveryRequest.xaml</DependentUpon>
     </Compile>
     <Compile Include="Miscellaneous\InquiryReview.xaml.cs">
       <DependentUpon>InquiryReview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\ViewRentalRequest.xaml.cs">
+      <DependentUpon>ViewRentalRequest.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

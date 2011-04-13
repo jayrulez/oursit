@@ -38,29 +38,29 @@
     <DataGrid Name="SearchDriverDataGrid" CanUserAddRows="False" CanUserResizeColumns="True" Margin="3,3,3,3" IsReadOnly="False" CanUserDeleteRows="True" CanUserSortColumns="True" CellEditEnding="SearchDriverDataGrid_CellEditEnding" CurrentCellChanged="SearchDriverDataGrid_CurrentCellChanged" BeginningEdit="SearchDriverDataGrid_BeginningEdit">
 
         <DataGrid.Columns>
-            <DataGridTextColumn Header="Driver ID" IsReadOnly="True">
+                <DataGridTextColumn Header="Driver ID" IsReadOnly="True" Width="80">
 
             </DataGridTextColumn>
-            <DataGridTextColumn Header="First Name" >
+                <DataGridTextColumn Header="First Name"  Width="80">
 
             </DataGridTextColumn>
-            <DataGridTextColumn Header="Last Name">
+                <DataGridTextColumn Header="Last Name" Width="80">
 
             </DataGridTextColumn>
-                <DataGridTextColumn Header="NIS#">
+                <DataGridTextColumn Header="NIS#" Width="80">
 
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="TRN#">
+                <DataGridTextColumn Header="TRN#" Width="80">
 
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="District">
+                <DataGridTextColumn Header="District" Width="80">
 
                 </DataGridTextColumn>
 
-            <DataGridTextColumn Header="Parish">
+                <DataGridTextColumn Header="Parish" Width="80">
 
             </DataGridTextColumn>
-            <DataGridTextColumn Header="Contact Number">
+                <DataGridTextColumn Header="Contact Number" Width="80">
 
             </DataGridTextColumn>
         </DataGrid.Columns>

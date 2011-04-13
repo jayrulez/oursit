@@ -695,6 +695,20 @@ namespace TransportCompany.DataAccessLayer
             }
             return InquiryDataTable;
         }
+
+        public DataTable SearchDeliveryRequest(string Customer)
+        {
+            MessageBoxResult status;
+            DataTable SearchRequestTable = null;
+
+            oursitdbcommand.CommandText = "";
+            oursitdbcommand.CommandType = CommandType.StoredProcedure;
+            if (string.IsNullOrEmpty(Customer))
+            {
+                oursitdbcommand.Parameters.AddWithValue("@CustomerId", DBNull.Value);
+            }
+            return SearchRequestTable;
+        }
     }
 }
 
