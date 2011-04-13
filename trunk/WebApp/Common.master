@@ -1,0 +1,71 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Common.master.cs" Inherits="Common" %>
+
+<asp:Content ID="PageTitlePlaceHolderContent" ContentPlaceHolderID="PageTitle" Runat="Server"><asp:ContentPlaceHolder id="PageTitle" runat="server"></asp:ContentPlaceHolder></asp:Content>
+<asp:Content ID="headCssPlaceHolderContent" ContentPlaceHolderID="headCss" Runat="Server">
+<asp:ContentPlaceHolder id="headCss" runat="server">
+<link rel="stylesheet" href="<%= Request.ApplicationPath.TrimEnd('/') %>/css/reset.css" />
+<link rel="stylesheet" href="<%= Request.ApplicationPath.TrimEnd('/') %>/css/style.css" />
+<link rel="stylesheet" href="<%= Request.ApplicationPath.TrimEnd('/') %>/css/messages.css" />
+<link rel="stylesheet" href="<%= Request.ApplicationPath.TrimEnd('/') %>/css/forms.css" />
+<link rel="stylesheet" href="<%= Request.ApplicationPath.TrimEnd('/') %>/css/tables.css" />
+</asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="headJsPlaceHolderContent" ContentPlaceHolderID="headJs" Runat="Server">
+<asp:ContentPlaceHolder id="headJs" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="bodyClassPlaceHolderContent" ContentPlaceHolderID="bodyClass" Runat="Server"><asp:ContentPlaceHolder id="bodyClass" runat="server"></asp:ContentPlaceHolder></asp:Content>
+
+<asp:Content ID="MainContentPlaceHolderContent" ContentPlaceHolderID="MainContent" Runat="Server">
+    <div id="wrapper">
+        <div id="page-header">
+            <div class="wrapper">
+                <div id="util-nav">
+                    <ul>
+                        <li>Logged in as Customer Name:</li>
+                        <li><a href="">Profile</a></li>
+                        <li><a href="">Account</a></li>
+                        <li><a href="">Help</a></li>
+                        <li><a href="">Logout</a></li>
+                    </ul>
+                </div>
+                <h1>Prendegast Transportation Services</h1>
+                <div id="main-nav">
+                    <ul class="clearfix">
+                        <li class="active"><a href="">Dashboard</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li id="quick-links">
+                            <a href="">Quick Links<span>&darr;</span></a>
+                            <ul>
+								<li><a href="#">Link</a></li>
+								<li><a href="#">Link</a></li>
+								<li><a href="#">Link</a></li>
+								<li><a href="#">Link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="page-subheader">
+                <div class="wrapper">
+                    <asp:ContentPlaceHolder id="PageSubHeaderTitle" runat="server"></asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+			<div class="wrapper">
+				<asp:ContentPlaceHolder id="MainContent" runat="server"></asp:ContentPlaceHolder>
+			</div>
+        </div>
+        <div id="page-footer">
+			<div id="footer-inner">
+				<p class="wrapper"><span style="float: right;"><a href="">Documentation</a> | <a href="">Feedback</a></span>Last account activity from 127.0.0.1 - <a href="">Details</a></p>
+			</div>
+        </div>
+    </div>
+</asp:Content>
+

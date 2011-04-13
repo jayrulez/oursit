@@ -1,0 +1,23 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="Site" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title><asp:ContentPlaceHolder id="PageTitle" runat="server">Prendegast Transportation Services</asp:ContentPlaceHolder></title>
+    <asp:ContentPlaceHolder id="headCss" runat="server">
+    <link rel="stylesheet" href="<%= Request.ApplicationPath.TrimEnd('/') %>/css/reset.css" />
+    <link rel="stylesheet" href="<%= Request.ApplicationPath.TrimEnd('/') %>/css/style.css" />
+    <link rel="stylesheet" href="<%= Request.ApplicationPath.TrimEnd('/') %>/css/messages.css" />
+    <link rel="stylesheet" href="<%= Request.ApplicationPath.TrimEnd('/') %>/css/forms.css" />
+    <link rel="stylesheet" href="<%= Request.ApplicationPath.TrimEnd('/') %>/css/tables.css" />
+    </asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder id="headJs" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body<asp:ContentPlaceHolder id="bodyClass" runat="server"/>>
+    <form id="MainForm" runat="server">
+    <asp:ContentPlaceHolder id="MainContent" runat="server"></asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>
