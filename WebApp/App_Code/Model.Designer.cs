@@ -1225,7 +1225,8 @@ namespace Model
         /// <param name="destination">Initial value of the Destination property.</param>
         /// <param name="dispatchTime">Initial value of the DispatchTime property.</param>
         /// <param name="arrivalTime">Initial value of the ArrivalTime property.</param>
-        public static DeliveryRequest CreateDeliveryRequest(global::System.Int32 id, global::System.Int32 customerId, global::System.String description, global::System.String fromLocation, global::System.String destination, global::System.DateTime dispatchTime, global::System.DateTime arrivalTime)
+        /// <param name="status">Initial value of the Status property.</param>
+        public static DeliveryRequest CreateDeliveryRequest(global::System.Int32 id, global::System.Int32 customerId, global::System.String description, global::System.String fromLocation, global::System.String destination, global::System.DateTime dispatchTime, global::System.DateTime arrivalTime, global::System.Int32 status)
         {
             DeliveryRequest deliveryRequest = new DeliveryRequest();
             deliveryRequest.Id = id;
@@ -1235,6 +1236,7 @@ namespace Model
             deliveryRequest.Destination = destination;
             deliveryRequest.DispatchTime = dispatchTime;
             deliveryRequest.ArrivalTime = arrivalTime;
+            deliveryRequest.Status = status;
             return deliveryRequest;
         }
 
@@ -1459,6 +1461,54 @@ namespace Model
         private global::System.DateTime _ArrivalTime;
         partial void OnArrivalTimeChanging(global::System.DateTime value);
         partial void OnArrivalTimeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                OnStatusChanging(value);
+                ReportPropertyChanging("Status");
+                _Status = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Status");
+                OnStatusChanged();
+            }
+        }
+        private global::System.Int32 _Status;
+        partial void OnStatusChanging(global::System.Int32 value);
+        partial void OnStatusChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Message
+        {
+            get
+            {
+                return _Message;
+            }
+            set
+            {
+                OnMessageChanging(value);
+                ReportPropertyChanging("Message");
+                _Message = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Message");
+                OnMessageChanged();
+            }
+        }
+        private global::System.String _Message;
+        partial void OnMessageChanging(global::System.String value);
+        partial void OnMessageChanged();
 
         #endregion
     
@@ -2462,13 +2512,15 @@ namespace Model
         /// <param name="customerId">Initial value of the CustomerId property.</param>
         /// <param name="vehicleId">Initial value of the VehicleId property.</param>
         /// <param name="description">Initial value of the Description property.</param>
-        public static RentalRequest CreateRentalRequest(global::System.Int32 id, global::System.Int32 customerId, global::System.String vehicleId, global::System.String description)
+        /// <param name="status">Initial value of the Status property.</param>
+        public static RentalRequest CreateRentalRequest(global::System.Int32 id, global::System.Int32 customerId, global::System.String vehicleId, global::System.String description, global::System.Int32 status)
         {
             RentalRequest rentalRequest = new RentalRequest();
             rentalRequest.Id = id;
             rentalRequest.CustomerId = customerId;
             rentalRequest.VehicleId = vehicleId;
             rentalRequest.Description = description;
+            rentalRequest.Status = status;
             return rentalRequest;
         }
 
@@ -2573,6 +2625,54 @@ namespace Model
         private global::System.String _Description;
         partial void OnDescriptionChanging(global::System.String value);
         partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                OnStatusChanging(value);
+                ReportPropertyChanging("Status");
+                _Status = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Status");
+                OnStatusChanged();
+            }
+        }
+        private global::System.Int32 _Status;
+        partial void OnStatusChanging(global::System.Int32 value);
+        partial void OnStatusChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Message
+        {
+            get
+            {
+                return _Message;
+            }
+            set
+            {
+                OnMessageChanging(value);
+                ReportPropertyChanging("Message");
+                _Message = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Message");
+                OnMessageChanged();
+            }
+        }
+        private global::System.String _Message;
+        partial void OnMessageChanging(global::System.String value);
+        partial void OnMessageChanged();
 
         #endregion
     
@@ -3072,14 +3172,18 @@ namespace Model
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="tripId">Initial value of the TripId property.</param>
+        /// <param name="destinationName">Initial value of the DestinationName property.</param>
+        /// <param name="destinationAddress">Initial value of the DestinationAddress property.</param>
         /// <param name="arrivalTime">Initial value of the ArrivalTime property.</param>
         /// <param name="dispatchTime">Initial value of the DispatchTime property.</param>
         /// <param name="address">Initial value of the Address property.</param>
-        public static TripDestination CreateTripDestination(global::System.Int32 id, global::System.Int32 tripId, global::System.DateTime arrivalTime, global::System.DateTime dispatchTime, global::System.String address)
+        public static TripDestination CreateTripDestination(global::System.Int32 id, global::System.Int32 tripId, global::System.String destinationName, global::System.String destinationAddress, global::System.DateTime arrivalTime, global::System.DateTime dispatchTime, global::System.String address)
         {
             TripDestination tripDestination = new TripDestination();
             tripDestination.Id = id;
             tripDestination.TripId = tripId;
+            tripDestination.DestinationName = destinationName;
+            tripDestination.DestinationAddress = destinationAddress;
             tripDestination.ArrivalTime = arrivalTime;
             tripDestination.DispatchTime = dispatchTime;
             tripDestination.Address = address;
@@ -3139,6 +3243,54 @@ namespace Model
         private global::System.Int32 _TripId;
         partial void OnTripIdChanging(global::System.Int32 value);
         partial void OnTripIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String DestinationName
+        {
+            get
+            {
+                return _DestinationName;
+            }
+            set
+            {
+                OnDestinationNameChanging(value);
+                ReportPropertyChanging("DestinationName");
+                _DestinationName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("DestinationName");
+                OnDestinationNameChanged();
+            }
+        }
+        private global::System.String _DestinationName;
+        partial void OnDestinationNameChanging(global::System.String value);
+        partial void OnDestinationNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String DestinationAddress
+        {
+            get
+            {
+                return _DestinationAddress;
+            }
+            set
+            {
+                OnDestinationAddressChanging(value);
+                ReportPropertyChanging("DestinationAddress");
+                _DestinationAddress = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("DestinationAddress");
+                OnDestinationAddressChanged();
+            }
+        }
+        private global::System.String _DestinationAddress;
+        partial void OnDestinationAddressChanging(global::System.String value);
+        partial void OnDestinationAddressChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3274,13 +3426,15 @@ namespace Model
         /// <param name="customerId">Initial value of the CustomerId property.</param>
         /// <param name="description">Initial value of the Description property.</param>
         /// <param name="passengerNum">Initial value of the PassengerNum property.</param>
-        public static TripRequest CreateTripRequest(global::System.Int32 id, global::System.Int32 customerId, global::System.String description, global::System.Int32 passengerNum)
+        /// <param name="status">Initial value of the Status property.</param>
+        public static TripRequest CreateTripRequest(global::System.Int32 id, global::System.Int32 customerId, global::System.String description, global::System.Int32 passengerNum, global::System.Int32 status)
         {
             TripRequest tripRequest = new TripRequest();
             tripRequest.Id = id;
             tripRequest.CustomerId = customerId;
             tripRequest.Description = description;
             tripRequest.PassengerNum = passengerNum;
+            tripRequest.Status = status;
             return tripRequest;
         }
 
@@ -3385,6 +3539,54 @@ namespace Model
         private global::System.Int32 _PassengerNum;
         partial void OnPassengerNumChanging(global::System.Int32 value);
         partial void OnPassengerNumChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                OnStatusChanging(value);
+                ReportPropertyChanging("Status");
+                _Status = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Status");
+                OnStatusChanged();
+            }
+        }
+        private global::System.Int32 _Status;
+        partial void OnStatusChanging(global::System.Int32 value);
+        partial void OnStatusChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Message
+        {
+            get
+            {
+                return _Message;
+            }
+            set
+            {
+                OnMessageChanging(value);
+                ReportPropertyChanging("Message");
+                _Message = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Message");
+                OnMessageChanged();
+            }
+        }
+        private global::System.String _Message;
+        partial void OnMessageChanging(global::System.String value);
+        partial void OnMessageChanged();
 
         #endregion
     

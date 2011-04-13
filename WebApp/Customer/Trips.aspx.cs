@@ -36,6 +36,8 @@ public partial class Customer_Trips : System.Web.UI.Page
 
             tripRequest.Description = txtDescription.Text;
 
+            tripRequest.Status = 0;
+
             dbContext.TripRequests.AddObject(tripRequest);
 
             dbContext.SaveChanges();

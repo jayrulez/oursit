@@ -37,8 +37,18 @@
                 <% foreach (Model.TripRequest tripRequest in WebUser.GetInstance().TripRequests)
                    { %>
                         <div class="trip-request">
-                            <div class="p-num">Number of passengers: <%= tripRequest.PassengerNum%></div>
-                            <div class="description">Description: <%= tripRequest.Description%></div>
+                            <div>Number of passengers: <%= tripRequest.PassengerNum%></div>
+                            <div>Description: <%= tripRequest.Description%></div>
+                            <% if(tripRequest.Status == 2) { %>
+                                <div class="">
+                                    Trip request rejected
+                                    <% if (tripRequest.Message != null && tripRequest.Message.Length > 0)
+                                       { %>
+                                    <br />
+                                    Reason: <%=tripRequest.Message%>
+                                    <% } %>
+                                </div>
+                            <% } %>
                         </div>
                 <% } %>
                 <% }
@@ -71,8 +81,8 @@
                                 <div>Trip Destinations</div>
                             <% foreach(Model.TripDestination tripDestination in trip.TripDestinations) { %>
                                 <div class="trip-destination">
-                                    <div>Destination Name: <%//= tripDestination.DestinationName %></div>
-                                    <div>Destination Address: <%//= tripDestination.DestinationAddress %></div>
+                                    <div>Destination Name: <%= tripDestination.DestinationName %></div>
+                                    <div>Destination Address: <%= tripDestination.DestinationAddress %></div>
                                 </div>
                             <% } %>
                             </div>
