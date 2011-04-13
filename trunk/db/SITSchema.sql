@@ -59,7 +59,9 @@ create table TripRequest (
 	Id INT IDENTITY(1,1) PRIMARY KEY NOT NULL, 
 	CustomerId int not null, 
 	Description text not null, 
-	PassengerNum int not null
+	PassengerNum int not null,
+	Status int not null,
+	Message Varchar(255) default null
 );
 
 ALTER TABLE TripRequest
@@ -106,7 +108,9 @@ create table DeliveryRequest (
 	FromLocation varchar(255) not null, 
 	Destination varchar(255) not null, 
 	DispatchTime DATETIME NOT NULL, 
-	ArrivalTime DATETIME NOT NULL
+	ArrivalTime DATETIME NOT NULL,
+	Status int not null,
+	Message Varchar(255) default null
 );
 
 ALTER TABLE DeliveryRequest
@@ -138,7 +142,9 @@ create table RentalRequest (
 	Id INT IDENTITY(1,1) PRIMARY KEY NOT NULL, 
 	CustomerId int not null, 
 	VehicleId varchar(50) not null, 
-	Description Text not null
+	Description Text not null,
+	Status int not null,
+	Message Varchar(255) default null
 );
 
 ALTER TABLE RentalRequest
