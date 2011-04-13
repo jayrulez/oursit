@@ -42,26 +42,25 @@
     <DataGrid Name="SearchVehicleDataGrid" CanUserAddRows="False" CanUserResizeColumns="True" Margin="3,3,3,3" IsReadOnly="False" CanUserDeleteRows="True" CanUserSortColumns="True" CellEditEnding="SearchVehicleDataGrid_CellEditEnding" CurrentCellChanged="SearchVehicleDataGrid_CurrentCellChanged" BeginningEdit="SearchVehicleDataGrid_BeginningEdit">
 
         <DataGrid.Columns>
-            <DataGridTextColumn Header="VIN" IsReadOnly="True">
+            <DataGridTextColumn Header="VIN" IsReadOnly="True" Width="80">
+            </DataGridTextColumn>
+                <DataGridTextColumn Header="Make" Width="80">
 
             </DataGridTextColumn>
-            <DataGridTextColumn Header="Make">
+                <DataGridTextColumn Header="Model" Width="80">
 
             </DataGridTextColumn>
-            <DataGridTextColumn Header="Model">
+                <DataGridTextColumn Header="Color" Width="80">
 
             </DataGridTextColumn>
-            <DataGridTextColumn Header="Color">
-
-            </DataGridTextColumn>
-            <DataGridTextColumn Header="Condition">
+                <DataGridTextColumn Header="Condition" Width="80">
 
             </DataGridTextColumn>
 
-            <DataGridTextColumn Header="Service Type">
+                <DataGridTextColumn Header="Service Type" Width="80">
 
             </DataGridTextColumn>
-            <DataGridTextColumn Header="Seating Capacity">
+            <DataGridTextColumn Header="Seating Capacity" Width="80">
 
             </DataGridTextColumn>
         </DataGrid.Columns>

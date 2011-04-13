@@ -244,58 +244,58 @@ as
 begin
 	/*id fname lname email*/
 	if @Id is not null and @FirstName is not null and @LastName is not null and @EmailAddress is not null begin
-		select Id, FirstName, LastName, EmailAddress, ContactNumber from Customer where id = @Id and FirstName = @FirstName and
+		select Id, FirstName, LastName, EmailAddress, ContactNumber, CreatedAt from Customer where id = @Id and FirstName = @FirstName and
 		LastName = @LastName and EmailAddress = @EmailAddress;
 		return
 	end
 	/*id fname lname*/
 	if @Id is not null and @FirstName is not null and @LastName is not null and @EmailAddress is null begin
-		select Id, FirstName, LastName, EmailAddress, ContactNumber from Customer where id = @Id and FirstName = @FirstName and
+		select Id, FirstName, LastName, EmailAddress, ContactNumber, CreatedAt  from Customer where id = @Id and FirstName = @FirstName and
 		LastName = @LastName;
 		return
 	end
 	/*id fname*/
 	if @Id is not null and @FirstName is not null and @LastName is null and @EmailAddress is null begin
-		select Id, FirstName, LastName, EmailAddress, ContactNumber from Customer where id = @Id and FirstName = @FirstName;
+		select Id, FirstName, LastName, EmailAddress, ContactNumber, CreatedAt  from Customer where id = @Id and FirstName = @FirstName;
 		return
 	end	
 	/*id*/
 	if @Id is not null and @FirstName is null and @LastName is null and @EmailAddress is null begin
-		select Id, FirstName, LastName, EmailAddress, ContactNumber from Customer where id = @Id;
+		select Id, FirstName, LastName, EmailAddress, ContactNumber, CreatedAt  from Customer where id = @Id;
 		return
 	end		
 	
 	/*fname lname email*/
 	if @Id is null and @FirstName is not null and @LastName is not null and @EmailAddress is not null begin
-		select Id, FirstName, LastName, EmailAddress, ContactNumber from Customer where FirstName = @FirstName and
+		select Id, FirstName, LastName, EmailAddress, ContactNumber, CreatedAt  from Customer where FirstName = @FirstName and
 		LastName = @LastName and EmailAddress = @EmailAddress;	
 		return
 	end
 	/*fname lname*/
 	if @Id is null and @FirstName is not null and @LastName is not null and @EmailAddress is null begin
-		select Id, FirstName, LastName, EmailAddress, ContactNumber from Customer where FirstName = @FirstName and
+		select Id, FirstName, LastName, EmailAddress, ContactNumber, CreatedAt from Customer where FirstName = @FirstName and
 		LastName = @LastName;	
 		return
 	end
 	/*fname*/
 	if @Id is null and @FirstName is not null and @LastName is null and @EmailAddress is null begin
-		select Id, FirstName, LastName, EmailAddress, ContactNumber from Customer where FirstName = @FirstName;
+		select Id, FirstName, LastName, EmailAddress, ContactNumber, CreatedAt from Customer where FirstName = @FirstName;
 	end
 	
 	/*if lname email*/
 	if @Id is null and @FirstName is null and  @LastName is not null and @EmailAddress is not null begin
-		select Id, FirstName, LastName, EmailAddress, ContactNumber from Customer where LastName = @LastName and EmailAddress = EmailAddress;
+		select Id, FirstName, LastName, EmailAddress, ContactNumber, CreatedAt from Customer where LastName = @LastName and EmailAddress = EmailAddress;
 		return
 	end
 	/*if lname*/
 	if @Id is null and @FirstName is null and @LastName is not null and @EmailAddress is null begin
-		select Id, FirstName, LastName, EmailAddress, ContactNumber from Customer where LastName = @LastName;
+		select Id, FirstName, LastName, EmailAddress, ContactNumber, CreatedAt from Customer where LastName = @LastName;
 		return
 	end
 	
 	/*if email*/
 	if @Id is null and @FirstName is null and @LastName is null and @EmailAddress is not null begin
-		select Id, FirstName, LastName, EmailAddress, ContactNumber from Customer where EmailAddress = EmailAddress;
+		select Id, FirstName, LastName, EmailAddress, ContactNumber, CreatedAt from Customer where EmailAddress = EmailAddress;
 		return
 	end
 end 
@@ -526,3 +526,46 @@ begin
 		return
 	end
 end 
+go
+
+create procedure sp_SearchDeliveryRequest @CustomerId int
+as
+begin
+	if @CustomerId is not null begin
+		select * from DeliveryRequest where CustomerId = @CustomerId;
+		return
+	end
+	if @CustomerId is null begin
+		select * from DeliveryRequest;
+		return
+	end
+end 
+go 
+
+create procedure sp_SearchCharterRequest @CustomerId int
+as
+begin
+	if @CustomerId is not null begin
+		select * from TripRequest where CustomerId = @CustomerId;
+		return
+	end
+	if @CustomerId is null begin
+		select * from TripRequest;
+		return
+	end
+end 
+go
+
+create procedure sp_SearchRentalRequest @CustomerId int
+as
+begin
+	if @CustomerId is not null begin
+		select * from RentalRequest where CustomerId = @CustomerId;
+		return
+	end
+	if @CustomerId is null begin
+		select * from RentalRequest;
+		return
+	end
+end 
+go

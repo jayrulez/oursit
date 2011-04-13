@@ -24,7 +24,7 @@ namespace TransportCompany
             if (string.Compare(Application.Current.Properties["UserType"].ToString(), "admin", true) == 0)
             {
                 AdministrationUltilities.IsEnabled = true;
-                AdministrationUltilities.Visibility = Visibility.Hidden;   
+                AdministrationUltilities.Visibility = Visibility.Visible;   
             }
             else
             {
@@ -77,6 +77,11 @@ namespace TransportCompany
         public void selected_AddOperator(object sender, RoutedEventArgs e)
         {
             MainContentFrame.Source = new Uri("./Miscellaneous/AddOperator.xaml", UriKind.Relative);
+
+        }
+        public void selected_DeliveryRequest(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Source = new Uri("./Miscellaneous/ViewDeliveryRequest.xaml", UriKind.Relative);
         }
     }
 }
