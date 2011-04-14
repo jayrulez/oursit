@@ -55,7 +55,7 @@ public partial class Customer_Rentals : System.Web.UI.Page
 
             dbContext.SaveChanges();
 
-            lblFormResponse.Text = "Your trip request was submitted. Your trip will appear in your Trips List when accepted by an operator.";
+            lblFormResponse.Text = "Your rental request was submitted. Your rental will appear in your Rentals List when accepted by an operator.";
 
         }
         catch (Exception ex)
