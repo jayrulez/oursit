@@ -45,7 +45,7 @@
 
                 <DataGridCheckBoxColumn Header="Accept Request" IsReadOnly="False"/>
 
-                <DataGridCheckBoxColumn Header="Cancel Request" IsReadOnly="False"/>
+                <DataGridCheckBoxColumn Header="Cancel Request" IsReadOnly="False" />
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>
