@@ -16,7 +16,8 @@ namespace TransportCompany
     {
         public App()
         {
-            string LocalConnectionString = @"Data Source=SYNC-PC\SQLEXPRESS;Initial Catalog=oursitdb;Integrated Security=SSPI";
+            //string LocalConnectionString = @"Data Source=SYNC-PC\SQLEXPRESS;Initial Catalog=oursitdb;Integrated Security=SSPI";
+            string LocalConnectionString = @"Data Source=.\SQLExpress;AttachDbFilename=C:\oursit\db\oursitdb.mdf;Integrated Security=True; User Instance=True";
             Application.Current.Properties["LocalConnectionString"] = LocalConnectionString;
         }
         public static bool IsTextAllowed(string text)
