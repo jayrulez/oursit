@@ -183,6 +183,22 @@ namespace Model
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<Operator> Operators
+        {
+            get
+            {
+                if ((_Operators == null))
+                {
+                    _Operators = base.CreateObjectSet<Operator>("Operators");
+                }
+                return _Operators;
+            }
+        }
+        private ObjectSet<Operator> _Operators;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<Rental> Rentals
         {
             get
@@ -325,6 +341,14 @@ namespace Model
         public void AddToInquiryFeedbacks(InquiryFeedback inquiryFeedback)
         {
             base.AddObject("InquiryFeedbacks", inquiryFeedback);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Operators EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToOperators(Operator @operator)
+        {
+            base.AddObject("Operators", @operator);
         }
     
         /// <summary>
@@ -2231,6 +2255,163 @@ namespace Model
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Model", Name="Operator")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Operator : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Operator object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="username">Initial value of the Username property.</param>
+        /// <param name="password">Initial value of the Password property.</param>
+        /// <param name="type">Initial value of the Type property.</param>
+        public static Operator CreateOperator(global::System.Int32 id, global::System.String username, global::System.String password, global::System.String type)
+        {
+            Operator @operator = new Operator();
+            @operator.Id = id;
+            @operator.Username = username;
+            @operator.Password = password;
+            @operator.Type = type;
+            return @operator;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Username
+        {
+            get
+            {
+                return _Username;
+            }
+            set
+            {
+                OnUsernameChanging(value);
+                ReportPropertyChanging("Username");
+                _Username = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Username");
+                OnUsernameChanged();
+            }
+        }
+        private global::System.String _Username;
+        partial void OnUsernameChanging(global::System.String value);
+        partial void OnUsernameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Password
+        {
+            get
+            {
+                return _Password;
+            }
+            set
+            {
+                OnPasswordChanging(value);
+                ReportPropertyChanging("Password");
+                _Password = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Password");
+                OnPasswordChanged();
+            }
+        }
+        private global::System.String _Password;
+        partial void OnPasswordChanging(global::System.String value);
+        partial void OnPasswordChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Type
+        {
+            get
+            {
+                return _Type;
+            }
+            set
+            {
+                OnTypeChanging(value);
+                ReportPropertyChanging("Type");
+                _Type = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Type");
+                OnTypeChanged();
+            }
+        }
+        private global::System.String _Type;
+        partial void OnTypeChanging(global::System.String value);
+        partial void OnTypeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> LastLoginAt
+        {
+            get
+            {
+                return _LastLoginAt;
+            }
+            set
+            {
+                OnLastLoginAtChanging(value);
+                ReportPropertyChanging("LastLoginAt");
+                _LastLoginAt = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LastLoginAt");
+                OnLastLoginAtChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _LastLoginAt;
+        partial void OnLastLoginAtChanging(Nullable<global::System.DateTime> value);
+        partial void OnLastLoginAtChanged();
+
+        #endregion
+    
     }
     
     /// <summary>

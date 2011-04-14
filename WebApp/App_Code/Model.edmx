@@ -12,6 +12,7 @@
           <EntitySet Name="Driver" EntityType="Model.Store.Driver" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Inquiry" EntityType="Model.Store.Inquiry" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="InquiryFeedback" EntityType="Model.Store.InquiryFeedback" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Operator" EntityType="Model.Store.Operator" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Rental" EntityType="Model.Store.Rental" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="RentalRequest" EntityType="Model.Store.RentalRequest" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Trip" EntityType="Model.Store.Trip" store:Type="Tables" Schema="dbo" />
@@ -155,6 +156,16 @@
           <Property Name="InquiryId" Type="int" Nullable="false" />
           <Property Name="Body" Type="text" Nullable="false" />
           <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Operator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="Type" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="LastLoginAt" Type="datetime" />
         </EntityType>
         <EntityType Name="Rental">
           <Key>
@@ -449,6 +460,7 @@
           <EntitySet Name="Drivers" EntityType="Model.Driver" />
           <EntitySet Name="Inquiries" EntityType="Model.Inquiry" />
           <EntitySet Name="InquiryFeedbacks" EntityType="Model.InquiryFeedback" />
+          <EntitySet Name="Operators" EntityType="Model.Operator" />
           <EntitySet Name="Rentals" EntityType="Model.Rental" />
           <EntitySet Name="RentalRequests" EntityType="Model.RentalRequest" />
           <EntitySet Name="Trips" EntityType="Model.Trip" />
@@ -608,6 +620,16 @@
           <Property Name="Body" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
           <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="Inquiry" Relationship="Model.FK_InquiryFeedback_Inquiry" FromRole="InquiryFeedback" ToRole="Inquiry" />
+        </EntityType>
+        <EntityType Name="Operator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="LastLoginAt" Type="DateTime" />
         </EntityType>
         <EntityType Name="Rental">
           <Key>
@@ -969,6 +991,13 @@
             <ScalarProperty Name="Body" ColumnName="Body" />
             <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Operators"><EntityTypeMapping TypeName="Model.Operator"><MappingFragment StoreEntitySet="Operator">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Username" ColumnName="Username" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+            <ScalarProperty Name="Type" ColumnName="Type" />
+            <ScalarProperty Name="LastLoginAt" ColumnName="LastLoginAt" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Rentals"><EntityTypeMapping TypeName="Model.Rental"><MappingFragment StoreEntitySet="Rental">
             <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
@@ -1049,12 +1078,13 @@
         <EntityTypeShape EntityType="Model.Driver" Width="1.5" PointX="0.75" PointY="7.25" Height="2.5783902994791648" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Inquiry" Width="1.5" PointX="3" PointY="16.75" Height="2.0853483072916674" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.InquiryFeedback" Width="1.5" PointX="5.25" PointY="16.875" Height="1.7566536458333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Operator" Width="1.5" PointX="0.75" PointY="0.75" Height="1.7566536458333317" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Rental" Width="1.5" PointX="6" PointY="12.125" Height="2.2496956380208317" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.RentalRequest" Width="1.5" PointX="6" PointY="9.125" Height="2.2496956380208317" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Trip" Width="1.5" PointX="8" PointY="15.75" Height="3.0714322916666674" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.TripDestination" Width="1.5" PointX="10.25" PointY="16.125" Height="2.2496956380208317" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.TripRequest" Width="1.5" PointX="3" PointY="29.375" Height="2.0853483072916745" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Vehicle" Width="1.5" PointX="0.75" PointY="16.5" Height="2.7427376302083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Vehicle" Width="1.5" PointX="0.75" PointY="16.5" Height="2.7427376302083388" IsExpanded="true" />
         <AssociationConnector Association="Model.FK_Delivery_Customer" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="11.626152846153847" />
           <ConnectorPoint PointX="2.625" PointY="11.251152846153847" />
@@ -1139,10 +1169,10 @@
           <ConnectorPoint PointX="5.25" PointY="17.753326822916666" />
         </AssociationConnector>
         <AssociationConnector Association="Model.FK_Rental_Vehicle" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="19.07029296875" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="19.07029296875" />
-          <ConnectorPoint PointX="2.7083333333333335" PointY="19.07029296875" />
-          <ConnectorPoint PointX="7.15625" PointY="19.07029296875" />
+          <ConnectorPoint PointX="2.25" PointY="19.070292968750003" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="19.070292968750003" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="19.070292968750003" />
+          <ConnectorPoint PointX="7.15625" PointY="19.070292968750003" />
           <ConnectorPoint PointX="7.15625" PointY="14.374695638020832" />
         </AssociationConnector>
         <AssociationConnector Association="Model.FK_RentalRequest_Vehicle" ManuallyRouted="false">
