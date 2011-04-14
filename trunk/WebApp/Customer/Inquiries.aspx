@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Inquiries.aspx.cs" Inherits="Customer_Inquiries" %>
 
+<asp:Content ID="Content1" ContentPlaceHolderID="PageTitle" Runat="Server">Inquiries</asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="PageSubHeaderTitle" Runat="Server">
 <h2>Inquiries</h2>
 </asp:Content>
@@ -29,24 +30,29 @@
     <div class="columns leading">
         <div class="grid_8 first">
             <div class="panel">
-                <div><h2>Previous Inquiries</h2></div>
+                <div><h2>All Inquiries</h2></div>
                 <div class="inquiries">
+                <% if (WebUser.GetInstance().Inquiries.Count > 0)
+                   { %>
                 <% foreach (Model.Inquiry inquiry in WebUser.GetInstance().Inquiries)
                    { %>
                         <div class="inquiry">
-                            <div class="subject"><%= inquiry.Subject %></div>
-                            <div class="body"><%= inquiry.Body %></div>
+                            <div><%= inquiry.Subject %></div>
+                            <div><%= inquiry.Body %></div>
                             <% if(inquiry.InquiryFeedbacks.Count > 0) { %>
                             <div class="inquiry-feedbacks">
                             <% foreach(Model.InquiryFeedback feedback in inquiry.InquiryFeedbacks) { %>
                                 <div class="inquiry-feedback">
-                                    <div class="body"><%= feedback.Body %></div>
-                                    <div class="time"><%= feedback.CreatedAt.ToString() %></div>
+                                    <div><%= feedback.Body %></div>
+                                    <div><%= feedback.CreatedAt.ToString() %></div>
                                 </div>
                             <% } %>
                             </div>
                             <% } %>
                         </div>
+                <% } %>
+                <% }else{ %>
+                    No Inquiries made yet.
                 <% } %>
                 </div>
             </div>

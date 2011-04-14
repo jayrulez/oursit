@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Trips.aspx.cs" Inherits="Customer_Trips" %>
 
+<asp:Content ID="Content1" ContentPlaceHolderID="PageTitle" Runat="Server">Trips</asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="PageSubHeaderTitle" Runat="Server">
 <h2>Trips</h2>
 </asp:Content>
@@ -31,12 +32,12 @@
         <div class="grid_8 first">
             <div class="panel">
                 <div><h2>Pending trip requests</h2></div>
-                <div class="trip-requests">
+                <div class="requests">
                 <% if (WebUser.GetInstance().TripRequests.Count > 0)
                    { %>
                 <% foreach (Model.TripRequest tripRequest in WebUser.GetInstance().TripRequests)
                    { %>
-                        <div class="trip-request">
+                        <div class="request">
                             <div>Number of passengers: <%= tripRequest.PassengerNum%></div>
                             <div>Description: <%= tripRequest.Description%></div>
                             <% if(tripRequest.Status == 2) { %>

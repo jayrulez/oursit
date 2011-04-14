@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Rentals.aspx.cs" Inherits="Customer_Rentals" %>
 
+<asp:Content ID="Content1" ContentPlaceHolderID="PageTitle" Runat="Server">Rentals</asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="PageSubHeaderTitle" Runat="Server">
 <h2>Rentals</h2>
 </asp:Content>
@@ -58,12 +59,12 @@
         <div class="grid_8 first">
             <div class="panel">
                 <div><h2>Pending rental requests</h2></div>
-                <div class="rental-requests">
+                <div class="requests">
                 <% if (WebUser.GetInstance().RentalRequests.Count > 0)
                    { %>
                 <% foreach (Model.RentalRequest rentalRequest in WebUser.GetInstance().RentalRequests)
                    { %>
-                        <div class="rental-request">
+                        <div class="request">
                             <div>
                                 Vehicle
                                 <br />

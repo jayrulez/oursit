@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
+<asp:Content ID="Content1" ContentPlaceHolderID="PageTitle" Runat="Server">Login</asp:Content>
 <asp:Content ID="MainContentPlaceHolderContent" ContentPlaceHolderID="MainContent" Runat="Server">
 <div class="login-box">
 	<div class="login-hd">Customer Login</div>
@@ -21,7 +22,7 @@
 		</p>
 		<ul>
 			<li><asp:HyperLink ID="linkCreateAccount" runat="server" NavigateUrl="~/CreateAccount.aspx">Create Account</asp:HyperLink></li>
-			<li><strong>HELP:</strong>&nbsp;<asp:HyperLink ID="linkForgotPassword" runat="server" NavigateUrl="~/ForgotPassword.aspx">I forgot my password</asp:HyperLink></li>
+			<li><strong>HELP:</strong>&nbsp;Forgot your password? Contact us by phone or email.</li>
 		</ul>
 	</div>
 </div>
