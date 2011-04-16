@@ -21,7 +21,7 @@ namespace TransportCompany
         public Main()
         {
             InitializeComponent();
-            if (string.Compare(Application.Current.Properties["UserType"].ToString(), "admin", true) == 0)
+            if (string.Compare(Application.Current.Properties["UserType"].ToString(), "admin",true) == 0)
             {
                 AdministrationUltilities.IsEnabled = true;
                 AdministrationUltilities.Visibility = Visibility.Visible;   

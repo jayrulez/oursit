@@ -44,9 +44,10 @@ namespace TransportCompany
                     string Id = LoginDetail.Rows[0][0].ToString();
                     string ActualUsername = LoginDetail.Rows[0][1].ToString();
                     string ActualPassword = LoginDetail.Rows[0][2].ToString();
-                    string UserType = LoginDetail.Rows[0][4].ToString();
+                    string UserType = LoginDetail.Rows[0][3].ToString();
                     if (string.Compare(Password, ActualPassword, false) == 0)
                     {
+                        //MessageBox.Show("pw: " + ActualPassword + " username: " + ActualUsername + " user type: " + UserType);
                         Application.Current.Properties["Username"] = ActualUsername;
                         Application.Current.Properties["UserType"] = UserType;
                         Main MainWindow = new Main();

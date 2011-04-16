@@ -60,7 +60,8 @@ namespace TransportCompany.Miscellaneous
                 ((DataGridTextColumn)SearchRentalDataGrid.Columns[1]).Binding = new Binding("CustomerId");
                 ((DataGridTextColumn)SearchRentalDataGrid.Columns[2]).Binding = new Binding("VehicleId");
                 ((DataGridTextColumn)SearchRentalDataGrid.Columns[3]).Binding = new Binding("Description");
-                //((DataGridTextColumn)SearchRentalDataGrid.Columns[4]).Binding = new Binding("Status");
+                ((DataGridTextColumn)SearchRentalDataGrid.Columns[4]).Binding = new Binding("Status");
+                ((DataGridTextColumn)SearchRentalDataGrid.Columns[5]).Binding = new Binding("Message");
                 
                 SearchRentalDataGrid.AutoGenerateColumns = false;
                 SearchRentalDataGrid.ItemsSource = RequestResult.DefaultView;
@@ -75,6 +76,16 @@ namespace TransportCompany.Miscellaneous
         private void chbxViewAll_UnChecked(object sender, RoutedEventArgs e)
         {
             txtCustomerId.IsEnabled = true;
+        }
+
+        private void AcceptRequest_click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void CancelRequest_click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
