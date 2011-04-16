@@ -27,8 +27,21 @@
             <Button Name="btnViewRental" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Width="100" Content="View" Margin="3" Click="btnViewRental_Click" />
             <Label Name="lblViewRentalRequest" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4"/>
         </Grid>
-        <DataGrid Name="SearchRentalDataGrid" CanUserAddRows="False" CanUserSortColumns="True">
-
+        <DataGrid Name="SearchRentalDataGrid" CanUserAddRows="False" CanUserSortColumns="True" >
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Name="AcceptRequest"  Header="Accept Request" Click="AcceptRequest_click">
+                        <MenuItem.Icon>
+                            <Image Source="../Images/Icon/accept.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="CancelRequest" Header="Cancel Request" Click="CancelRequest_click">
+                        <MenuItem.Icon>
+                            <Image Source="../Images/Icon/cancel.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Ref. Id" IsReadOnly="True">
 
@@ -42,10 +55,9 @@
                 <DataGridTextColumn Header="Description" IsReadOnly="True">
 
                 </DataGridTextColumn>
+                <DataGridTextColumn Header="Satus" IsReadOnly="True"/>
 
-                <DataGridCheckBoxColumn Header="Accept Request" IsReadOnly="False">  </DataGridCheckBoxColumn>
-
-
+                <DataGridTextColumn Header="Reason/Comment" IsReadOnly="True"/>
 
             </DataGrid.Columns>
         </DataGrid>

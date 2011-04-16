@@ -750,7 +750,14 @@ namespace TransportCompany.DataAccessLayer
         public DataTable SearchRentalRequest(string CustomerId)
         {
             MessageBoxResult status;
-            DataTable SearchRequestTable = new DataTable("RentalRequest"); 
+            DataTable SearchRequestTable = new DataTable("RentalRequest");
+            
+            SearchRequestTable.Columns.Add("Id",typeof(Int32));
+            SearchRequestTable.Columns.Add("CustomerId", typeof(Int32));
+            SearchRequestTable.Columns.Add("VehicleId", typeof(string));
+            SearchRequestTable.Columns.Add("Description", typeof(string));
+            SearchRequestTable.Columns.Add("Status", typeof(string));
+            SearchRequestTable.Columns.Add("Message", typeof(string));
             SqlDataReader SearchRequestReader;
 
             oursitdbcommand.CommandText = "sp_SearchRentalRequest";
@@ -781,7 +788,29 @@ namespace TransportCompany.DataAccessLayer
                     SearchRequestReader = oursitdbcommand.ExecuteReader();
                     if (SearchRequestReader.HasRows)
                     {
-                        SearchRequestTable.Load(SearchRequestReader);
+                        DataRow TempRow = SearchRequestTable.NewRow();
+                        while (SearchRequestReader.Read())
+                        {
+                            TempRow["Id"] = SearchRequestReader[0];
+                            TempRow["CustomerId"] = SearchRequestReader[1];
+                            TempRow["VehicleId"] = SearchRequestReader[2];
+                            TempRow["Description"] = SearchRequestReader[3];
+                            if (Convert.ToInt32(SearchRequestReader[4]) == 1)
+                            {
+                                TempRow["Status"] = "Accepted";
+                            }
+                            else if (Convert.ToInt32(SearchRequestReader[4]) == -1)
+                            {
+                                TempRow["Status"] = "Cancelled";
+                            }
+                            else
+                            {
+                                TempRow["Status"] = "Pending";
+                            }
+                            TempRow["Message"] = SearchRequestReader[5];
+                            SearchRequestTable.Rows.Add(TempRow);
+                        }
+                        //SearchRequestTable.Load(SearchRequestReader);
                     }
                     oursitdbcommand.Connection.Close();
                 }
