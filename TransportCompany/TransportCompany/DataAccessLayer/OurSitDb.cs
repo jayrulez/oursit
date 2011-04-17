@@ -13,7 +13,7 @@ namespace TransportCompany.DataAccessLayer
 {
     class OurSitDb
     {
-        private SqlConnection oursitdbconnection = new SqlConnection((string)(App.Current.Properties["LocalConnectionString"]));
+        private SqlConnection oursitdbconnection = new SqlConnection((string)(Application.Current.Properties["LocalConnectionString"]));
         public SqlConnection OurSitDbConnection
         {
             get
@@ -702,6 +702,18 @@ namespace TransportCompany.DataAccessLayer
             DataTable SearchRequestTable = new DataTable("DeliveryRequest");
             SqlDataReader SearchRequestReader;
 
+            SearchRequestTable.Columns.Add("Id", typeof(Int32));
+            SearchRequestTable.Columns.Add("CustomerId", typeof(Int32));
+            SearchRequestTable.Columns.Add("Description", typeof(string));
+            SearchRequestTable.Columns.Add("ItemDimension", typeof(string));
+            SearchRequestTable.Columns.Add("ItemQuantity", typeof(Int32));
+            SearchRequestTable.Columns.Add("FromLocation", typeof(string));
+            SearchRequestTable.Columns.Add("Destination", typeof(string));
+            SearchRequestTable.Columns.Add("DispatchTime", typeof(DateTime));
+            SearchRequestTable.Columns.Add("ArrivalTime", typeof(DateTime));
+            SearchRequestTable.Columns.Add("Status", typeof(string));
+            SearchRequestTable.Columns.Add("Message", typeof(string));
+
             oursitdbcommand.CommandText = "sp_SearchDeliveryRequest";
             oursitdbcommand.CommandType = CommandType.StoredProcedure;
             if (string.IsNullOrEmpty(CustomerId))
@@ -730,7 +742,33 @@ namespace TransportCompany.DataAccessLayer
                     SearchRequestReader = oursitdbcommand.ExecuteReader();
                     if (SearchRequestReader.HasRows)
                     {
-                        SearchRequestTable.Load(SearchRequestReader);
+                        DataRow TempRow = SearchRequestTable.NewRow();
+                        while (SearchRequestReader.Read())
+                        {
+                            TempRow["Id"] = SearchRequestReader[0];
+                            TempRow["CustomerId"] = SearchRequestReader[1];
+                            TempRow["Description"] = SearchRequestReader[2];
+                            TempRow["ItemDimension"] = SearchRequestReader[3];
+                            TempRow["ItemQuantity"] = SearchRequestReader[4];
+                            TempRow["FromLocation"] = SearchRequestReader[5];
+                            TempRow["Destination"] = SearchRequestReader[6];
+                            TempRow["DispatchTime"] = SearchRequestReader[7];
+                            TempRow["ArrivalTime"] = SearchRequestReader[8];
+                            TempRow["Message"] = SearchRequestReader[10];
+                            if (Convert.ToInt32(SearchRequestReader[9]) == 1)
+                            {
+                                TempRow["Status"] = "Accepted";
+                            }
+                            else if (Convert.ToInt32(SearchRequestReader[9]) == 2)
+                            {
+                                TempRow["Status"] = "Cancelled";
+                            }
+                            else
+                            {
+                                TempRow["Status"] = "Pending";
+                            }
+                            SearchRequestTable.Rows.Add(TempRow);
+                        }
                     }
                     oursitdbcommand.Connection.Close();
                 }
@@ -799,7 +837,7 @@ namespace TransportCompany.DataAccessLayer
                             {
                                 TempRow["Status"] = "Accepted";
                             }
-                            else if (Convert.ToInt32(SearchRequestReader[4]) == -1)
+                            else if (Convert.ToInt32(SearchRequestReader[4]) == 2)
                             {
                                 TempRow["Status"] = "Cancelled";
                             }
@@ -830,9 +868,14 @@ namespace TransportCompany.DataAccessLayer
         public DataTable SearchCharterRequest(string CustomerId)
         {
             MessageBoxResult status;
-            DataTable SearchRequestTable = new DataTable("Charter");
+            DataTable SearchRequestTable = new DataTable("CharterRequest");
             SqlDataReader SearchRequestReader;
-
+            SearchRequestTable.Columns.Add("Id", typeof(Int32));
+            SearchRequestTable.Columns.Add("CustomerId", typeof(Int32));
+            SearchRequestTable.Columns.Add("Description", typeof(string));
+            SearchRequestTable.Columns.Add("PassengerNum", typeof(int));
+            SearchRequestTable.Columns.Add("Status", typeof(string));
+            SearchRequestTable.Columns.Add("Message", typeof(string));
             oursitdbcommand.CommandText = "sp_SearchCharterRequest";
             oursitdbcommand.CommandType = CommandType.StoredProcedure;
             if (string.IsNullOrEmpty(CustomerId))
@@ -861,7 +904,29 @@ namespace TransportCompany.DataAccessLayer
                     SearchRequestReader = oursitdbcommand.ExecuteReader();
                     if (SearchRequestReader.HasRows)
                     {
-                        SearchRequestTable.Load(SearchRequestReader);
+                        DataRow TempRow = SearchRequestTable.NewRow();
+                        while (SearchRequestReader.Read())
+                        {
+                            TempRow["Id"] = SearchRequestReader[0];
+                            TempRow["CustomerId"] = SearchRequestReader[1];
+                            
+                            TempRow["Description"] = SearchRequestReader[2];
+                            TempRow["PassengerNum"] = SearchRequestReader[3];
+                            if (Convert.ToInt32(SearchRequestReader[4]) == 1)
+                            {
+                                TempRow["Status"] = "Accepted";
+                            }
+                            else if (Convert.ToInt32(SearchRequestReader[4]) == 2)
+                            {
+                                TempRow["Status"] = "Cancelled";
+                            }
+                            else
+                            {
+                                TempRow["Status"] = "Pending";
+                            }
+                            TempRow["Message"] = SearchRequestReader[5];
+                            SearchRequestTable.Rows.Add(TempRow);
+                        }
                     }
                     oursitdbcommand.Connection.Close();
                 }
@@ -918,7 +983,7 @@ namespace TransportCompany.DataAccessLayer
                 catch (Exception)
                 {
                     oursitdbcommand.Connection.Close();
-                    MessageBox.Show("An error occured while attempting to retreive Delivery Request data. Please contact administrator");
+                    MessageBox.Show("An error occured while attempting to retreive Customer Delivery data. Please contact administrator");
                 }
             }
             catch (Exception)
@@ -1029,6 +1094,353 @@ namespace TransportCompany.DataAccessLayer
             }
             return SearchRequestTable;
         }
+
+
+        public bool UpdateRentalRequest(int Id, int Status, string Message)
+        {
+            oursitdbcommand.CommandType = System.Data.CommandType.Text;
+            oursitdbcommand.CommandText = "update RentalRequest set Status = @Status, Message = @Message where Id = @Id;";
+            oursitdbcommand.Parameters.AddWithValue("@Id", Id);
+            oursitdbcommand.Parameters.AddWithValue("@Status", Status);
+            oursitdbcommand.Parameters.AddWithValue("@Message", Message);
+      
+            oursitdbcommand.Connection = oursitdbconnection;
+            MessageBoxResult status;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    int result = oursitdbcommand.ExecuteNonQuery();
+                    oursitdbcommand.Connection.Close();
+                    if (result == 1)
+                    {
+                        return true;
+                    }
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    status = MessageBox.Show("An error occured while attempting to update Customer Rental Request data. Please contact administrator", "Data Connectivity");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.", "Data Connectivity");
+            }
+            return false;
+        }
+
+        public bool DeleteRentalRequest(int Id)
+        {
+            //MessageBox.Show(Id.ToString());
+            oursitdbcommand.CommandType = System.Data.CommandType.Text;
+            oursitdbcommand.CommandText = "delete from RentalRequest where Id = @Id;";
+            oursitdbcommand.Parameters.AddWithValue("@Id", Id);
+
+            oursitdbcommand.Connection = oursitdbconnection;
+            MessageBoxResult status;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    int result = oursitdbcommand.ExecuteNonQuery();
+                    oursitdbcommand.Connection.Close();
+                    if (result == 1)
+                    {
+                        return true;
+                    }
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    status = MessageBox.Show("An error occured while attempting to Remove Customer Rental Request data. Please contact administrator", "Data Connectivity");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.", "Data Connectivity");
+            }
+            return false;
+        }
+        public bool AddRental(int CustomerId, string VehicleId,DateTime RentalDate, DateTime ReturnDate,float Cost)
+        {
+            oursitdbcommand.CommandType = System.Data.CommandType.Text;
+            oursitdbcommand.CommandText = "insert into Rental (CustomerId,VehicleId,RentalDate,ReturnDate,Cost) values (@CustomerId,@VehicleId,@RentalDate,@ReturnDate,@Cost);";
+            oursitdbcommand.Parameters.AddWithValue("@CustomerId", CustomerId);
+            oursitdbcommand.Parameters.AddWithValue("@VehicleId", VehicleId);
+            oursitdbcommand.Parameters.AddWithValue("@RentalDate", RentalDate);
+            if (DateTime.Compare(ReturnDate,DateTime.MinValue)==0)
+            {
+                oursitdbcommand.Parameters.AddWithValue("@ReturnDate", DBNull.Value);
+            }
+            else
+            {
+                oursitdbcommand.Parameters.AddWithValue("@ReturnDate", ReturnDate);
+            }
+            oursitdbcommand.Parameters.AddWithValue("@Cost", Cost);
+            oursitdbcommand.Connection = oursitdbconnection;
+            /*
+             * 	Id INT IDENTITY(1,1) PRIMARY KEY NOT NULL, 
+	CustomerId int not null, 
+	VehicleId varchar(50) not null, 
+	RentalDate DATETIME NOT NULL, 
+	ReturnDate DATETIME DEFAULT NULL, 
+	Cost float(11) not null
+             */
+            MessageBoxResult status;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    int result = oursitdbcommand.ExecuteNonQuery();
+                    oursitdbcommand.Connection.Close();
+                    if (result == 1)
+                    {
+                        return true;
+                    }
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    status = MessageBox.Show("An error occured while attempting to save Customer Rental data. Please contact administrator", "Data Connectivity");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.", "Data Connectivity");
+            }
+            return false;
+        }
+
+        public bool UpdateCharterRequest(int Id, int Status, string Message)
+        {
+            oursitdbcommand.CommandType = System.Data.CommandType.Text;
+            oursitdbcommand.CommandText = "update TripRequest set Status = @Status, Message = @Message where Id = @Id;";
+            oursitdbcommand.Parameters.AddWithValue("@Id", Id);
+            oursitdbcommand.Parameters.AddWithValue("@Status", Status);
+            oursitdbcommand.Parameters.AddWithValue("@Message", Message);
+
+            oursitdbcommand.Connection = oursitdbconnection;
+            MessageBoxResult status;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    int result = oursitdbcommand.ExecuteNonQuery();
+                    oursitdbcommand.Connection.Close();
+                    if (result == 1)
+                    {
+                        return true;
+                    }
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    status = MessageBox.Show("An error occured while attempting to update Customer Charter Request data. Please contact administrator", "Data Connectivity");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.", "Data Connectivity");
+            }
+            return false;
+        }
+
+        public bool UpdateDeliveryRequest(int Id, int Status, string Message)
+        {
+            oursitdbcommand.CommandType = System.Data.CommandType.Text;
+            oursitdbcommand.CommandText = "update DeliveryRequest set Status = @Status, Message = @Message where Id = @Id;";
+            oursitdbcommand.Parameters.AddWithValue("@Id", Id);
+            oursitdbcommand.Parameters.AddWithValue("@Status", Status);
+            oursitdbcommand.Parameters.AddWithValue("@Message", Message);
+
+            oursitdbcommand.Connection = oursitdbconnection;
+            MessageBoxResult status;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    int result = oursitdbcommand.ExecuteNonQuery();
+                    oursitdbcommand.Connection.Close();
+                    if (result == 1)
+                    {
+                        return true;
+                    }
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    status = MessageBox.Show("An error occured while attempting to update Customer Delivery Request data. Please contact administrator", "Data Connectivity");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.", "Data Connectivity");
+            }
+            return false;
+        }
+
+        public bool AddDelivery(int CustomerId, int DriverId, string VehicleId, string ItemDimension, int ItemQuantity, string FromLocation, string Destination,float Cost, DateTime DispatchTime, DateTime ArrivalTime, DateTime ReturnTime)
+        {
+
+            oursitdbcommand.CommandType = System.Data.CommandType.Text;
+            oursitdbcommand.CommandText = "insert into Delivery (CustomerId,DriverId,VehicleId,ItemDimension,ItemQuantity,FromLocation,Destination,Cost,DispatchTime,ArrivialTime,ReturnTime) values (@CustomerId,@DriverId,@VehicleId,@ItemDimension,@ItemQuantity,@FromLocation,@Destination,@Cost,@DispatchTime,@ArrivialTime,@ReturnTime);";
+            oursitdbcommand.Parameters.AddWithValue("@CustomerId", CustomerId);
+            oursitdbcommand.Parameters.AddWithValue("@VehicleId", DriverId);
+            oursitdbcommand.Parameters.AddWithValue("@DriverId", VehicleId);
+            oursitdbcommand.Parameters.AddWithValue("@ArrivalTime", ArrivalTime);
+            oursitdbcommand.Parameters.AddWithValue("@ReturnTime", ReturnTime);
+            oursitdbcommand.Parameters.AddWithValue("@ItemDimension", ItemDimension);
+            oursitdbcommand.Parameters.AddWithValue("@ItemQuantity", ItemQuantity);
+            oursitdbcommand.Parameters.AddWithValue("@FromLocation", FromLocation);
+            oursitdbcommand.Parameters.AddWithValue("@Destination", Destination);
+            oursitdbcommand.Parameters.AddWithValue("@DispatchTime", DispatchTime);
+            oursitdbcommand.Parameters.AddWithValue("@Cost", Cost);
+            oursitdbcommand.Connection = oursitdbconnection;
+
+            MessageBoxResult status;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    int result = oursitdbcommand.ExecuteNonQuery();
+                    oursitdbcommand.Connection.Close();
+                    if (result == 1)
+                    {
+                        return true;
+                    }
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    status = MessageBox.Show("An error occured while attempting to save Customer Delivery data. Please contact administrator", "Data Connectivity");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.", "Data Connectivity");
+            }
+            return false;
+        }
+
+        public bool AddCharter(int CustomerId,int DriverId,string VehicleId, int PassengerNum, float Cost, DateTime DispatchTime, DateTime ReturnTime, string DispatchLocation)
+        {
+            oursitdbcommand.CommandType = System.Data.CommandType.Text;
+            oursitdbcommand.CommandText = "insert into Trip (CustomerId,VehicleId,DriverId,PassengerNum,Cost, DispatchTime, DispatchLocation, ReturnTime) values (@CustomerId, @VehicleId,DriverId,@PassengerNum,@Cost, @DispatchTime, @DispatchLocation, @ReturnTime);";
+            oursitdbcommand.Parameters.AddWithValue("@CustomerId", CustomerId);
+            oursitdbcommand.Parameters.AddWithValue("@VehicleId", DriverId);
+            oursitdbcommand.Parameters.AddWithValue("@DriverId", VehicleId);
+            oursitdbcommand.Parameters.AddWithValue("@PassengerNum", PassengerNum);
+            oursitdbcommand.Parameters.AddWithValue("@Cost", ReturnTime);
+            oursitdbcommand.Parameters.AddWithValue("@DispatchTime", DispatchTime);
+            oursitdbcommand.Parameters.AddWithValue("@Cost", Cost);
+            oursitdbcommand.Parameters.AddWithValue("@DispatchLocation", DispatchLocation);
+            oursitdbcommand.Parameters.AddWithValue("@ReturnTime", ReturnTime);
+            oursitdbcommand.Parameters.AddWithValue("@Cost", Cost);
+            oursitdbcommand.Connection = oursitdbconnection;
+   
+            MessageBoxResult status;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    int result = oursitdbcommand.ExecuteNonQuery();
+                    oursitdbcommand.Connection.Close();
+                    if (result == 1)
+                    {
+                        return true;
+                    }
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    status = MessageBox.Show("An error occured while attempting to save Customer Charter data. Please contact administrator", "Data Connectivity");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.", "Data Connectivity");
+            }
+            return false;
+        }
+
+        public bool DeleteCharterRequest(int Id)
+        {
+            //MessageBox.Show(Id.ToString());
+            oursitdbcommand.CommandType = System.Data.CommandType.Text;
+            oursitdbcommand.CommandText = "delete From TripRequest where Id = @Id;";
+            oursitdbcommand.Parameters.AddWithValue("@Id", Id);
+
+            oursitdbcommand.Connection = oursitdbconnection;
+            MessageBoxResult status;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    int result = oursitdbcommand.ExecuteNonQuery();
+                    oursitdbcommand.Connection.Close();
+                    if (result == 1)
+                    {
+                        return true;
+                    }
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    status = MessageBox.Show("An error occured while attempting to Remove Customer Charter Request data. Please contact administrator", "Data Connectivity");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.", "Data Connectivity");
+            }
+            return false;
+        }
+
+        public bool DeleteDeliveryRequest(int Id)
+        {
+            //MessageBox.Show(Id.ToString());
+            oursitdbcommand.CommandType = System.Data.CommandType.Text;
+            oursitdbcommand.CommandText = "delete From DeliveryRequest where Id = @Id;";
+            oursitdbcommand.Parameters.AddWithValue("@Id", Id);
+
+            oursitdbcommand.Connection = oursitdbconnection;
+            MessageBoxResult status;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    int result = oursitdbcommand.ExecuteNonQuery();
+                    oursitdbcommand.Connection.Close();
+                    if (result == 1)
+                    {
+                        return true;
+                    }
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    status = MessageBox.Show("An error occured while attempting to Remove Customer Delivery Request data. Please contact administrator", "Data Connectivity");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.", "Data Connectivity");
+            }
+            return false;
+        }
+
+
     }
 }
+
 
