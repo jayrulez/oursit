@@ -75,5 +75,46 @@ namespace TransportCompany.Miscellaneous
         {
             txtCustomerId.IsEnabled = true;
         }
+
+        private void AcceptRequest_click(object sender, RoutedEventArgs e)
+        {
+            OurSitDb OurSitSchema = new OurSitDb();
+            DataRowView rowBeingSelected = SearchCharterDataGrid.CurrentItem as DataRowView;
+            //int CurrentRowIndex = SearchRentalDataGrid.Items.If
+            int Id = Convert.ToInt32(rowBeingSelected[0]);
+            string Message = txtReason.Text;
+
+            if (OurSitSchema.UpdateCharterRequest(Id, 1, Message))
+            {
+                //int CustomerId,int DriverId,string VehicleId, int PassengerNum, float Cost, DateTime DispatchTime, DateTime ReturnTime, string DispatchLocation
+                if (OurSitSchema.AddCharter(Convert.ToInt32(rowBeingSelected[1]),0 ,string.Empty,Convert.ToInt32(rowBeingSelected[3]),0,DateTime.MaxValue,DateTime.MaxValue,string.Empty))
+                {
+                    if (OurSitSchema.DeleteCharterRequest(Id))
+                    {
+                        rowBeingSelected[5] = Message;
+                        SearchCharterDataGrid.Items.Remove(rowBeingSelected);
+                        MessageBox.Show("Customer Charter Request Accepted.", "Success!");
+                    }
+                }
+                else
+                {
+                    OurSitSchema.UpdateRentalRequest(Id, 0, Message);
+                }
+            }
+        }
+
+        private void CancelRequest_click(object sender, RoutedEventArgs e)
+        {
+            OurSitDb OurSitSchema = new OurSitDb();
+            DataRowView rowBeingSelected = SearchCharterDataGrid.CurrentItem as DataRowView;
+            string Message = txtReason.Text;
+            int Id = Convert.ToInt32(rowBeingSelected[0]);
+            if (OurSitSchema.UpdateRentalRequest(Id, 2, Message))
+            {
+                rowBeingSelected[4] = "Cancelled";
+                rowBeingSelected[5] = Message;
+                MessageBox.Show("Customer Charter Request Cancelled.", "Success!");
+            }
+        }
     }
 }

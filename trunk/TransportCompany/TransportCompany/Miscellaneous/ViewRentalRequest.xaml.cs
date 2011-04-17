@@ -21,6 +21,11 @@ namespace TransportCompany.Miscellaneous
     using DataAccessLayer;
     public partial class ViewRentalRequest : Page
     {
+        //DataRowView rowBeingSelected = null;
+        //string CurrentColumnHeader;
+       // string CurrentColumnData;
+        //int CurrentColumnIndex;
+        
         public ViewRentalRequest()
         {
             InitializeComponent();
@@ -80,12 +85,42 @@ namespace TransportCompany.Miscellaneous
 
         private void AcceptRequest_click(object sender, RoutedEventArgs e)
         {
+            OurSitDb OurSitSchema = new OurSitDb();
+            DataRowView rowBeingSelected = SearchRentalDataGrid.CurrentItem as DataRowView;
+            //int CurrentRowIndex = SearchRentalDataGrid.Items.If
+            int Id = Convert.ToInt32(rowBeingSelected[0]);
+            string Message = txtReason.Text;
             
+            if (OurSitSchema.UpdateRentalRequest(Id, 1, Message))
+            {
+                if (OurSitSchema.AddRental(Convert.ToInt32(rowBeingSelected[1]), Convert.ToString(rowBeingSelected[2]), DateTime.Now, DateTime.MinValue, 0))
+                {
+                    if (OurSitSchema.DeleteRentalRequest(Id))
+                    {
+                        rowBeingSelected[5] = Message;
+                        SearchRentalDataGrid.Items.Remove(rowBeingSelected);
+                        MessageBox.Show("Vehicle Rental Request Accepted.", "Success!");
+                    }
+                }
+                else
+                {
+                    OurSitSchema.UpdateRentalRequest(Id, 0, Message);
+                }
+            } 
         }
 
         private void CancelRequest_click(object sender, RoutedEventArgs e)
         {
-
+            OurSitDb OurSitSchema = new OurSitDb();
+            DataRowView rowBeingSelected = SearchRentalDataGrid.CurrentItem as DataRowView;
+            string Message = txtReason.Text;
+            int Id = Convert.ToInt32(rowBeingSelected[0]);
+            if (OurSitSchema.UpdateRentalRequest(Id, 2, Message))
+            {
+                rowBeingSelected[4] = "Cancelled";
+                rowBeingSelected[5] = Message;
+                MessageBox.Show("Vehicle Rental Request Cancelled.", "Success!");
+            }
         }
     }
 }

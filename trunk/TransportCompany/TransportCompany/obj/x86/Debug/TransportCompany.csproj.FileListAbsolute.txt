@@ -85,7 +85,6 @@ C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit
 C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\ViewRental.g.cs
 C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\obj\x86\Debug\Miscellaneous\ViewRentalRequest.g.cs
 C:\Users\Sync\utech\year3sem2\software implementation and testing\project\oursit\TransportCompany\TransportCompany\bin\Debug\TransportCompany.exe.config
-C:\oursit\TransportCompany\TransportCompany\bin\Debug\TransportCompany.exe.config
 C:\oursit\TransportCompany\TransportCompany\obj\x86\Debug\TransportCompany.exe
 C:\oursit\TransportCompany\TransportCompany\obj\x86\Debug\TransportCompany.pdb
 C:\oursit\TransportCompany\TransportCompany\bin\Debug\TransportCompany.exe
@@ -134,3 +133,4 @@ C:\oursit\TransportCompany\TransportCompany\obj\x86\Debug\TransportCompany.g.res
 C:\oursit\TransportCompany\TransportCompany\obj\x86\Debug\TransportCompany.Properties.Resources.resources
 C:\oursit\TransportCompany\TransportCompany\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\oursit\TransportCompany\TransportCompany\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\oursit\TransportCompany\TransportCompany\bin\Debug\TransportCompany.exe.config

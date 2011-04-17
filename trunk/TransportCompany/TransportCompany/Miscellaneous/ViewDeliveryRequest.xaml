@@ -28,7 +28,24 @@
             <Label Name="lblViewDeliveryRequest" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4"/>
         </Grid>
         <DataGrid Name="SearchDeliveryDataGrid" CanUserAddRows="False" CanUserSortColumns="True">
-
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Name="lblReason" Content="Reason/Comment:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" Margin="3"/>
+                        <TextBox Name="txtReason" Width="200" Height="50" Grid.Column="1" Grid.Row="0" Margin="3" TextWrapping="Wrap"/>
+                        <Button Name="btnAcceptRequest" Content="Accept Request" Click="AcceptRequest_click" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Margin="3"/>
+                        <Button Name="btnCancelRequest" Content="Cancel Request" Click="CancelRequest_click" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Margin="3"/>
+                    </Grid>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Ref. Id" IsReadOnly="True">
 
@@ -45,9 +62,6 @@
                 <DataGridTextColumn Header="Item Quantity" IsReadOnly="True">
 
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Item Quanitity" IsReadOnly="True">
-
-                </DataGridTextColumn>
                 <DataGridTextColumn Header="From Location" IsReadOnly="True">
 
                 </DataGridTextColumn>
@@ -60,6 +74,9 @@
                 <DataGridTextColumn Header="Arrival Time" IsReadOnly="True">
 
                 </DataGridTextColumn>
+                <DataGridTextColumn Header="Status" IsReadOnly="True"/>
+
+                <DataGridTextColumn Header="Comment/Reason" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>

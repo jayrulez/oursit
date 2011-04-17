@@ -63,9 +63,10 @@ namespace TransportCompany.Miscellaneous
                 ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[4]).Binding = new Binding("ItemQuantity");
                 ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[5]).Binding = new Binding("FromLocation");
                 ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[6]).Binding = new Binding("Destination");
-                ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[6]).Binding = new Binding("Cost");
                 ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[7]).Binding = new Binding("DispatchTime");
                 ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[8]).Binding = new Binding("ArrivalTime");
+                ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[9]).Binding = new Binding("Status");
+                ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[10]).Binding = new Binding("Message");
 
                 SearchDeliveryDataGrid.AutoGenerateColumns = false;
                 SearchDeliveryDataGrid.ItemsSource = RequestResult.DefaultView;
@@ -80,6 +81,48 @@ namespace TransportCompany.Miscellaneous
         private void chbxViewAll_UnChecked(object sender, RoutedEventArgs e)
         {
             txtCustomerId.IsEnabled = true;
+        }
+
+        private void AcceptRequest_click(object sender, RoutedEventArgs e)
+        {
+            OurSitDb OurSitSchema = new OurSitDb();
+            DataRowView rowBeingSelected = SearchDeliveryDataGrid.CurrentItem as DataRowView;
+            //int CurrentRowIndex = SearchRentalDataGrid.Items.If
+            int Id = Convert.ToInt32(rowBeingSelected[0]);
+            string Message = txtReason.Text;
+
+            if (OurSitSchema.UpdateDeliveryRequest(Id, 1, Message))
+            {
+                //int CustomerId, int DriverId, string VehicleId, string ItemDimension, int ItemQuantity, string FromLocation, string Destination,float Cost, DateTime DispatchTime, DateTime ArrivalTime, DateTime ReturnTime)
+                if (OurSitSchema.AddDelivery(Convert.ToInt32(rowBeingSelected[1]),0,string.Empty,Convert.ToString(rowBeingSelected[3]),Convert.ToInt32(rowBeingSelected[4]),Convert.ToString(rowBeingSelected[5]),Convert.ToString(rowBeingSelected[6]),0,Convert.ToDateTime(rowBeingSelected[7]),Convert.ToDateTime(rowBeingSelected[8]),DateTime.MaxValue))
+                {
+                    if (OurSitSchema.DeleteDeliveryRequest(Id))
+                    {
+                        rowBeingSelected[10] = Message;
+                        SearchDeliveryDataGrid.Items.Remove(rowBeingSelected);
+                        MessageBox.Show("Customer Delivery Request Accepted.", "Success!");
+                    }
+                }
+                else
+                {
+                    rowBeingSelected[9] = "Pending";
+                    OurSitSchema.UpdateDeliveryRequest(Id, 0, Message);
+                }
+            }
+        }
+
+        private void CancelRequest_click(object sender, RoutedEventArgs e)
+        {
+            OurSitDb OurSitSchema = new OurSitDb();
+            DataRowView rowBeingSelected = SearchDeliveryDataGrid.CurrentItem as DataRowView;
+            string Message = txtReason.Text;
+            int Id = Convert.ToInt32(rowBeingSelected[0]);
+            if (OurSitSchema.UpdateDeliveryRequest(Id, 2, Message))
+            {
+                rowBeingSelected[9] = "Cancelled";
+                rowBeingSelected[10] = Message;
+                MessageBox.Show("Customer Delivery Request Cancelled.", "Success!");
+            }
         }
     }
 }
