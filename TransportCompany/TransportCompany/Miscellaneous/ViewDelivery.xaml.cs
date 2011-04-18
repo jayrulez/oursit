@@ -21,6 +21,10 @@ namespace TransportCompany.Miscellaneous
     using DataAccessLayer;
     public partial class ViewDelivery : Page
     {
+        DataRowView rowBeingEdited = null;
+        string CurrentColumnHeader;
+        string CurrentColumnData;
+        int CurrentColumnIndex;
         public ViewDelivery()
         {
             InitializeComponent();
@@ -54,16 +58,19 @@ namespace TransportCompany.Miscellaneous
                     ext = "Delivery";
                 }
                 lblViewDeliveryRequest.Content = Convert.ToString(count) + " Customer " + ext + " found.";
-                //SearchDriverDataGrid.AutoGenerateColumns = true;
+                //SearchDeliveryDataGrid.AutoGenerateColumns = true;
                 ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[0]).Binding = new Binding("Id");
                 ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[1]).Binding = new Binding("CustomerId");
-                ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[2]).Binding = new Binding("Description");
-                ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[3]).Binding = new Binding("ItemDemension");
-                ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[4]).Binding = new Binding("ItemQuantity");
-                ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[5]).Binding = new Binding("FromLocation");
-                ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[6]).Binding = new Binding("Destination");
-                ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[7]).Binding = new Binding("DispatchTime");
-                ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[8]).Binding = new Binding("ArrivalTime");
+                ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[2]).Binding = new Binding("DriverId");
+                ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[3]).Binding = new Binding("VehicleId");
+                ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[4]).Binding = new Binding("ItemDemension");
+                ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[5]).Binding = new Binding("ItemQuantity");
+                ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[6]).Binding = new Binding("FromLocation");
+                ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[7]).Binding = new Binding("Destination");
+                ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[8]).Binding = new Binding("Cost");
+                ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[9]).Binding = new Binding("DispatchTime");
+                ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[10]).Binding = new Binding("ArrivalTime");
+                ((DataGridTextColumn)SearchDeliveryDataGrid.Columns[11]).Binding = new Binding("ReturnTime");
 
                 SearchDeliveryDataGrid.AutoGenerateColumns = false;
                 SearchDeliveryDataGrid.ItemsSource = RequestResult.DefaultView;
@@ -78,5 +85,43 @@ namespace TransportCompany.Miscellaneous
         {
             txtCustomerId.IsEnabled = true;
         }
+
+        private void SearchDeliveryDataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            DataRowView rowView = e.Row.Item as DataRowView;
+            rowBeingEdited = rowView;
+        }
+
+        private void SearchDeliveryDataGrid_CurrentCellChanged(object sender, EventArgs e)
+        {
+            if (rowBeingEdited != null)
+            {
+                OurSitDb OurSitSchema = new OurSitDb();
+                MessageBoxResult Result;
+                if (!string.IsNullOrEmpty(rowBeingEdited[1].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[2].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[3].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[6].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[7].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[8].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[9].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[10].ToString()) && !string.IsNullOrEmpty(rowBeingEdited[11].ToString()))
+                {
+                    //int Id ,int CustomerId, int DriverId, string VehicleId, string ItemDimension, int ItemQuantity, string FromLocation, string Destination, float Cost, DateTime DispatchTime, DateTime ArrivalTime, DateTime ReturnTime
+                    if (OurSitSchema.UpdateDelivery(Convert.ToInt32(rowBeingEdited[0]), Convert.ToInt32(rowBeingEdited[1]), Convert.ToInt32(rowBeingEdited[2]), rowBeingEdited[3].ToString(), Convert.ToString(rowBeingEdited[4]), Convert.ToInt32(rowBeingEdited[5]), rowBeingEdited[6].ToString(), rowBeingEdited[7].ToString(), (float)rowBeingEdited[8], Convert.ToDateTime(rowBeingEdited[9]), Convert.ToDateTime(rowBeingEdited[10]), Convert.ToDateTime(rowBeingEdited[11])))
+                    {
+                    }
+                }
+                else
+                {
+                    rowBeingEdited.CancelEdit();
+                    Result = MessageBox.Show("\"" + CurrentColumnHeader + "\"" + " must contain data.");
+                    rowBeingEdited[CurrentColumnIndex] = CurrentColumnData;
+                }
+                rowBeingEdited.EndEdit();
+            }
+        }
+
+        private void SearchDeliveryDataGrid_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
+        {
+            CurrentColumnHeader = SearchDeliveryDataGrid.CurrentColumn.Header.ToString();
+            DataRowView rowView = e.Row.Item as DataRowView;
+            CurrentColumnIndex = e.Column.DisplayIndex;
+            CurrentColumnData = rowView[CurrentColumnIndex].ToString();
+        }
+
     }
 }

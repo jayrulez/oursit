@@ -26,7 +26,7 @@
             <Button Name="btnViewRental" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Width="100" Content="View" Margin="3" Click="btnViewRental_Click" />
             <Label Name="lblViewRentalRequest" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4"/>
         </Grid>
-        <DataGrid Name="SearchRentalDataGrid" CanUserAddRows="False" CanUserSortColumns="True">
+        <DataGrid Name="SearchRentalDataGrid" CanUserAddRows="False" CanUserSortColumns="True" CanUserDeleteRows="False"  CellEditEnding="SearchRentalDataGrid_CellEditEnding" CurrentCellChanged="SearchRentalDataGrid_CurrentCellChanged" BeginningEdit="SearchRentalDataGrid_BeginningEdit">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Ref. Id" IsReadOnly="True">
@@ -40,7 +40,7 @@
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Rental Date" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Return Date" IsReadOnly="True">
+                <DataGridTextColumn Header="Return Date" IsReadOnly="False">
                     
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Cost" IsReadOnly="True">

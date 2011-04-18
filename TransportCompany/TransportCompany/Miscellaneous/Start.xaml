@@ -1,0 +1,13 @@
+﻿<Page x:Class="TransportCompany.Miscellaneous.Start"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:MinDesignHeight="300" d:MinDesignWidth="300"
+	Title="Start">
+
+    <DockPanel Background="LightBlue" >
+        <TextBlock Name="txtbkStart" Margin="0,80,0,0" MaxWidth="250" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="20" Text="TIP: To start, Navigate the menus on the left using your mouse."></TextBlock>
+    </DockPanel>
+</Page>

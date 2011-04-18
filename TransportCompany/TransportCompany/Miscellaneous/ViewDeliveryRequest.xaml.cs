@@ -86,6 +86,9 @@ namespace TransportCompany.Miscellaneous
         private void AcceptRequest_click(object sender, RoutedEventArgs e)
         {
             OurSitDb OurSitSchema = new OurSitDb();
+            OurSitDb OurSitSchema1 = new OurSitDb();
+            OurSitDb OurSitSchema2 = new OurSitDb();
+            OurSitDb OurSitSchema3 = new OurSitDb();
             DataRowView rowBeingSelected = SearchDeliveryDataGrid.CurrentItem as DataRowView;
             //int CurrentRowIndex = SearchRentalDataGrid.Items.If
             int Id = Convert.ToInt32(rowBeingSelected[0]);
@@ -94,19 +97,18 @@ namespace TransportCompany.Miscellaneous
             if (OurSitSchema.UpdateDeliveryRequest(Id, 1, Message))
             {
                 //int CustomerId, int DriverId, string VehicleId, string ItemDimension, int ItemQuantity, string FromLocation, string Destination,float Cost, DateTime DispatchTime, DateTime ArrivalTime, DateTime ReturnTime)
-                if (OurSitSchema.AddDelivery(Convert.ToInt32(rowBeingSelected[1]),0,string.Empty,Convert.ToString(rowBeingSelected[3]),Convert.ToInt32(rowBeingSelected[4]),Convert.ToString(rowBeingSelected[5]),Convert.ToString(rowBeingSelected[6]),0,Convert.ToDateTime(rowBeingSelected[7]),Convert.ToDateTime(rowBeingSelected[8]),DateTime.MaxValue))
+                if (OurSitSchema1.AddDelivery(Convert.ToInt32(rowBeingSelected[1]),1,"99091",Convert.ToString(rowBeingSelected[3]),Convert.ToInt32(rowBeingSelected[4]),Convert.ToString(rowBeingSelected[5]),Convert.ToString(rowBeingSelected[6]),0,Convert.ToDateTime(rowBeingSelected[7]),Convert.ToDateTime(rowBeingSelected[8]),DateTime.MaxValue))
                 {
-                    if (OurSitSchema.DeleteDeliveryRequest(Id))
+                    if (OurSitSchema2.DeleteDeliveryRequest(Id))
                     {
-                        rowBeingSelected[10] = Message;
-                        SearchDeliveryDataGrid.Items.Remove(rowBeingSelected);
+                        btnViewDelivery_Click(sender, e);
                         MessageBox.Show("Customer Delivery Request Accepted.", "Success!");
                     }
                 }
                 else
                 {
                     rowBeingSelected[9] = "Pending";
-                    OurSitSchema.UpdateDeliveryRequest(Id, 0, Message);
+                    OurSitSchema3.UpdateDeliveryRequest(Id, 0, Message);
                 }
             }
         }

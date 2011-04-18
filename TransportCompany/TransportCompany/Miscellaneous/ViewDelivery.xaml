@@ -27,57 +27,21 @@
             <Button Name="btnViewDelivery" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Width="100" Content="View" Margin="3" Click="btnViewDelivery_Click" />
             <Label Name="lblViewDeliveryRequest" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4"/>
         </Grid>
-        <DataGrid Name="SearchDeliveryDataGrid" CanUserAddRows="False" CanUserSortColumns="True">
+        <DataGrid Name="SearchDeliveryDataGrid" CanUserAddRows="False" CanUserSortColumns="True" CanUserDeleteRows="False" CellEditEnding="SearchDeliveryDataGrid_CellEditEnding" CurrentCellChanged="SearchDeliveryDataGrid_CurrentCellChanged" BeginningEdit="SearchDeliveryDataGrid_BeginningEdit">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Ref. Id" IsReadOnly="True">
-
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Customer ID" IsReadOnly="True">
-
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Description" IsReadOnly="True">
-
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Item Demension" IsReadOnly="True">
-
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Item Quantity" IsReadOnly="True">
-
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Item Quanitity" IsReadOnly="True">
-
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="From Location" IsReadOnly="True">
-
-                </DataGridTextColumn>
-                
-                <DataGridTextColumn Header="Destination" IsReadOnly="True">
-
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Cost" IsReadOnly="True">
-
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Dispatch Time" IsReadOnly="True">
-
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Arrival Time" IsReadOnly="True">
-
-              
-                </DataGridTextColumn>
-
-                <!--	Id INT IDENTITY(1,1) PRIMARY KEY NOT NULL, 
-	CustomerId int not null, 
-	DriverId int not null, 
-	VehicleId varchar(50) not null, 
-	ItemDimension Varchar(20) default null,  
-	ItemQuantity int default null, 
-	FromLocation varchar(255) not null, 
-	Destination varchar(255) not null,
-	Cost float(11) not null, 
-	DispatchTime DATETIME NOT NULL, 
-	ArrivalTime DATETIME NOT NULL,
-	ReturnTime DATETIME NOT NULL-->
+                <DataGridTextColumn Header="Ref. Id" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Customer ID" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Driver ID" IsReadOnly="False"/>
+                <DataGridTextColumn Header="Vehicle ID (vin)" IsReadOnly="False"/>
+                <DataGridTextColumn Header="Item Demension" IsReadOnly="False"/>
+                <DataGridTextColumn Header="Item Quantity" IsReadOnly="True"/>
+                <DataGridTextColumn Header="From Location" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Destination" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Cost" IsReadOnly="False"/>
+                <DataGridTextColumn Header="Dispatch Time" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Arrival Time" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Return Time" IsReadOnly="False"/>
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>

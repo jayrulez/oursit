@@ -12,7 +12,7 @@
             </MenuItem>
         </Menu>
         <StackPanel DockPanel.Dock="Top" Background="LightGray">
-            <Label Content="Header"></Label>
+            <TextBlock Text="Login" TextAlignment="Center" HorizontalAlignment="Left" Margin="40,15,0,0" FontSize="16" FontWeight="Bold"/>
         </StackPanel>
         <StackPanel Width="auto" MinHeight="200" Margin="2,2,2,2" Background="LightBlue">
             <Grid Name="LoginGrid" Width="auto" Height="auto" HorizontalAlignment="Center">

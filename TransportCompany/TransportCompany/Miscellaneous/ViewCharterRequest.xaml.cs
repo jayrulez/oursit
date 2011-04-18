@@ -79,6 +79,9 @@ namespace TransportCompany.Miscellaneous
         private void AcceptRequest_click(object sender, RoutedEventArgs e)
         {
             OurSitDb OurSitSchema = new OurSitDb();
+            OurSitDb OurSitSchema1 = new OurSitDb();
+            OurSitDb OurSitSchema2 = new OurSitDb();
+            OurSitDb OurSitSchema3 = new OurSitDb();
             DataRowView rowBeingSelected = SearchCharterDataGrid.CurrentItem as DataRowView;
             //int CurrentRowIndex = SearchRentalDataGrid.Items.If
             int Id = Convert.ToInt32(rowBeingSelected[0]);
@@ -87,18 +90,17 @@ namespace TransportCompany.Miscellaneous
             if (OurSitSchema.UpdateCharterRequest(Id, 1, Message))
             {
                 //int CustomerId,int DriverId,string VehicleId, int PassengerNum, float Cost, DateTime DispatchTime, DateTime ReturnTime, string DispatchLocation
-                if (OurSitSchema.AddCharter(Convert.ToInt32(rowBeingSelected[1]),0 ,string.Empty,Convert.ToInt32(rowBeingSelected[3]),0,DateTime.MaxValue,DateTime.MaxValue,string.Empty))
+                if (OurSitSchema1.AddCharter(Convert.ToInt32(rowBeingSelected[1]),0 ,string.Empty,Convert.ToInt32(rowBeingSelected[3]),0,DateTime.MaxValue,DateTime.MaxValue,string.Empty))
                 {
-                    if (OurSitSchema.DeleteCharterRequest(Id))
+                    if (OurSitSchema2.DeleteCharterRequest(Id))
                     {
-                        rowBeingSelected[5] = Message;
-                        SearchCharterDataGrid.Items.Remove(rowBeingSelected);
+                        btnViewCharter_Click(sender, e);
                         MessageBox.Show("Customer Charter Request Accepted.", "Success!");
                     }
                 }
                 else
                 {
-                    OurSitSchema.UpdateRentalRequest(Id, 0, Message);
+                    OurSitSchema3.UpdateRentalRequest(Id, 0, Message);
                 }
             }
         }

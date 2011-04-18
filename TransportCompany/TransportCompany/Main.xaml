@@ -6,7 +6,20 @@
         Title="Prendergast Transportation Services" MinHeight="400" MinWidth="450" Width="600">
     <m:MasterWindow>
         <m:MasterWindow.Header>
-            <TextBlock Text="Prendergast Transportation Services" TextAlignment="Center" VerticalAlignment="Center" Margin="0,15,0,0" FontSize="16" FontWeight="Bold"/>
+            <DockPanel>
+                <Menu Name="ApplicationMenu" Width="auto" Height="20" DockPanel.Dock="top">
+                    <MenuItem Header="File" >
+                        <MenuItem Name="Logout" Header="Logout" Click="MenuLogout_click"></MenuItem>
+                        <MenuItem Name="MenuExit" Header="Exit" Click="MenuExit_click"></MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Tools">
+                        <MenuItem Header="Settings"></MenuItem>
+                    </MenuItem>
+                </Menu>
+                <TextBlock Text="Prendergast Transportation Services" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="40,10,0,0" FontSize="16" FontWeight="Bold"/>
+                <Label Name="lblLoginName" HorizontalAlignment="Right" Padding="0.5" DockPanel.Dock="Right" VerticalAlignment="Center" Margin="0,0,5,0"></Label>
+                <Label Name="lblLoginStatus" Padding="0.5" HorizontalAlignment="Right" DockPanel.Dock="Right" VerticalAlignment="Center" Margin="20,0,0,0"></Label>
+            </DockPanel>
         </m:MasterWindow.Header>
         <m:MasterWindow.SideMenuContent>
 

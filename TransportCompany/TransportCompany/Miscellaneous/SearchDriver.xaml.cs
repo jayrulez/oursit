@@ -105,7 +105,6 @@ namespace TransportCompany.Miscellaneous
             DataRowView rowView = e.Row.Item as DataRowView;
             CurrentColumnIndex = e.Column.DisplayIndex;
             CurrentColumnData = rowView[CurrentColumnIndex].ToString();
-
         }
 
         private void SearchCustomerForm_PreviewTextInput(object sender, TextCompositionEventArgs e)
