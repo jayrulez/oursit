@@ -122,6 +122,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Miscellaneous\Start.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Miscellaneous\ViewCharter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -183,6 +187,9 @@
     </Compile>
     <Compile Include="Miscellaneous\SearchVehicle.xaml.cs">
       <DependentUpon>SearchVehicle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\Start.xaml.cs">
+      <DependentUpon>Start.xaml</DependentUpon>
     </Compile>
     <Compile Include="Miscellaneous\ViewCharter.xaml.cs">
       <DependentUpon>ViewCharter.xaml</DependentUpon>

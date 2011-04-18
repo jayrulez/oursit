@@ -10,14 +10,6 @@
                 <ControlTemplate TargetType="{x:Type local:MasterWindow}">
                     <DockPanel Width="auto" Margin="3,3,3,4" Height="auto" LastChildFill="True">
                         <StackPanel Width="auto" MinHeight="70" DockPanel.Dock="Top" Background="LightGray">
-                            <Menu Name="ApplicationMenu" Width="auto" Height="20" DockPanel.Dock="top">
-                                <MenuItem Header="File">
-                                    <MenuItem Name="MenuExit" Header="Exit"></MenuItem>
-                                </MenuItem>
-                                <MenuItem Header="Tools">
-                                    <MenuItem Header="Settings"></MenuItem>
-                                </MenuItem>
-                            </Menu>
                             <ContentPresenter Content="{TemplateBinding Header}"/>
                         </StackPanel>
                         <ScrollViewer VerticalScrollBarVisibility="Auto">

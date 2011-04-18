@@ -22,14 +22,30 @@
         </Grid.ColumnDefinitions>
         <Label Content="Customer ID:" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Margin="3"></Label>
         <TextBox Name="txtCustomerId" Grid.Column="1" Grid.Row="0" Width="150" Margin="3"/>
-        <Label Content="InquiryDate:" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right" Margin="3"/>
+        <Label Content="InquiryDate: (dd/mm/yyyy)" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right" Margin="3"/>
         <TextBox Name="txtInquiryDate" Grid.Column="3" Grid.Row="0" Width="150" Margin="3"/>
         <Button Name="btnViewInquiry" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Width="100" Content="View" Margin="3" Click="btnViewInquiry_Click" />
             <Label Name="lblViewInquiryStatus" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4"/>
     </Grid>
-    <DataGrid Name="SearchInquiryDataGrid" CanUserAddRows="False" CanUserResizeColumns="True" Margin="3,3,3,3" IsReadOnly="True" CanUserDeleteRows="True" CanUserSortColumns="True" CurrentCellChanged="SearchInquiryDataGrid_CurrentCellChanged">
-
-        <DataGrid.Columns>
+    <DataGrid Name="SearchInquiryDataGrid" CanUserAddRows="False" CanUserResizeColumns="True" Margin="3,3,3,3" IsReadOnly="True" CanUserDeleteRows="False" CanUserSortColumns="True">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Name="lblReason" Content="FeedBack:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" Margin="3"/>
+                        <TextBox Name="txtReason" Width="200" Height="50" Grid.Column="1" Grid.Row="0" Margin="3" TextWrapping="Wrap"/>
+                        <Button Name="btnPostFeedback" Content="Post Feedback" Click="PostFeedback_click" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Margin="3"/>
+                    </Grid>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
             <DataGridTextColumn Header="Id" IsReadOnly="True">
 
             </DataGridTextColumn>

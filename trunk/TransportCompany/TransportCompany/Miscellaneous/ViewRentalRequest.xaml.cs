@@ -86,6 +86,9 @@ namespace TransportCompany.Miscellaneous
         private void AcceptRequest_click(object sender, RoutedEventArgs e)
         {
             OurSitDb OurSitSchema = new OurSitDb();
+            OurSitDb OurSitSchema1 = new OurSitDb();
+            OurSitDb OurSitSchema2 = new OurSitDb();
+            OurSitDb OurSitSchema3 = new OurSitDb();
             DataRowView rowBeingSelected = SearchRentalDataGrid.CurrentItem as DataRowView;
             //int CurrentRowIndex = SearchRentalDataGrid.Items.If
             int Id = Convert.ToInt32(rowBeingSelected[0]);
@@ -93,18 +96,17 @@ namespace TransportCompany.Miscellaneous
             
             if (OurSitSchema.UpdateRentalRequest(Id, 1, Message))
             {
-                if (OurSitSchema.AddRental(Convert.ToInt32(rowBeingSelected[1]), Convert.ToString(rowBeingSelected[2]), DateTime.Now, DateTime.MinValue, 0))
+                if (OurSitSchema1.AddRental(Convert.ToInt32(rowBeingSelected[1]), Convert.ToString(rowBeingSelected[2]), DateTime.Now, DateTime.MaxValue, 0))
                 {
-                    if (OurSitSchema.DeleteRentalRequest(Id))
+                    if (OurSitSchema2.DeleteRentalRequest(Id))
                     {
-                        rowBeingSelected[5] = Message;
-                        SearchRentalDataGrid.Items.Remove(rowBeingSelected);
+                        btnViewRental_Click(sender, e);
                         MessageBox.Show("Vehicle Rental Request Accepted.", "Success!");
                     }
                 }
                 else
                 {
-                    OurSitSchema.UpdateRentalRequest(Id, 0, Message);
+                    OurSitSchema3.UpdateRentalRequest(Id, 0, Message);
                 }
             } 
         }

@@ -58,9 +58,30 @@ namespace TransportCompany.Miscellaneous
                 SearchInquiryDataGrid.ItemsSource = InquiryResult.DefaultView;
             }
         }
-        private void SearchInquiryDataGrid_CurrentCellChanged(object sender, EventArgs e)
+        private void PostFeedback_click(object sender, RoutedEventArgs e)
         {
- 
+            OurSitDb OurSitSchema = new OurSitDb();
+            OurSitDb OurSitSchema1 = new OurSitDb();
+            OurSitDb OurSitSchema2 = new OurSitDb();
+            DataRowView rowBeingSelected = SearchInquiryDataGrid.CurrentItem as DataRowView;
+            //int CurrentRowIndex = SearchRentalDataGrid.Items.If
+            int Id = Convert.ToInt32(rowBeingSelected[0]);
+            string Message = txtReason.Text;
+            if (!string.IsNullOrEmpty(Message))
+            {
+                if (OurSitSchema1.AddInquiryFeedBack(Id, Message))
+                {
+                    MessageBox.Show("Inquiry Feedback Posted!", "Success");
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Inquiry Feedback can not be sent with blank body.", "Invalid Operation");
+            }
         }
     }
 }

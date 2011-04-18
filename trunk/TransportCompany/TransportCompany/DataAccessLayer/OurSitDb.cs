@@ -1181,14 +1181,7 @@ namespace TransportCompany.DataAccessLayer
             }
             oursitdbcommand.Parameters.AddWithValue("@Cost", Cost);
             oursitdbcommand.Connection = oursitdbconnection;
-            /*
-             * 	Id INT IDENTITY(1,1) PRIMARY KEY NOT NULL, 
-	CustomerId int not null, 
-	VehicleId varchar(50) not null, 
-	RentalDate DATETIME NOT NULL, 
-	ReturnDate DATETIME DEFAULT NULL, 
-	Cost float(11) not null
-             */
+
             MessageBoxResult status;
             try
             {
@@ -1289,10 +1282,10 @@ namespace TransportCompany.DataAccessLayer
         {
 
             oursitdbcommand.CommandType = System.Data.CommandType.Text;
-            oursitdbcommand.CommandText = "insert into Delivery (CustomerId,DriverId,VehicleId,ItemDimension,ItemQuantity,FromLocation,Destination,Cost,DispatchTime,ArrivialTime,ReturnTime) values (@CustomerId,@DriverId,@VehicleId,@ItemDimension,@ItemQuantity,@FromLocation,@Destination,@Cost,@DispatchTime,@ArrivialTime,@ReturnTime);";
+            oursitdbcommand.CommandText = "insert into Delivery (CustomerId,DriverId,VehicleId,ItemDimension,ItemQuantity,FromLocation,Destination,Cost,DispatchTime,ArrivalTime,ReturnTime) values (@CustomerId,@DriverId,@VehicleId,@ItemDimension,@ItemQuantity,@FromLocation,@Destination,@Cost,@DispatchTime,@ArrivalTime,@ReturnTime);";
             oursitdbcommand.Parameters.AddWithValue("@CustomerId", CustomerId);
-            oursitdbcommand.Parameters.AddWithValue("@VehicleId", DriverId);
-            oursitdbcommand.Parameters.AddWithValue("@DriverId", VehicleId);
+            oursitdbcommand.Parameters.AddWithValue("@VehicleId", VehicleId);
+            oursitdbcommand.Parameters.AddWithValue("@DriverId", DriverId);
             oursitdbcommand.Parameters.AddWithValue("@ArrivalTime", ArrivalTime);
             oursitdbcommand.Parameters.AddWithValue("@ReturnTime", ReturnTime);
             oursitdbcommand.Parameters.AddWithValue("@ItemDimension", ItemDimension);
@@ -1334,10 +1327,9 @@ namespace TransportCompany.DataAccessLayer
             oursitdbcommand.CommandType = System.Data.CommandType.Text;
             oursitdbcommand.CommandText = "insert into Trip (CustomerId,VehicleId,DriverId,PassengerNum,Cost, DispatchTime, DispatchLocation, ReturnTime) values (@CustomerId, @VehicleId,DriverId,@PassengerNum,@Cost, @DispatchTime, @DispatchLocation, @ReturnTime);";
             oursitdbcommand.Parameters.AddWithValue("@CustomerId", CustomerId);
-            oursitdbcommand.Parameters.AddWithValue("@VehicleId", DriverId);
-            oursitdbcommand.Parameters.AddWithValue("@DriverId", VehicleId);
+            oursitdbcommand.Parameters.AddWithValue("@VehicleId", VehicleId);
+            oursitdbcommand.Parameters.AddWithValue("@DriverId", DriverId);
             oursitdbcommand.Parameters.AddWithValue("@PassengerNum", PassengerNum);
-            oursitdbcommand.Parameters.AddWithValue("@Cost", ReturnTime);
             oursitdbcommand.Parameters.AddWithValue("@DispatchTime", DispatchTime);
             oursitdbcommand.Parameters.AddWithValue("@Cost", Cost);
             oursitdbcommand.Parameters.AddWithValue("@DispatchLocation", DispatchLocation);
@@ -1439,7 +1431,163 @@ namespace TransportCompany.DataAccessLayer
             return false;
         }
 
+        public bool UpdateDelivery(int Id ,int CustomerId, int DriverId, string VehicleId, string ItemDimension, int ItemQuantity, string FromLocation, string Destination, float Cost, DateTime DispatchTime, DateTime ArrivalTime, DateTime ReturnTime)
+        {
 
+            oursitdbcommand.CommandType = System.Data.CommandType.Text;
+            oursitdbcommand.CommandText = "Update Delivery set CustomerId = @CustomerId, DriverId = @DriverId, VehicleId = @VehicleId, ItemDimension = @ItemDimension, ItemQuantity = @ItemQuantity,FromLocation = @FromLocation,Destination = @Destination,Cost = @Cost,DispatchTime = @DispatchTime,ArrivalTime = @ArrivalTime,ReturnTime = @ReturnTime where Id = Id;";
+            oursitdbcommand.Parameters.AddWithValue("@Id",Id);
+            oursitdbcommand.Parameters.AddWithValue("@CustomerId", CustomerId);
+            oursitdbcommand.Parameters.AddWithValue("@VehicleId", VehicleId);
+            oursitdbcommand.Parameters.AddWithValue("@DriverId", DriverId);
+            oursitdbcommand.Parameters.AddWithValue("@ArrivalTime", ArrivalTime);
+            oursitdbcommand.Parameters.AddWithValue("@ReturnTime", ReturnTime);
+            oursitdbcommand.Parameters.AddWithValue("@ItemDimension", ItemDimension);
+            oursitdbcommand.Parameters.AddWithValue("@ItemQuantity", ItemQuantity);
+            oursitdbcommand.Parameters.AddWithValue("@FromLocation", FromLocation);
+            oursitdbcommand.Parameters.AddWithValue("@Destination", Destination);
+            oursitdbcommand.Parameters.AddWithValue("@DispatchTime", DispatchTime);
+            oursitdbcommand.Parameters.AddWithValue("@Cost", Cost);
+            oursitdbcommand.Connection = oursitdbconnection;
+
+            MessageBoxResult status;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    int result = oursitdbcommand.ExecuteNonQuery();
+                    oursitdbcommand.Connection.Close();
+                    if (result == 1)
+                    {
+                        return true;
+                    }
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    status = MessageBox.Show("An error occured while attempting to save Update Delivery data. Please contact administrator", "Data Connectivity");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.", "Data Connectivity");
+            }
+            return false;
+        }
+
+        public bool UpdateCharter(int Id,int CustomerId, int DriverId, string VehicleId, int PassengerNum, decimal Cost, DateTime DispatchTime, DateTime ReturnTime, string DispatchLocation)
+        {
+            oursitdbcommand.CommandType = System.Data.CommandType.Text;
+            oursitdbcommand.CommandText = "Update Trip set CustomerId = @CustomerId,VehicleId = VehicleId, DriverId = @DriverId,PassengerNum = @PassengerNum,Cost = @Cost, DispatchTime = @DispatchTime, DispatchLocation = @DispatchLocation, ReturnTime = @ReturnTime where Id = @id;";
+            oursitdbcommand.Parameters.AddWithValue("@Id", Id);
+            oursitdbcommand.Parameters.AddWithValue("@CustomerId", CustomerId);
+            oursitdbcommand.Parameters.AddWithValue("@VehicleId", VehicleId);
+            oursitdbcommand.Parameters.AddWithValue("@DriverId", DriverId);
+            oursitdbcommand.Parameters.AddWithValue("@PassengerNum", PassengerNum);
+            oursitdbcommand.Parameters.AddWithValue("@DispatchTime", DispatchTime);
+            oursitdbcommand.Parameters.AddWithValue("@Cost", Cost);
+            oursitdbcommand.Parameters.AddWithValue("@DispatchLocation", DispatchLocation);
+            oursitdbcommand.Parameters.AddWithValue("@ReturnTime", ReturnTime);
+            oursitdbcommand.Parameters.AddWithValue("@Cost", Cost);
+            oursitdbcommand.Connection = oursitdbconnection;
+
+            MessageBoxResult status;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    int result = oursitdbcommand.ExecuteNonQuery();
+                    oursitdbcommand.Connection.Close();
+                    if (result == 1)
+                    {
+                        return true;
+                    }
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    status = MessageBox.Show("An error occured while attempting to Update Customer Charter data. Please contact administrator", "Data Connectivity");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.", "Data Connectivity");
+            }
+            return false;
+        }
+
+        public bool UpdateRental(int Id, int CustomerId, string VehicleId, DateTime RentalDate, DateTime ReturnDate, float Cost)
+        {
+            oursitdbcommand.CommandType = System.Data.CommandType.Text;
+            oursitdbcommand.CommandText = "Update Rental (CustomerId = @CustomerId,VehicleId = @VehicleId,RentalDate = @RentalDate,ReturnDate = @ReturnDate,Cost = @Cost where Id = @Id;";
+            oursitdbcommand.Parameters.AddWithValue("@Id", Id);
+            oursitdbcommand.Parameters.AddWithValue("@CustomerId", CustomerId);
+            oursitdbcommand.Parameters.AddWithValue("@VehicleId", VehicleId);
+            oursitdbcommand.Parameters.AddWithValue("@RentalDate", RentalDate);
+            oursitdbcommand.Parameters.AddWithValue("@ReturnDate", ReturnDate);
+            oursitdbcommand.Parameters.AddWithValue("@Cost", Cost);
+            oursitdbcommand.Connection = oursitdbconnection;
+
+            MessageBoxResult status;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    int result = oursitdbcommand.ExecuteNonQuery();
+                    oursitdbcommand.Connection.Close();
+                    if (result == 1)
+                    {
+                        return true;
+                    }
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    status = MessageBox.Show("An error occured while attempting to Update Customer Rental data. Please contact administrator", "Data Connectivity");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.", "Data Connectivity");
+            }
+            return false;
+        }
+
+        public bool AddInquiryFeedBack(int InquiryId, string Body)
+        {
+            oursitdbcommand.CommandType = System.Data.CommandType.StoredProcedure;
+            oursitdbcommand.CommandText = "insert into InquiryFeedback (InquiryId, Body, CreatedAt) values (@InquiryId, @body, GETDATE());";
+            oursitdbcommand.Parameters.AddWithValue("@InquiryId", InquiryId);
+            oursitdbcommand.Parameters.AddWithValue("@Body", Body);
+            oursitdbcommand.Connection = oursitdbconnection;
+            MessageBoxResult status;
+            try
+            {
+                oursitdbcommand.Connection.Open();
+                try
+                {
+                    int result = oursitdbcommand.ExecuteNonQuery();
+                    oursitdbcommand.Connection.Close();
+                    if (result == 1)
+                    {
+                        return true;
+                    }
+                }
+                catch (Exception)
+                {
+                    oursitdbcommand.Connection.Close();
+                    status = MessageBox.Show("An error occured while attempting to save Inquiry Feedback data. Please contact administrator", "Data Connectivity");
+                }
+            }
+            catch (Exception)
+            {
+                status = MessageBox.Show("Error occured while attempting to access the database. Please contact Administrator.", "Data Connectivity");
+            }
+            return false;
+        }
     }
 }
 

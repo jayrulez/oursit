@@ -34,8 +34,8 @@
 
                 <DataGridTextColumn Header="Customer ID" IsReadOnly="True"/>
 
-                <DataGridTextColumn Header="Driver ID" IsReadOnly="True"/> 
-                
+                <DataGridTextColumn Header="Driver ID" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Vehicle ID (vin)" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Number of Passengers" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Cost" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Dispatch Time" IsReadOnly="True"/>

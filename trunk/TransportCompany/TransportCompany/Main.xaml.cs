@@ -31,13 +31,26 @@ namespace TransportCompany
                 AdministrationUltilities.IsEnabled = false;
                 AdministrationUltilities.Visibility = Visibility.Hidden; 
             }
+            lblLoginStatus.Content = "Logged in as: ";
+            lblLoginName.FontSize = 14;
+            lblLoginName.FontWeight = FontWeights.SemiBold;
+            lblLoginName.FontFamily = new FontFamily("Comic Sans MS");
+            lblLoginName.Content = Application.Current.Properties["Username"].ToString();
+            MainContentFrame.Source = new Uri("./Miscellaneous/Start.xaml", UriKind.Relative);
         }
 
-        private void MenuExit_Click(object sender, RoutedEventArgs e)
+        private void MenuExit_click(object sender, RoutedEventArgs e)
         {
             Close();
         }
-
+        private void MenuLogout_click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Properties["Username"] = string.Empty;
+            Application.Current.Properties["UserType"] = string.Empty;
+            login LoginWindow = new login();
+            LoginWindow.Show();
+            Close();
+        }
         public void selected_AddCustomer(object sender, RoutedEventArgs e)
         {
             MainContentFrame.Source = new Uri("./Miscellaneous/AddCustomer.xaml", UriKind.Relative);
