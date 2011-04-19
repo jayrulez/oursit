@@ -91,37 +91,43 @@ namespace TransportCompany.Miscellaneous
             OurSitDb OurSitSchema3 = new OurSitDb();
             DataRowView rowBeingSelected = SearchRentalDataGrid.CurrentItem as DataRowView;
             //int CurrentRowIndex = SearchRentalDataGrid.Items.If
-            int Id = Convert.ToInt32(rowBeingSelected[0]);
-            string Message = txtReason.Text;
-            
-            if (OurSitSchema.UpdateRentalRequest(Id, 1, Message))
+
+            if (rowBeingSelected != null)
             {
-                if (OurSitSchema1.AddRental(Convert.ToInt32(rowBeingSelected[1]), Convert.ToString(rowBeingSelected[2]), DateTime.Now, DateTime.MaxValue, 0))
+                int Id = Convert.ToInt32(rowBeingSelected[0]);
+                string Message = txtReason.Text;
+                if (OurSitSchema.UpdateRentalRequest(Id, 1, Message))
                 {
-                    if (OurSitSchema2.DeleteRentalRequest(Id))
+                    if (OurSitSchema1.AddRental(Convert.ToInt32(rowBeingSelected[1]), Convert.ToString(rowBeingSelected[2]), DateTime.Now, DateTime.MaxValue, 0))
                     {
-                        btnViewRental_Click(sender, e);
-                        MessageBox.Show("Vehicle Rental Request Accepted.", "Success!");
+                        if (OurSitSchema2.DeleteRentalRequest(Id))
+                        {
+                            btnViewRental_Click(sender, e);
+                            MessageBox.Show("Vehicle Rental Request Accepted.", "Success!");
+                        }
+                    }
+                    else
+                    {
+                        OurSitSchema3.UpdateRentalRequest(Id, 0, Message);
                     }
                 }
-                else
-                {
-                    OurSitSchema3.UpdateRentalRequest(Id, 0, Message);
-                }
-            } 
+            }
         }
 
         private void CancelRequest_click(object sender, RoutedEventArgs e)
         {
             OurSitDb OurSitSchema = new OurSitDb();
             DataRowView rowBeingSelected = SearchRentalDataGrid.CurrentItem as DataRowView;
-            string Message = txtReason.Text;
-            int Id = Convert.ToInt32(rowBeingSelected[0]);
-            if (OurSitSchema.UpdateRentalRequest(Id, 2, Message))
+            if (rowBeingSelected != null)
             {
-                rowBeingSelected[4] = "Cancelled";
-                rowBeingSelected[5] = Message;
-                MessageBox.Show("Vehicle Rental Request Cancelled.", "Success!");
+                string Message = txtReason.Text;
+                int Id = Convert.ToInt32(rowBeingSelected[0]);
+                if (OurSitSchema.UpdateRentalRequest(Id, 2, Message))
+                {
+                    rowBeingSelected[4] = "Cancelled";
+                    rowBeingSelected[5] = Message;
+                    MessageBox.Show("Vehicle Rental Request Cancelled.", "Success!");
+                }
             }
         }
     }

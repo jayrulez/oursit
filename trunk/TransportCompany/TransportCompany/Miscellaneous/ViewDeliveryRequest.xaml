@@ -29,7 +29,7 @@
         </Grid>
         <DataGrid Name="SearchDeliveryDataGrid" CanUserAddRows="False" CanUserSortColumns="True">
             <DataGrid.ContextMenu>
-                <ContextMenu>
+                <ContextMenu Background="LightBlue">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
