@@ -65,22 +65,25 @@ namespace TransportCompany.Miscellaneous
             OurSitDb OurSitSchema2 = new OurSitDb();
             DataRowView rowBeingSelected = SearchInquiryDataGrid.CurrentItem as DataRowView;
             //int CurrentRowIndex = SearchRentalDataGrid.Items.If
-            int Id = Convert.ToInt32(rowBeingSelected[0]);
-            string Message = txtReason.Text;
-            if (!string.IsNullOrEmpty(Message))
+            if (rowBeingSelected != null)
             {
-                if (OurSitSchema1.AddInquiryFeedBack(Id, Message))
+                int Id = Convert.ToInt32(rowBeingSelected[0]);
+                string Message = txtReason.Text;
+                if (!string.IsNullOrEmpty(Message))
                 {
-                    MessageBox.Show("Inquiry Feedback Posted!", "Success");
+                    if (OurSitSchema1.AddInquiryFeedBack(Id, Message))
+                    {
+                        MessageBox.Show("Inquiry Feedback Posted!", "Success");
+                    }
+                    else
+                    {
+
+                    }
                 }
                 else
                 {
-
+                    MessageBox.Show("Inquiry Feedback can not be sent with blank body.", "Invalid Operation");
                 }
-            }
-            else
-            {
-                MessageBox.Show("Inquiry Feedback can not be sent with blank body.", "Invalid Operation");
             }
         }
     }

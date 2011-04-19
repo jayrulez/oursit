@@ -91,24 +91,26 @@ namespace TransportCompany.Miscellaneous
             OurSitDb OurSitSchema3 = new OurSitDb();
             DataRowView rowBeingSelected = SearchDeliveryDataGrid.CurrentItem as DataRowView;
             //int CurrentRowIndex = SearchRentalDataGrid.Items.If
-            int Id = Convert.ToInt32(rowBeingSelected[0]);
-            string Message = txtReason.Text;
-
-            if (OurSitSchema.UpdateDeliveryRequest(Id, 1, Message))
+            if (rowBeingSelected != null)
             {
-                //int CustomerId, int DriverId, string VehicleId, string ItemDimension, int ItemQuantity, string FromLocation, string Destination,float Cost, DateTime DispatchTime, DateTime ArrivalTime, DateTime ReturnTime)
-                if (OurSitSchema1.AddDelivery(Convert.ToInt32(rowBeingSelected[1]),1,"99091",Convert.ToString(rowBeingSelected[3]),Convert.ToInt32(rowBeingSelected[4]),Convert.ToString(rowBeingSelected[5]),Convert.ToString(rowBeingSelected[6]),0,Convert.ToDateTime(rowBeingSelected[7]),Convert.ToDateTime(rowBeingSelected[8]),DateTime.MaxValue))
+                int Id = Convert.ToInt32(rowBeingSelected[0]);
+                string Message = txtReason.Text;
+                if (OurSitSchema.UpdateDeliveryRequest(Id, 1, Message))
                 {
-                    if (OurSitSchema2.DeleteDeliveryRequest(Id))
+                    //int CustomerId, int DriverId, string VehicleId, string ItemDimension, int ItemQuantity, string FromLocation, string Destination,float Cost, DateTime DispatchTime, DateTime ArrivalTime, DateTime ReturnTime)
+                    if (OurSitSchema1.AddDelivery(Convert.ToInt32(rowBeingSelected[1]), 1, "99091", Convert.ToString(rowBeingSelected[3]), Convert.ToInt32(rowBeingSelected[4]), Convert.ToString(rowBeingSelected[5]), Convert.ToString(rowBeingSelected[6]), 0, Convert.ToDateTime(rowBeingSelected[7]), Convert.ToDateTime(rowBeingSelected[8]), DateTime.MaxValue))
                     {
-                        btnViewDelivery_Click(sender, e);
-                        MessageBox.Show("Customer Delivery Request Accepted.", "Success!");
+                        if (OurSitSchema2.DeleteDeliveryRequest(Id))
+                        {
+                            btnViewDelivery_Click(sender, e);
+                            MessageBox.Show("Customer Delivery Request Accepted.", "Success!");
+                        }
                     }
-                }
-                else
-                {
-                    rowBeingSelected[9] = "Pending";
-                    OurSitSchema3.UpdateDeliveryRequest(Id, 0, Message);
+                    else
+                    {
+                        rowBeingSelected[9] = "Pending";
+                        OurSitSchema3.UpdateDeliveryRequest(Id, 0, Message);
+                    }
                 }
             }
         }
@@ -117,13 +119,16 @@ namespace TransportCompany.Miscellaneous
         {
             OurSitDb OurSitSchema = new OurSitDb();
             DataRowView rowBeingSelected = SearchDeliveryDataGrid.CurrentItem as DataRowView;
-            string Message = txtReason.Text;
-            int Id = Convert.ToInt32(rowBeingSelected[0]);
-            if (OurSitSchema.UpdateDeliveryRequest(Id, 2, Message))
+            if (rowBeingSelected != null)
             {
-                rowBeingSelected[9] = "Cancelled";
-                rowBeingSelected[10] = Message;
-                MessageBox.Show("Customer Delivery Request Cancelled.", "Success!");
+                string Message = txtReason.Text;
+                int Id = Convert.ToInt32(rowBeingSelected[0]);
+                if (OurSitSchema.UpdateDeliveryRequest(Id, 2, Message))
+                {
+                    rowBeingSelected[9] = "Cancelled";
+                    rowBeingSelected[10] = Message;
+                    MessageBox.Show("Customer Delivery Request Cancelled.", "Success!");
+                }
             }
         }
     }
